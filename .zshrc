@@ -84,6 +84,10 @@ export MPD_PORT="6601"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias diff="colordiff"
 
+# alias for FAU vpn
+alias fauvpnfull="wd FAUAllgemein && sudo openvpn ~/Documents/MyDocuments/Study/FAU\ Erlangen/Allgemein/FAU-Fulltunnel.ovpn && cd ~" 
+alias fauvpnsplit="openvpn ~/Documents/MyDocuments/Study/FAU\ Erlangen/Allgemein/FAU-Splittunnel.ovpn"
+
 # x screen saver alias
 
 alias screensoff="xset s off; xset -dpms && echo 'xcreensaver and dpms disabled'"
