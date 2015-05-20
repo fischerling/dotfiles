@@ -1,0 +1,106 @@
+background no
+out_to_x no
+out_to_console yes
+update_interval 1
+mpd_port 6601
+
+# Network interface must have an ip address to be considered up
+if_up_strictness address
+
+TEXT
+[
+    #{"name": "uptime", "color":"\#ffffff", "full_text":"${uptime_short} "},
+    
+    ################## cpu #################
+
+    #{"name": "cpuTemperature", "full_text": "${exec sensors | grep -A 1 'temp1' | cut -c13-16 | sed '/^$/d'}C"},
+
+    {"name": "cpuStart", "color" : "\#ffffff", "full_text": "[", "separator": false},
+
+    {"name": "cpu1", "color": ${if_match ${cpu cpu1}<89}"\#ffffff"${else}"\#ff0000"${endif},
+    "full_text": "${cpu cpu1}%,", "separator": false},  
+
+    {"name": "cpu2", "color": ${if_match ${cpu cpu2}<89}"\#ffffff"${else}"\#ff0000"${endif},
+
+    "full_text": "${cpu cpu2}%,", "separator": false},  
+
+    {"name": "cpu3", "color": ${if_match ${cpu cpu3}<89}"\#ffffff"${else}"\#ff0000"${endif},
+    "full_text": "${cpu cpu3}%,", "separator": false},  
+
+    {"name": "cpu4", "color": ${if_match ${cpu cpu4}<89}"\#ffffff"${else}"\#ff0000"${endif},
+    "full_text": "${cpu cpu4}%", "separator": false},  
+
+    {"name": "cpuEnd", "color": "\#ffffff", "full_text": "]"},
+
+
+    ################ memory#########################
+
+    {"name": "memory", "color": ${if_match ${memperc}<80}"\#ffffff"${else}"\#ff0000"${endif},
+        "full_text": "RAM: ${memperc}% "},  
+
+    #{"name": "disk", "color": "\#ffffff", "full_text": " ${fs_used_perc /}% "},  
+
+
+    ############### music / mpd ###################
+
+    ${if_mpd_playing}
+       # {"name": "test status", "full_text":"${mpd_status}", "separator":false},
+
+        {"name": "statusSymbol", "color": "\#ffffff", "separator": false,
+        "full_text": ${if_match ${mpd_status}=="Playing"}"▶"${else}"▐▐"${endif}},
+        
+        {"name": "music", "color": "\#ffffff", "full_text":"${mpd_title} ${mpd_bar}"},
+    ${else}
+        {"name": "nomusic", "color": "\#ffffff", "full_text": "no music"},
+    ${endif}
+
+
+    ########### networking ########################
+
+    ${if_up wlp2s0} 
+	    {"name":"wifi", "color": ${if_match ${wireless_link_qual_perc wlan0}>60}"\#339966"${else}"\#FF9200"${endif},
+        "full_text": "${addr wlan0}  ${wireless_link_qual_perc wlp2s0}%"}, 
+            {"name":"download", "color":"\#ffffff", "full_text": "⤋: ${downspeed wlp2s0}"}, 
+
+    ${else} ${if_up enp0s20u1}
+	    {"name":"eth0", "color": "\#339966", "full_text": "IP: ${addr enp0s20u1} "}, 
+            {"name":"download", "color":"\#ffffff", "full_text": "⤋: ${downspeed enp0s20u1}"}, 
+
+	${else}
+	    {"name":"nonet", "full_text": "no connection" }, 
+	    ${endif}
+    ${endif}  
+
+
+    ################ Volume ########################
+
+    {"name": "symbol", "color": "\#ffffff", "full_text":
+    ${if_match ${exec amixer sget Master | grep Left: |
+        sed -e 's/[ \t]*Front Left: Playback [0-9]* \[\([0-9]*\)%\].*/\1/'}==0}""${else}""${endif},
+        "separator": false},
+    
+    {"name": "left", "color": "\#ffffff", "full_text": 
+        "Volume: [${exec amixer sget Master | grep Left: | sed -e 's/[ \t]*Front Left: Playback [0-9]* \[\([0-9]*%\)\].*/\1/'},", "separator": false},
+    
+        {"name": "right", "color": "\#ffffff", "full_text":
+        "${exec amixer sget Master | grep Right: | sed -e 's/[ \t]*Front Right: Playback [0-9]* \[\([0-9]*%\)\].*/ \1/'}] "},  
+
+
+    ################# Battery ####################
+
+    ${if_empty ${battery BAT1} } ${else}
+        {"name": "battery","color":
+            ${if_match ${battery_percent}<50}
+                ${if_match ${battery_percent}<25}"\#ff0000"
+                ${else}"\#ff9200"
+                ${endif}
+            ${else}"\#ffffff"
+            ${endif}, "full_text": "${battery BAT0}% "},  
+    ${endif} 
+
+
+    ############### Time ##################
+
+    {"name": "time", "color": "\#CFCFCF", "full_text": " ${time %d/%m/%y} ${time %H:%M}"}
+],
+
