@@ -86,7 +86,7 @@ TEXT
 
     ################# Battery ####################
 
-    ${if_empty ${battery BAT0} }
+    ${if_empty ${battery BAT1} } ${else}
         {"name": "battery","color":
             ${if_match ${battery_percent}<50}
                 ${if_match ${battery_percent}<25}"\#ff0000"
@@ -94,15 +94,6 @@ TEXT
                 ${endif}
             ${else}"\#ffffff"
             ${endif}, "full_text": "${battery BAT0}"},  
-    
-    ${else}
-        {"name": "battery","color":
-            ${if_match ${battery_percent}<50}
-                ${if_match ${battery_percent}<25}"\#ff0000"
-                ${else}"\#ff9200"
-                ${endif}
-            ${else}"\#ffffff"
-            ${endif}, "full_text": "${battery BAT1}"},  
     ${endif} 
 
 
