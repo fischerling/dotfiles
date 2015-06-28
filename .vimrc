@@ -14,7 +14,7 @@
 " line enables syntax highlighting by default.
 syntax enable
 set background=dark
-"colorscheme solarized
+colorscheme solarized
 se t_Co=256        " fixing terminal colors
 hi Normal         ctermbg=none
 
