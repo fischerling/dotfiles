@@ -12,18 +12,18 @@
 
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
-syntax enable
-set background=dark
-colorscheme solarized
-se t_Co=256        " fixing terminal colors
-hi Normal         ctermbg=none
-
-" If using a dark background within the editing area and syntax highlighting
-" turn on this option as well
-"set background=dark
 
 execute pathogen#infect()
 filetype plugin indent on
+
+set t_Co=256
+syntax on
+set background=dark" dark | light "
+colorscheme solarized
+hi Normal ctermbg=none
+
+set cursorline
+set colorcolumn=80
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
