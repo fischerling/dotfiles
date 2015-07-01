@@ -187,10 +187,10 @@ hide_edge_borders both
 exec xrandr --output HDMI1 --right-of eDP1
 
 # set i3lock as xscreensaver
-exec xss-lock -- i3lock -i ~/.dotfile/wallpapers/blue_screen.png #-lock
+exec xss-lock -- i3lock -i ~/.dotfiles/wallpapers/blue_screen.png #-lock
 
 # Autostart Programms
-exec --no-startup-id feh --bg-fill ~/.dotfile/wallpapers/nsa_wallpaper.png
+exec --no-startup-id feh --bg-fill ~/.dotfiles/wallpapers/nsa_wallpaper.png
 exec --no-startup-id syndaemon -i 1 -d
 #exec --no-startup-id nm-applet
 exec --no-startup-id owncloud
