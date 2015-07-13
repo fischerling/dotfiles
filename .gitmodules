@@ -1,12 +1,12 @@
-[submodule ".vim/bundle/table-mode"]
-	path = .vim/bundle/table-mode
+[submodule "vim/bundle/table-mode"]
+	path = vim/bundle/table-mode
 	url = git@github.com:dhruvasagar/vim-table-mode.git
-[submodule ".vim/bundle/vim-colors-solarized"]
-	path = .vim/bundle/vim-colors-solarized
+[submodule "vim/bundle/vim-colors-solarized"]
+	path = vim/bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
-[submodule ".vim/bundle/vim-autoclose"]
-	path = .vim/bundle/vim-autoclose
+[submodule "vim/bundle/vim-autoclose"]
+	path = vim/bundle/vim-autoclose
 	url = https://github.com/Townk/vim-autoclose.git
-[submodule ".vim/bundle/a.vim"]
-	path = .vim/bundle/a.vim
+[submodule "vim/bundle/a.vim"]
+	path = vim/bundle/a.vim
 	url = https://github.com/vim-scripts/a.vim.git
