@@ -63,8 +63,13 @@ TEXT
             {"name":"download", "color":"\#ffffff", "full_text": "⤋: ${downspeed wlp2s0}"}, 
 
     ${else} ${if_up enp0s20u2}
-	    {"name":"eth0", "color": "\#339966", "full_text": "IP: ${addr enp0s20u2} "}, 
+	    {"name":"ethernet", "color": "\#339966", "full_text": "IP: ${addr enp0s20u2} "}, 
             {"name":"download", "color":"\#ffffff", "full_text": "⤋: ${downspeed enp0s20u2}"}, 
+
+    ${else} ${if_up eth0}
+	    {"name":"ethernet", "color": "\#339966", "full_text": "IP: ${addr eth0} "}, 
+            {"name":"download", "color":"\#ffffff", "full_text": "⤋: ${downspeed eth0}"}, 
+
 
 	${else}
 	    {"name":"nonet", "full_text": "no connection" }, 
