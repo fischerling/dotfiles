@@ -4,4 +4,15 @@ set fish_function_path /home/fischerling/.config/fish/functions/git-alias $fish_
 if not set -q __fish_git_prompt_show_informative_status
     set -Ux __fish_git_prompt_show_informative_status true
 end
-_
+
+if not set -q MPD_PORT
+    set -Ux MPD_PORT 6601
+end
+
+if not set -q EDITOR
+    set -Ux EDITOR vim
+end
+
+if not set -q SSH_KEY_PATH
+    set -Ux SSH_KEY_PATH /home/fischerling/.ssh/rsa_id
+end
