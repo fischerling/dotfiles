@@ -13,6 +13,11 @@
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
 
+" set shell to a more POSIX compatible shell
+if &shell =~# 'fish$'
+    set shell=sh
+endif
+
 execute pathogen#infect()
 filetype plugin indent on
 
