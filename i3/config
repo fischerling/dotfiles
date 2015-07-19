@@ -184,10 +184,10 @@ new_window pixel 1
 hide_edge_borders both
 
 # Set Displayorientation
-exec xrandr --output HDMI1 --right-of eDP1
+exec --no-startup-id xrandr --output HDMI1 --right-of eDP1
 
 # set i3lock as xscreensaver
-exec xss-lock -- i3lock -i ~/.dotfiles/wallpapers/blue_screen.png #-lock
+exec --no-startup-id xss-lock -- i3lock -i ~/.dotfiles/wallpapers/blue_screen.png #-lock
 
 # Autostart Programms
 exec --no-startup-id feh --bg-fill ~/.dotfiles/wallpapers/nsa_wallpaper.png
@@ -197,7 +197,7 @@ exec --no-startup-id owncloud
 exec --no-startup-id mpd
 
 # Autorestore Layout
-exec --no-startup-id "i3-msg 'workspace 1; append_layout /home/fischerling/.i3/workspace-1.json'"
+#exec --no-startup-id "i3-msg 'workspace 1; append_layout /home/fischerling/.i3/workspace-1.json'"
 
 #######################################################################
 # automatically start i3-config-wizard to offer the user to create a
