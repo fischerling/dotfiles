@@ -13,3 +13,6 @@
 [submodule "vim/bundle/vim-fish"]
 	path = vim/bundle/vim-fish
 	url = https://github.com/dag/vim-fish.git
+[submodule "vim/bundle/nerdcommenter"]
+	path = vim/bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
