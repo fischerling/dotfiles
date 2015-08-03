@@ -16,3 +16,7 @@ end
 if not set -q SSH_KEY_PATH
     set -Ux SSH_KEY_PATH /home/fischerling/.ssh/rsa_id
 end
+
+if not contains /usr/local/bin $PATH
+    set PATH $PATH /usr/local/bin
+end
