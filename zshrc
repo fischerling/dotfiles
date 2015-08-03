@@ -94,7 +94,18 @@ alias screensoff="xset s off; xset -dpms && echo 'xcreensaver and dpms disabled'
 alias screenson="xset s on; xset +dpms && echo 'xscreensaver and dpms enabled'"
 
 # Aliases for filetypes
-alias -s pdf="apvlv"
+if type zathura &>/dev/null
+then
+    alias -s pdf="zathura"
+elif type apvlv &>/dev/null
+then
+    alias -s pdf="apvlv"
+elif type mupdf &>/dev/null
+then
+    alias pdf="mupdf"
+fi
+
+
 alias -s tar="tar xfv"
 alias -s zip="unzip"
 
