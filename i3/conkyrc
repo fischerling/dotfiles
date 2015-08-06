@@ -43,22 +43,24 @@ TEXT
 
     ############### music / mpd ###################
 
-    ${if_mpd_playing}
-       # {"name": "test status", "full_text":"${mpd_status}", "separator":false},
+    ${if_match "${nodename_short}"!="little_fishbowl"}
+        ${if_mpd_playing}
+            # {"name": "test status", "full_text":"${mpd_status}", "separator":false},
 
-        {"name": "statusSymbol", "color": "\#ffffff", "separator": false,
-        "full_text": ${if_match ${mpd_status}=="Playing"}"▶"${else}"▐▐"${endif}},
+            {"name": "statusSymbol", "color": "\#ffffff", "separator": false,
+            "full_text": ${if_match "${mpd_status}"=="Playing"}"▶"${else}"▐▐"${endif}},
         
-        {"name": "music", "color": "\#ffffff", "full_text":"${mpd_title} ${mpd_bar}"},
-    ${else}
-        {"name": "nomusic", "color": "\#ffffff", "full_text": "no music"},
+            {"name": "music", "color": "\#ffffff", "full_text":"${mpd_title} ${mpd_bar}"},
+        ${else}
+            {"name": "nomusic", "color": "\#ffffff", "full_text": "no music"},
+        ${endif}
     ${endif}
 
 
     ########### networking ########################
 
     ${if_up wlp2s0} 
-	    {"name":"wifi", "color": ${if_match ${wireless_link_qual_perc wlan0}>60}"\#339966"${else}"\#FF9200"${endif},
+	    {"name":"wifi", "color": ${if_match ${wireless_link_qual_perc wlp2s0}>60}"\#339966"${else}"\#FF9200"${endif},
         "full_text": "${addr wlp2s0} ${wireless_link_qual_perc wlp2s0}%"}, 
             {"name":"download", "color":"\#ffffff", "full_text": "⤋: ${downspeed wlp2s0}"}, 
 
