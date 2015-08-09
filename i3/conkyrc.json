@@ -94,16 +94,16 @@ TEXT
     ################# Battery ####################
 
     {"name": "battery","color":
-        ${if_match ${battery_percent}<50}
-            ${if_match ${battery_percent}<25}"\#ff0000"
+        ${if_match ${battery_percent BAT0}<50}
+            ${if_match ${battery_percent BAT0}<25}"\#ff0000"
             ${else}"\#ff9200"
             ${endif}
         ${else}"\#ffffff"
         ${endif}, "full_text": "${battery BAT0}"},  
     
     {"name": "battery","color":
-        ${if_match ${battery_percent}<50}
-            ${if_match ${battery_percent}<25}"\#ff0000"
+        ${if_match ${battery_percent BAT1}<50}
+            ${if_match ${battery_percent BAT1}<25}"\#ff0000"
             ${else}"\#ff9200"
             ${endif}
         ${else}"\#ffffff"
