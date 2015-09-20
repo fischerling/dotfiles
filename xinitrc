@@ -1,5 +1,9 @@
 #!/bin/bash
-if type terminator >/dev/null 2>/dev/null
+if type urxvt >/dev/null 2>/dev/null
+then
+    export  TERMINAL=urxvt
+
+elif type terminator >/dev/null 2>/dev/null
 then
     export TERMINAL=terminator
 fi
