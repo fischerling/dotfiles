@@ -170,7 +170,7 @@ bar {
 # Audio shortcuts
 bindsym XF86AudioLowerVolume exec amixer -q set Master 10%-
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 10%+
-bindsym XF86AudioMute exec -q set Master toggle
+bindsym XF86AudioMute exec amixer -q set Master toggle
 
 ## brightnescontroll
 bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight +10
