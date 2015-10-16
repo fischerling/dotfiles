@@ -82,8 +82,7 @@ TEXT
     ################ Volume ########################
 
     {"name": "symbol", "color": "\#ffffff", "full_text":
-    ${if_match ${exec amixer sget Master | grep Mono: |
-        sed -e 's/[ \t]* Mono: Playback [0-9]* \[\([0-9]*\)%\].*/\1/'}==0}"M"${else}"U"${endif},
+    ${if_match "${exec amixer sget Master | grep "\[on\]"}"==""}"M"${else}"U"${endif},
         "separator": false},
     
     {"name": "Volume", "color": "\#ffffff", "full_text": 
