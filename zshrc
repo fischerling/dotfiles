@@ -82,7 +82,10 @@ export MPD_PORT="6601"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias diff="colordiff"
+if type colordiff &>/dev/null
+then
+    alias diff="colordiff"
+fi
 
 # alias for FAU vpn
 alias fauvpnfull="wd FAUAllgemein && sudo openvpn ~/Documents/MyDocuments/Study/FAU\ Erlangen/Allgemein/FAU-Fulltunnel.ovpn && cd ~" 
