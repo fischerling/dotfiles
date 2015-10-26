@@ -3,7 +3,7 @@ function pss
         echo "usage: pss PATTERN"
     else
        set pids (pgrep -d , -f $argv[1])
-       if test -n $pids
+       if test -n "$pids"
            echo -ne "\033[1;32m"
            ps -Fp $pids
            echo -ne "\033[1;0m"
