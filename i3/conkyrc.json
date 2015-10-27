@@ -43,7 +43,7 @@ TEXT
 
     ############### music / mpd ###################
 
-    ${if_match "${nodename_short}"!="little_fishbowl"}
+    ${if_match "${nodename_short}"!="fishbowl"}
         ${if_mpd_playing}
             # {"name": "test status", "full_text":"${mpd_status}", "separator":false},
 
