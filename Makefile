@@ -24,3 +24,7 @@ fish_t: config/fish
 
 zsh_t: zshrc
 	ln -s $(PWD)/zshrc ~/.zshrc
+
+ssh_t: ssh/config
+	mkdir -p ~/.ssh
+	ln -s $(PWD)/ssh/config ~/.ssh/config
