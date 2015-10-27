@@ -1,7 +1,8 @@
 .PHONY: all vim_t i3_t xinitrc_t terminator_t fish_t zsh_t
 
 all: vim_t i3_t xinitrc_t terminator_t fish_t zsh_t
-
+	git submodule init
+	git submodule update
 
 vim_t: ./vim ./vimrc
 	ln -s $(PWD)/vim ~/.vim
