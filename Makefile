@@ -1,4 +1,4 @@
-.PHONY: all vim_t i3_t xinitrc_t terminator_t fish_t zsh_t
+.PHONY: all vim_t i3_t xinitrc_t terminator_t fish_t zsh_t ssh_t Xresources_t
 
 all: vim_t i3_t xinitrc_t terminator_t fish_t zsh_t
 	git submodule init
@@ -29,3 +29,6 @@ zsh_t: zshrc
 ssh_t: ssh/config
 	mkdir -p ~/.ssh
 	ln -s $(PWD)/ssh/config ~/.ssh/config
+
+Xresources_t: Xresources
+	ln -s $(PWD)/Xresources ~/.Xresources
