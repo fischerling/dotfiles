@@ -8,4 +8,6 @@ then
     export TERMINAL=terminator
 fi
 
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+
 exec i3 -V > /home/fischerling/.i3/log 
