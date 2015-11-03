@@ -173,9 +173,15 @@ bar {
 }
 
 # Audio shortcuts
+# # Volume
 bindsym XF86AudioLowerVolume exec amixer -q set Master 10%-
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 10%+
 bindsym XF86AudioMute exec amixer -q set Master toggle
+# # Music
+bindsym XF86AudioPrev exec bash ~/.dotfiles/scripts/media_prev.sh
+bindsym XF86AudioPlay exec bash ~/.dotfiles/scripts/media_toggle.sh
+bindsym XF86AudioNext exec bash ~/.dotfiles/scripts/media_next.sh
+
 
 ## brightnescontroll
 bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight +10
