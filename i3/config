@@ -48,6 +48,8 @@ bindsym $mod+Shift+q kill
 
 # programm starter
 bindsym $mod+d exec bash ~/.dotfiles/scripts/program_starter.sh
+# ssh starter
+bindsym $mod+Shift+d exec bash ~/.dotfiles/scripts/ssh_starter.sh
 
 # change focus
 bindsym $mod+$left focus left
