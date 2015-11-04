@@ -178,9 +178,9 @@ bindsym XF86AudioLowerVolume exec amixer -q set Master 10%-
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 10%+
 bindsym XF86AudioMute exec amixer -q set Master toggle
 # # Music
-bindsym XF86AudioPrev exec bash ~/.dotfiles/scripts/media_prev.sh
-bindsym XF86AudioPlay exec bash ~/.dotfiles/scripts/media_toggle.sh
-bindsym XF86AudioNext exec bash ~/.dotfiles/scripts/media_next.sh
+bindsym XF86AudioPrev exec bash -c "~/.dotfiles/scripts/i3_use_fish.sh ~/.dotfiles/scripts/media_prev.fish"
+bindsym XF86AudioPlay exec bash -c "~/.dotfiles/scripts/i3_use_fish.sh ~/.dotfiles/scripts/media_toggle.fish"
+bindsym XF86AudioNext exec bash -c "~/.dotfiles/scripts/i3_use_fish.sh ~/.dotfiles/scripts/media_next.fish"
 
 
 ## brightnescontroll
