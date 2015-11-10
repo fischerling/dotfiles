@@ -34,7 +34,7 @@ set colorcolumn=80
 " differently from regular Vi. They are highly recommended though.
 set showcmd		" Show (partial) command in status line.
 set showmatch		" Show matching brackets.
-"set ignorecase		" Do case insensitive matching
+set ignorecase		" Do case insensitive matching
 "set smartcase		" Do smart case matching
 "set incsearch		" Incremental search
 "set autowrite		" Automatically save before commands like :next and :make
@@ -86,6 +86,14 @@ set wrap "Wrap lines
 set laststatus=2
 " Format the status line
 set statusline=\ %{HasPaste()}%F%m%r%h\ \ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+
+""""""""""""""""""""""""""""""
+" => Custom commands
+""""""""""""""""""""""""""""""
+" make 'W' write
+command W w
+command WQ wq
+command Wq wq
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
