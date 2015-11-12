@@ -8,7 +8,7 @@ set fish_function_path /home/fischerling/.dotfiles/config/fish/functions/git-ali
 
 # include wd
 set fish_function_path /home/fischerling/.dotfiles/config/fish/wd/functions $fish_function_path
-set fish_completion_path /home/fischerling/.dotfiles/config/fish/wd/completions $fish_completion_path
+set fish_complete_path /home/fischerling/.dotfiles/config/fish/wd/completions $fish_complete_path
 
 if not set -q __fish_git_prompt_show_informative_status
     set -Ux __fish_git_prompt_show_informative_status true
