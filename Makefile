@@ -21,7 +21,6 @@ terminator_t: config/terminator/config
 fish_t: config/fish
 	mkdir -p ~/.config/fish
 	ln -s $(PWD)/config/fish/config.fish ~/.config/fish/config.fish
-	ln -s $(PWD)/config/fish/functions ~/.config/fish/functions
 
 zsh_t: zshrc
 	ln -s $(PWD)/zshrc ~/.zshrc

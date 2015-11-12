@@ -16,3 +16,6 @@
 [submodule "vim/bundle/nerdcommenter"]
 	path = vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule "config/fish/wd"]
+	path = config/fish/wd
+	url = https://github.com/fischerling/plugin-wd
