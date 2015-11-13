@@ -31,3 +31,6 @@ ssh_t: ssh/config
 
 Xresources_t: Xresources
 	ln -s $(PWD)/Xresources ~/.Xresources
+
+mutt_t: muttrc
+	ln -s $(PWD)/muttrc ~/.muttrc
