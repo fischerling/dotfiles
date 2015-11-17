@@ -9,7 +9,7 @@ if_up_strictness address
 
 TEXT
 [
-    #{"name": "uptime", "color":"\#ffffff", "full_text":"${uptime_short} "},
+    #{"name": "uptime", "color":"\#ffffff", "full_text":"${uptime_short}"},
     
     ################## cpu #################
 
@@ -36,9 +36,9 @@ TEXT
     ################ memory#########################
 
     {"name": "memory", "color": ${if_match ${memperc}<80}"\#ffffff"${else}"\#ff0000"${endif},
-        "full_text": "RAM: ${memperc}% "},  
+        "full_text": "RAM: ${memperc}%"},  
 
-    #{"name": "disk", "color": "\#ffffff", "full_text": " ${fs_used_perc /}% "},  
+    #{"name": "disk", "color": "\#ffffff", "full_text": " ${fs_used_perc /}%"},  
 
 
     ############### music / mpd ###################
@@ -111,6 +111,6 @@ TEXT
 
     ############### Time ##################
 
-    {"name": "time", "color": "\#CFCFCF", "full_text": " ${time %d/%m/%y} ${time %H:%M}"}
+    {"name": "time", "color": "\#CFCFCF", "full_text": "${time %d/%m/%y} ${time %H:%M}"}
 ],
 
