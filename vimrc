@@ -22,9 +22,10 @@ execute pathogen#infect()
 filetype plugin indent on
 
 set t_Co=256
-syntax on
-set background=dark" dark | light "
+syntax enable
+set background=dark " dark | light "
 colorscheme solarized
+let g:solarized_termcolors=256
 hi Normal ctermbg=none
 
 set cursorline
