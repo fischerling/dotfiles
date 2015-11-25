@@ -178,10 +178,9 @@ bindsym XF86AudioLowerVolume exec amixer -q set Master 10%-
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 10%+
 bindsym XF86AudioMute exec amixer -q set Master toggle
 # # Music
-bindsym XF86AudioPrev exec bash -c "~/.dotfiles/scripts/i3_use_fish.sh ~/.dotfiles/scripts/media_prev.fish"
-bindsym XF86AudioPlay exec bash -c "~/.dotfiles/scripts/i3_use_fish.sh ~/.dotfiles/scripts/media_toggle.fish"
-bindsym XF86AudioNext exec bash -c "~/.dotfiles/scripts/i3_use_fish.sh ~/.dotfiles/scripts/media_next.fish"
-
+bindsym XF86AudioPrev exec bash ~/.dotfiles/scripts/media_control.sh prev
+bindsym XF86AudioPlay exec bash ~/.dotfiles/scripts/media_control.sh toggle
+bindsym XF86AudioNext exec bash ~/.dotfiles/scripts/media_control.sh next
 
 ## brightnescontroll
 bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight +10
@@ -220,4 +219,3 @@ exec --no-startup-id mpd
 # Please remove the following exec line:
 #######################################################################
 exec i3-config-wizard
-

@@ -41,12 +41,15 @@ TEXT
     #{"name": "disk", "color": "\#ffffff", "full_text": " ${fs_used_perc /}%"},  
 
 
-    ############### music / mpd ###################
+    ############### music/ spotify/ mpd ###################
 
     ${if_match "${nodename_short}"!="fishbowl"}
-        ${if_mpd_playing}
-            # {"name": "test status", "full_text":"${mpd_status}", "separator":false},
+        ${if_match "${exec lsof | grep /dev/snd | grep spotify}"!=""} # spotify using sound devices -> is playing
+            {"name": "indicator", "separator": false ,"color": "\#ffffff", "full_text": "Spotify:"},
+            {"name": "artist_title", "color": "\#ffffff", "full_text": "${exec bash ~/.dotfiles/scripts/spotify-artist-title.sh}"},
 
+        ${else} ${if_mpd_playing}
+            {"name": "indicator", "separator": false, "color": "\#ffffff", "full_text": "MPD:"},
             {"name": "statusSymbol", "color": "\#ffffff", "separator": false,
             "full_text": ${if_match "${mpd_status}"=="Playing"}"▶"${else}"▐▐"${endif}},
         
