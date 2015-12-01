@@ -118,6 +118,6 @@ URxvt.pointerBlank:                    true
 !-------------------------------------------------------------------------------
 
 ! Ssh command to execute
-rofi.ssh-command:                      {terminal} -e {ssh-client} {host}
+rofi.ssh-command:                      echo {ssh-client} {host}
 ! Run command to execute that runs in shell
 rofi.run-shell-command:                {terminal} -e {cmd}
