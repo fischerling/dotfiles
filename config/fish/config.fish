@@ -22,6 +22,10 @@ if not set -q EDITOR
     set -Ux EDITOR vim
 end
 
+if not set -q BROWSER
+    set -Ux BROWSER qutebrowser
+end
+
 if not set -q SSH_KEY_PATH
     set -Ux SSH_KEY_PATH /home/fischerling/.ssh/rsa_id
 end

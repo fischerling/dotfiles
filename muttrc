@@ -38,6 +38,8 @@ set smtp_url="smtps://$imap_user@smtp-auth.uni-erlangen.de"
 set sort=threads
 set sort_aux=last-date-received
 
+macro pager,index \cb <pipe-entry>'eval $BROWSER $(urlscan -n | rofi -dmenu)'<enter> 'Follow links with urlview'
+
 ############## Bindings ####################
 
 bind pager j next-line
