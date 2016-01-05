@@ -174,9 +174,9 @@ bar {
 
 # Audio shortcuts
 # # Volume
-bindsym XF86AudioLowerVolume exec amixer -q set Master 10%-
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 10%+
-bindsym XF86AudioMute exec amixer -q set Master toggle
+bindsym XF86AudioLowerVolume exec pamixer -d 5
+bindsym XF86AudioRaiseVolume exec pamixer -i 5
+bindsym XF86AudioMute exec pamixer -t
 # # Music
 bindsym XF86AudioPrev exec bash ~/.dotfiles/scripts/media_control.sh prev
 bindsym XF86AudioPlay exec bash ~/.dotfiles/scripts/media_control.sh toggle

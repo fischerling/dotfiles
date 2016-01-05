@@ -86,11 +86,14 @@ TEXT
     ################ Volume ########################
 
     {"name": "symbol", "color": "\#ffffff", "full_text":
-    ${if_match "${exec amixer sget Master | grep "\[on\]"}"==""}"M"${else}"U"${endif},
+    ${if_match "${exec pamixer --get-mute}"=="true"}"M"${else}"U"${endif},
         "separator": false},
+
+    {"name": "card", "color": "\#ffffff", "separator": false,
+        "full_text": "${exec pacmd info | grep 'Default sink' | grep -o '[^.]*$'}"},
     
     {"name": "Volume", "color": "\#ffffff", "full_text": 
-        "Volume: [${exec amixer sget Master | grep Mono: | sed -e 's/[ \t]*Mono: Playback [0-9]* \[\([0-9]*%\)\].*/\1/'}]"},
+        "[${exec pamixer --get-volume}%]"},
     
 
 
