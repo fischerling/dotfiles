@@ -49,13 +49,14 @@ TEXT
             {"name": "artist_title", "color": "\#ffffff", "full_text": "${exec bash ~/.dotfiles/scripts/spotify-artist-title.sh}"},
 
         ${else} ${if_mpd_playing}
-            {"name": "indicator", "separator": false, "color": "\#ffffff", "full_text": "MPD:"},
-            {"name": "statusSymbol", "color": "\#ffffff", "separator": false,
-            "full_text": ${if_match "${mpd_status}"=="Playing"}"▶"${else}"▐▐"${endif}},
+                    {"name": "indicator", "separator": false, "color": "\#ffffff", "full_text": "MPD:"},
+                    {"name": "statusSymbol", "color": "\#ffffff", "separator": false,
+                    "full_text": ${if_match "${mpd_status}"=="Playing"}"▶"${else}"▐▐"${endif}},
         
-            {"name": "music", "color": "\#ffffff", "full_text":"${mpd_title} ${mpd_bar}"},
-        ${else}
-            {"name": "nomusic", "color": "\#ffffff", "full_text": "no music"},
+                    {"name": "music", "color": "\#ffffff", "full_text":"${mpd_title} ${mpd_bar}"},
+                ${else}
+                    {"name": "nomusic", "color": "\#ffffff", "full_text": "no music"},
+                ${endif}
         ${endif}
     ${endif}
 
@@ -65,20 +66,20 @@ TEXT
     ${if_up wlp2s0} 
 	    {"name":"wifi", "color": ${if_match ${wireless_link_qual_perc wlp2s0}>60}"\#339966"${else}"\#FF9200"${endif},
         "full_text": "${addr wlp2s0} ${wireless_link_qual_perc wlp2s0}%"}, 
-            {"name":"download", "color":"\#ffffff", "full_text": "⤋: ${downspeed wlp2s0}"}, 
+        {"name":"download", "color":"\#ffffff", "full_text": "⤋: ${downspeed wlp2s0}"}, 
 
-    ${else} ${if_up enp0s20u2}
-	    {"name":"ethernet", "color": "\#339966", "full_text": "IP: ${addr enp0s20u2} "}, 
-            {"name":"download", "color":"\#ffffff", "full_text": "⤋: ${downspeed enp0s20u2}"}, 
-            ${endif}
+    ${else} ${if_up enp0s20u1}
+	            {"name":"ethernet", "color": "\#339966", "full_text": "IP: ${addr enp0s20u1} "}, 
+                {"name":"download", "color":"\#ffffff", "full_text": "⤋: ${downspeed enp0s20u1}"}, 
 
-    ${else} ${if_up eth0}
-	    {"name":"ethernet", "color": "\#339966", "full_text": "IP: ${addr eth0} "}, 
-            {"name":"download", "color":"\#ffffff", "full_text": "⤋: ${downspeed eth0}"}, 
-            ${endif}
+            ${else} ${if_up eth0}
+	                    {"name":"ethernet", "color": "\#339966", "full_text": "IP: ${addr eth0} "}, 
+                        {"name":"download", "color":"\#ffffff", "full_text": "⤋: ${downspeed eth0}"}, 
 
-	${else}
-	    {"name":"nonet", "full_text": "no connection" }, 
+	                ${else}
+	                    {"name":"nonet", "full_text": "no connection" }, 
+                    ${endif}  
+            ${endif}  
     ${endif}  
 
 
