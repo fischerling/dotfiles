@@ -44,20 +44,7 @@ TEXT
     ############### music/ spotify/ mpd ###################
 
     ${if_match "${nodename_short}"!="fishbowl"}
-        ${if_match "${exec lsof | grep /dev/snd | grep spotify}"!=""} # spotify using sound devices -> is playing
-            {"name": "indicator", "separator": false ,"color": "\#ffffff", "full_text": "Spotify:"},
-            {"name": "artist_title", "color": "\#ffffff", "full_text": "${exec bash ~/.dotfiles/scripts/spotify-artist-title.sh}"},
-
-        ${else} ${if_mpd_playing}
-                    {"name": "indicator", "separator": false, "color": "\#ffffff", "full_text": "MPD:"},
-                    {"name": "statusSymbol", "color": "\#ffffff", "separator": false,
-                    "full_text": ${if_match "${mpd_status}"=="Playing"}"▶"${else}"▐▐"${endif}},
-        
-                    {"name": "music", "color": "\#ffffff", "full_text":"${mpd_title} ${mpd_bar}"},
-                ${else}
-                    {"name": "nomusic", "color": "\#ffffff", "full_text": "no music"},
-                ${endif}
-        ${endif}
+	    {"name":"music", "color": "\#ffffff", "full_text": "${exec ~/.dotfiles/scripts/media_status.sh}"},
     ${endif}
 
 
