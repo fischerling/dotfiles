@@ -1,7 +1,8 @@
+#!/bin/bash
+
+#TODO
 # NOTE:
 # if spotify is running toggle is consumed by spotify.
-
-#!/bin/bash
 
 # arg parsing
 if [ "$1" = "toggle" ]
