@@ -1,39 +1,9 @@
 #!/bin/bash
-mpd_running=$(mpc | grep "\[playing\]")
+mpd_running=$(mpc 2>/dev/null | grep "\[playing\]")
+spotify_running=$(./media_is_spotify_playing.sh)
 
 if pgrep spotify &>/dev/null
 then
-    if type pacmd &>/dev/null
-    then
-        output=$(pacmd list-sink-inputs)
-        state=""
-        spotify_running=false
-
-        while read -r line; do
-            if [[ $line == *state* ]]
-            then
-                if [[ $line == *RUNNING* ]]
-                then
-                    state="RUNNING" 
-                else
-                    state=""
-                fi
-            fi
-
-            if [[ $line == *application.name* ]]
-            then
-                if [[ $state == "RUNNING" ]] && [[ $line == *Spotify* ]]
-                then
-                    spotify_running=true
-                    break
-                fi
-            fi
-        done <<< "$output"
-    elif lsof | grep /dev/snd | grep spotify &>/dev/null
-    then
-        spotify_running=true
-    fi
-
     if $spotify_running && [[ $mpd_running != "" ]]
     then
         echo spotify and mpd running
