@@ -85,16 +85,8 @@ TEXT
 
     ################ Volume ########################
 
-    {"name": "symbol", "color": "\#ffffff", "full_text":
-    ${if_match "${exec pamixer --get-mute}"=="true"}"M"${else}"U"${endif},
-        "separator": false},
-
-    {"name": "card", "color": "\#ffffff", "separator": false,
-        "full_text": "${exec pacmd info | grep 'Default sink' | grep -o '[^.]*$'}"},
-    
-    {"name": "Volume", "color": "\#ffffff", "full_text": 
-        "[${exec pamixer --get-volume}%]"},
-    
+    {"name": "volume status", "color": "\#ffffff", "full_text":
+    "${exec ~/.dotfiles/scripts/audio_status.sh}"},
 
 
     ################# Battery ####################
