@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if type rofi &>/dev/null
 then

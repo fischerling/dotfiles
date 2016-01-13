@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if type pamixer &> /dev/null
 then
