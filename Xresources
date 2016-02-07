@@ -90,8 +90,9 @@ URxvt.saveLines:                       500
 URxvt.internalBorder:                  3
 
 ! Fonts
-URxvt.font:                            -*-terminus-medium-*-*-*-*-140-*-*-*-*-*
-!URxvt*font:                           xft:Monospace:pixelsize=14
+!URxvt.font:                            -*-terminus-medium-*-*-*-*-140-*-*-*-*-*
+URxvt*font:                            xft:Terminess Powerline:pixelsize=14,\
+                                       -*-fixed-*-*-*-*-*-*-*-*-*-*-*-*
 !URxvt*boldFont:                       xft:Monospace:pixelsize=14
 
 ! Fix font space
@@ -100,9 +101,9 @@ URxvt.font:                            -*-terminus-medium-*-*-*-*-140-*-*-*-*-*
 ! Scrollbar
 URxvt.scrollBar:                       false
 
-! Perl extensions
+!Perl extensions
 URxvt.perl-ext-common:                 default,url-select
-Rxvt.keysym.M-u:                       perl:url-select:select_next
+URxvt.keysym.M-u:                      perl:url-select:select_next
 URxvt.url-select.launcher:             /usr/bin/xdg-open
 URxvt.url-select.underline:            true
 
