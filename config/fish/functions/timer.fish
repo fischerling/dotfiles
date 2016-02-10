@@ -25,7 +25,7 @@ function timer
 
 	for i in (seq 1 $time)
         sleep 1m
-        echo (string replace -r '0m left' ready! (echo (math $argv[1] - $i)m left))
+        echo (string replace -r '0m left' ready! (echo (math $time - $i)m left))
     end
     if not set -q quiet
         while true
