@@ -22,3 +22,6 @@
 [submodule "config/fish/mark"]
 	path = config/fish/mark
 	url = https://github.com/fischerling/mark
+[submodule "config/fish/fink"]
+	path = config/fish/fink
+	url = https://github.com/fischerling/fink
