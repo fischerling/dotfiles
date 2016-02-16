@@ -10,6 +10,11 @@ set fish_function_path /home/fischerling/.dotfiles/config/fish/functions/git-ali
 set fish_function_path /home/fischerling/.dotfiles/config/fish/wd/functions $fish_function_path
 set fish_complete_path /home/fischerling/.dotfiles/config/fish/wd/completions $fish_complete_path
 
+
+#include mark
+set fish_function_path /home/fischerling/.dotfiles/config/fish/mark/functions $fish_function_path
+set fish_complete_path /home/fischerling/.dotfiles/config/fish/mark/completions $fish_complete_path
+
 if not set -q __fish_git_prompt_show_informative_status
     set -Ux __fish_git_prompt_show_informative_status true
 end

@@ -19,3 +19,6 @@
 [submodule "config/fish/wd"]
 	path = config/fish/wd
 	url = https://github.com/fischerling/plugin-wd
+[submodule "config/fish/mark"]
+	path = config/fish/mark
+	url = https://github.com/fischerling/mark
