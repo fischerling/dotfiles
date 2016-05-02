@@ -18,6 +18,15 @@ set fish_complete_path $HOME/.dotfiles/config/fish/mark/completions $fish_comple
 set fish_function_path $HOME/.dotfiles/config/fish/fink/functions $fish_function_path
 set fish_complete_path $HOME/.dotfiles/config/fish/fink/completions $fish_complete_path
 
+# include cargo binaries
+if type -q multirust
+    for p in $HOME/.multirust/toolchains/*/cargo/bin
+        if not contains $p $PATH
+            set PATH $PATH $p
+        end
+    end
+end
+
 if not set -q __fish_git_prompt_show_informative_status
     set -Ux __fish_git_prompt_show_informative_status true
 end
