@@ -4,6 +4,7 @@ import os
 import sys
 
 home_dir = os.getenv("HOME")
+cwd = os.getcwd()
 
 def fish_config(quiet):
     """install and run fisherman"""
@@ -63,7 +64,7 @@ def install_target(target, quiet):
                 print("Installing", instruction[0], "to", instruction[1])
             if os.path.exists(instruction[0]):
                 try:
-                    os.symlink(instruction[0], instruction[1])
+                    os.symlink(cwd + "/" + instruction[0], instruction[1])
                 except FileExistsError as e:
                     print(e, file=sys.stderr)
             else:
