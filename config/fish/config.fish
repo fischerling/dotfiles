@@ -6,18 +6,6 @@ set fish_completion_path $HOME/.dotfiles/config/fish/completions $fish_completio
 # add git-alias subdirectory to functions path
 set fish_function_path $HOME/.dotfiles/config/fish/functions/git-alias $fish_function_path
 
-# include wd
-set fish_function_path $HOME/.dotfiles/config/fish/wd/functions $fish_function_path
-set fish_complete_path $HOME/.dotfiles/config/fish/wd/completions $fish_complete_path
-
-# include mark
-set fish_function_path $HOME/.dotfiles/config/fish/mark/functions $fish_function_path
-set fish_complete_path $HOME/.dotfiles/config/fish/mark/completions $fish_complete_path
-
-# include fink
-set fish_function_path $HOME/.dotfiles/config/fish/fink/functions $fish_function_path
-set fish_complete_path $HOME/.dotfiles/config/fish/fink/completions $fish_complete_path
-
 # include cargo binaries
 if type -q multirust
     for p in $HOME/.multirust/toolchains/*/cargo/bin
