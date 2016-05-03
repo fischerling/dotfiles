@@ -33,6 +33,14 @@ set use_from = yes
 
 set smtp_url="smtps://$imap_user@smtp-auth.uni-erlangen.de"
 
+############### GPG ########################
+
+source ~/.mutt/gpg.rc
+
+set crypt_replyencrypt = yes
+set crypt_replysignencrypted=yes
+set crypt_verify_sig=yes
+
 ############### MISC #######################
 
 set sort=threads
