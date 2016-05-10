@@ -1,6 +1,6 @@
 # autoload functions and completions in .dotfiles 
 set fish_function_path $HOME/.dotfiles/config/fish/functions $fish_function_path
-set fish_completion_path $HOME/.dotfiles/config/fish/completions $fish_completion_path
+set fish_complete_path $HOME/.dotfiles/config/fish/completions $fish_complete_path
 
 
 # add git-alias subdirectory to functions path
