@@ -97,7 +97,7 @@ TEXT
 
     ############### Time ##################
 
-    {"name": "marks", "color": "\#FFFFFF", "full_text": "${exec fish -c '__mark_get -r=3'}",
+    {"name": "marks", "color": "\#FFFFFF", "full_text": "${exec fish -c 'mark get -r=3'}",
     "separator": false},
     {"name": "time", "color": "\#CFCFCF", "full_text": "${time %d/%m/%y} ${time %H:%M}"}
 ],
