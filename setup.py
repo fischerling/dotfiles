@@ -1,7 +1,11 @@
+#!/bin/env python3
+
 """Interactively install fischerlings dotfiles"""
 
+import argparse
 import os
 import sys
+import subprocess
 
 home_dir = os.getenv("HOME")
 cwd = os.getcwd()
@@ -10,7 +14,6 @@ def fish_config(quiet):
     """install and run fisherman"""
     # download fisherman
     import urllib.request
-    import subprocess
 
     if not quiet:
         print("Installing fisherman, see: https://github.com/fisherman/fisherman")
@@ -27,7 +30,7 @@ def fish_config(quiet):
             file.write(fisher)
         else:
             if not quiet:
-                print("fisherman all ready installed")
+                print("fisherman already installed")
                 return
 
     if not quiet:
@@ -47,7 +50,8 @@ targets = {"vimrc": [("vimrc", home_dir + "/.vimrc")],
         "i3-config": [("i3", home_dir + "/.i3")],
         "dir_colors": [("dir_colors", home_dir + "/.dir_colors")],
         "fish-config": [("config/fish/config.fish", home_dir + "/.config/fish/config.fish"),
-            ("config/fish/fishfile", home_dir + "/.config/fish/fishfile"), fish_config],
+            ("config/fish/fishfile", home_dir + "/.config/fish/fishfile"), fish_config,
+            ("fau_stud.conf.gpg", "/etc/wpa_supplicant/fau_stud.conf")],
         "terminator-config": [("config/terminator/config", home_dir + "/.config/terminator/config")]}
 
 git_submodules_for = ["vim.d"]
@@ -63,10 +67,32 @@ def install_target(target, quiet):
             if not quiet:
                 print("Installing", instruction[0], "to", instruction[1])
             if os.path.exists(instruction[0]):
+                # check if file is encrypted
+                if instruction[0][-4:] == ".gpg":
+                    if subprocess.run(["gpg", "--output", "decrypted/" +
+                                instruction[0][:-4], "-d", instruction[0]]): 
+                        instruction = ("decrypted/" + instruction[0][:-4],
+                                        instruction[1])
+
+                        # set privacy friendly file permissions 
+                        if not subprocess.run(["chmod", "660", instruction[0]]):
+                            print("Skipping because changing permissions of",
+                                    instruction[1], "failed. This could be a privacy risk!")
+                            continue
+                    else:
+                        print("Decrypting failed", file=sys.stderr)
+                        continue
+
                 try:
                     os.symlink(cwd + "/" + instruction[0], instruction[1])
-                except FileExistsError as e:
-                    print(e, file=sys.stderr)
+                except Exception as e:
+                    if isinstance(e, PermissionError):
+                        subprocess.run(["sudo", "ln", "-s",
+                                cwd + '/' + instruction[0], instruction[1]])
+                    elif isinstance(e, FileExistsError):
+                        print("File already exists")
+                    else:
+                        print(e, file=sys.stderr)
             else:
                 print("Can't find", instruction[0] +
                         ". Please make sure you are in the right directory.", file=sys.stderr)
@@ -87,23 +113,21 @@ def install_target(target, quiet):
     if target in git_submodules_for:
         choice = input(target + " uses git submodules want to pull them ? (Y/n) ")
         if choice in ["Y", "y", ""]:
-            import subprocess
             subprocess.run(["git", "submodule", "update", "--init"])
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-q", "--quiet", action="store_true")
+    parser.add_argument("targets", type=str, nargs='*')
 
-    quiet = False
-    if "-q" in sys.argv:
-        quiet = True
-        del(sys.argv[sys.argv.index("-q")])
+    args = parser.parse_args()
 
-    if len(sys.argv) > 1:
-        for arg in sys.argv[1:]:
-            if arg in targets:
-                install_target(arg, quiet)
+    if args.targets:
+        for t in args.targets:
+            install_target(t, args.quiet)
     else:
-        if not quiet:
+        if not args.quiet:
             print("Welcome to the installation script of fischerlings dotfiles.")
             print("Located at: https://github.com/fischerling/dotfiles")
             print()
@@ -118,15 +142,14 @@ def main():
             pass
         elif "all" in choice:
             for target in targets:
-                install_target(target, quiet)
+                install_target(target, args.quiet)
         else:
             for n in choice.strip().split(" "):
-                install_target(targets_ord[int(n)], quiet)
+                install_target(targets_ord[int(n)], args.quiet)
 
-        if not quiet:
+        if not args.quiet:
             print("Good Bye. Have fun with your new configuration")
 
 
 if __name__ == "__main__":
     main()
-

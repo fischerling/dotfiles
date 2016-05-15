@@ -1,3 +1,6 @@
 *~
 i3/log
 vim/.netrwhist
+
+# exclude private files
+decrypted/*
