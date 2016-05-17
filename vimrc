@@ -33,17 +33,17 @@ set colorcolumn=80
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
-set showcmd		" Show (partial) command in status line.
+set showcmd		    " Show (partial) command in status line.
 set showmatch		" Show matching brackets.
 set ignorecase		" Do case insensitive matching
 set hlsearch        " Highlight search results
-"set smartcase		" Do smart case matching
+set smartcase		" Do smart case matching
 "set incsearch		" Incremental search
 "set autowrite		" Automatically save before commands like :next and :make
-"set hidden		" Hide buffers when they are abandoned
+"set hidden		    " Hide buffers when they are abandoned
 "set mouse=a		" Enable mouse usage (all modes)
-set backup              " Enable backup files
-"set number		" Enable line numbers
+set backup          " Enable backup files
+"set number		    " Enable line numbers
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
@@ -67,19 +67,17 @@ vnoremap <silent> # :call VisualSelection('b', '')<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Use spaces instead of tabs
-set expandtab
-" Be smart when using tabs ;)
-set smarttab
-" 1 tab == 4 spaces
-set shiftwidth=4
+
+set expandtab       "Use spaces instead of tabs
+set smarttab        "Be smart when using tabs ;)
+set shiftwidth=4    "1 tab == 4 spaces
 set tabstop=4
-" Linebreak on 500 characters
+" Linebreak on 80 characters
 set lbr
-set tw=500
-set ai "Auto indent
-set si "Smart indent
-set wrap "Wrap lines
+set tw=80
+set ai              "Auto indent
+set si              "Smart indent
+set wrap            "Wrap lines
 
 """"""""""""""""""""""""""""""
 " => Status line
@@ -96,6 +94,13 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ \ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 command W w
 command WQ wq
 command Wq wq
+
+""""""""""""""""""""""""""""""
+" => Custom macros
+""""""""""""""""""""""""""""""
+
+" activate spellcheck for german
+let @l=":set spell\n:set spelllang=de\n"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
