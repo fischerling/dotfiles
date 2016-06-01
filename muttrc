@@ -33,6 +33,18 @@ set use_from = yes
 
 set smtp_url="smtps://$imap_user@smtp-auth.uni-erlangen.de"
 
+
+############### PASSWORDS ##################
+# the passwords are stored in the file .mutt/passwords.gpg
+# and this file is read and evaluated before mutt is started.
+# the file format should be:
+#   export <var> <passwd>
+#
+# see: http://www.mail-archive.com/mutt-users@mutt.org/msg36375.html
+
+set smtp_pass=$FAU_PASS
+set imap_pass=$FAU_PASS
+
 ############### GPG ########################
 
 source ~/.mutt/gpg.rc
@@ -46,7 +58,8 @@ set crypt_verify_sig=yes
 set sort=threads
 set sort_aux=last-date-received
 
-macro pager,index \cb <pipe-entry>'eval $BROWSER $(urlscan -n | rofi -dmenu)'<enter> 'Follow links with urlview'
+# open links with urlscan
+macro pager,index \cb <pipe-entry>'eval $BROWSER $(urlscan -n | dmenu)'<enter> 'Follow links with urlview'
 
 ############## Bindings ####################
 
