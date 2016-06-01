@@ -35,7 +35,7 @@ set smtp_url="smtps://$imap_user@smtp-auth.uni-erlangen.de"
 
 
 ############### PASSWORDS ##################
-# the passwords are stored in the file .mutt/passwords.gpg
+# the passwords are stored in the file .mutt/passwords
 # and this file is read and evaluated before mutt is started.
 # the file format should be:
 #   export <var> <passwd>

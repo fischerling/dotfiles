@@ -40,20 +40,35 @@ def fish_config(quiet):
 
 # targets are a list of tuples<file name, link destination> and/or functions
 
-targets = {"vimrc": [("vimrc", home_dir + "/.vimrc")],
-        "vim.d": [("vim", home_dir + "/.vim")],
-        "ssh-config": [("ssh/config", home_dir + "/.ssh/config")],
-        "xinitrc": [("xinitrc", home_dir + "/.xinitrc")],
-        "Xresources": [("Xresources", home_dir + "/.Xresources")],
-        "mutt": [("muttrc", home_dir + "/.muttrc"), ("mutt", home_dir +"/.mutt")
-            ("scripts/mutt.sh", home_dir+"/.local/bin/mutt.sh"),],
-        "zshrc": [("zshrc", home_dir + "/zshrc")],
-        "i3-config": [("i3", home_dir + "/.i3")],
-        "dir_colors": [("dir_colors", home_dir + "/.dir_colors")],
-        "fish-config": [("config/fish/config.fish", home_dir + "/.config/fish/config.fish"),
-            ("config/fish/fishfile", home_dir + "/.config/fish/fishfile"), fish_config,
+targets = {
+        "vimrc":
+            [("vimrc", home_dir + "/.vimrc")],
+        "vim.d":
+            [("vim", home_dir + "/.vim")],
+        "ssh-config":
+            [("ssh/config", home_dir + "/.ssh/config")],
+        "xinitrc":
+            [("xinitrc", home_dir + "/.xinitrc")],
+        "Xresources":
+            [("Xresources", home_dir + "/.Xresources")],
+        "mutt":
+            [("muttrc", home_dir + "/.muttrc"),
+            ("mutt", home_dir + "/.mutt"),
+            ("scripts/mutt.sh", home_dir+"/.local/bin/mutt.sh")],
+        "zshrc":
+            [("zshrc", home_dir + "/zshrc")],
+        "i3-config":
+            [("i3", home_dir + "/.i3")],
+        "dir_colors":
+            [("dir_colors", home_dir + "/.dir_colors")],
+        "fish-config":
+            [("config/fish/config.fish", home_dir + "/.config/fish/config.fish"),
+            ("config/fish/fishfile", home_dir + "/.config/fish/fishfile"),
+            fish_config,
             ("fau_stud.conf.gpg", "/etc/wpa_supplicant/fau_stud.conf")],
-        "terminator-config": [("config/terminator/config", home_dir + "/.config/terminator/config")]}
+        "terminator-config":
+            [("config/terminator/config", home_dir + "/.config/terminator/config")]
+        }
 
 git_submodules_for = ["vim.d"]
 
