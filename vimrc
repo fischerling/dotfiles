@@ -99,6 +99,8 @@ command Wq wq
 " => Custom macros
 """"""""""""""""""""""""""""""
 
+" select all
+let @a="ggVG"
 " activate spellcheck for german
 let @l=":set spell\n:set spelllang=de\n"
 
