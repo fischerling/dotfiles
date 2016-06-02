@@ -1,9 +1,7 @@
 #!/bin/bash
 
-#TODO
-# NOTE:
-# if spotify is running toggle is consumed by spotify.
-
+# To start the correct Player this script uses the file /tmp/media_control_last
+f="/tmp/media_control_last"
 
 function spotify_send_command {
         dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.$1
@@ -55,8 +53,8 @@ then
             exit
         fi
 
-        spotify_playing=$(./media_is_spotify_playing.sh)
-        if $(mpc | grep "\[playing\]")
+        spotify_playing=$($HOME/.dotfiles/scripts/media_is_spotify_playing.sh)
+        if mpc | grep "\[playing\]" &> /dev/null
         then
             mpd_playing=true
         else
@@ -69,25 +67,40 @@ then
         elif $spotify_playing
         then
             spotify_send_command $spotify_cmd
+            echo spotify > $f
         elif $mpd_playing
         then
             mpc $1
-            # nothing is actually running
-            # don't know who was playing -> send spotify all commands 
+            echo mpd > $f
+        # nothing is actually running
+        # read last running file
         else
-            spotify_send_command $spotify_cmd
+            if [ -f $f ]
+            then
+                last=$(cat $f)
+
+                if [ $last = "spotify" ]
+                then
+                    spotify_send_command $spotify_cmd
+                elif [ $last = "mpd" ]
+                then
+                    mpc $1
+                fi
+            fi
         fi
 
     # only spotify is running
     elif $spotify_running
     then
         spotify_send_command $spotify_cmd
+        echo spotify > $f
     # only mpd is running
     elif $mpd_running
     then
         if $mpd_controllable
         then
             mpc $1
+            echo mpd > $f
         else
             >&2 echo "mpd is running put mpc is not available to control it!"
         fi
