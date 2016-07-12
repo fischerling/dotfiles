@@ -67,7 +67,13 @@ targets = {
             fish_config,
             ("fau_stud.conf.gpg", "/etc/wpa_supplicant/fau_stud.conf")],
         "terminator-config":
-            [("config/terminator/config", home_dir + "/.config/terminator/config")]
+            [("config/terminator/config", home_dir +
+                                          "/.config/terminator/config")],
+        "offlineimap":
+            [("offlineimap/offlineimaprc", home_dir + "/.offlineimaprc"),
+            ("offlineimap/FAU.IMAP.PASS.gpg", ""),
+            ("offlineimap/offlineimap@.service",
+                "/etc/systemd/system/offlineimap@.service")]
         }
 
 git_submodules_for = ["vim.d"]
@@ -80,15 +86,23 @@ def install_target(target, quiet):
 
     for instruction in targets[target]:
         if isinstance(instruction, tuple):
-            if not quiet:
-                print("Installing", instruction[0], "to", instruction[1])
-            if os.path.exists(instruction[0]):
+            if not os.path.exists(instruction[0]):
+                print("Can't find", instruction[0] +
+                        ". Please make sure you are in the right directory.", file=sys.stderr)
+            else:
                 # check if file is encrypted
                 if instruction[0][-4:] == ".gpg":
-                    if subprocess.run(["gpg", "--output", "decrypted/" +
-                                instruction[0][:-4], "-d", instruction[0]]): 
-                        instruction = ("decrypted/" + instruction[0][:-4],
-                                        instruction[1])
+                    start_filename = instruction[0].rfind("/") + 1
+                    if subprocess.run([
+                            "gpg",
+                            "--output",
+                            "decrypted/" + instruction[0][start_filename:-4],
+                            "-d",
+                            instruction[0]]):
+                        # adjust instruction[0]
+                        instruction = (
+                                "decrypted/" + instruction[0][start_filename:-4],
+                                instruction[1])
 
                         # set privacy friendly file permissions 
                         if not subprocess.run(["chmod", "660", instruction[0]]):
@@ -99,6 +113,12 @@ def install_target(target, quiet):
                         print("Decrypting failed", file=sys.stderr)
                         continue
 
+                    # only continue linking/installing if instruction[1] is not ""
+                    if instruction[1] == "":
+                        continue
+
+                if not quiet:
+                    print("Installing", instruction[0], "to", instruction[1])
                 try:
                     os.symlink(cwd + "/" + instruction[0], instruction[1])
                 except Exception as e:
@@ -109,9 +129,7 @@ def install_target(target, quiet):
                         print("File already exists")
                     else:
                         print(e, file=sys.stderr)
-            else:
-                print("Can't find", instruction[0] +
-                        ". Please make sure you are in the right directory.", file=sys.stderr)
+
         elif callable(instruction):
             if not quiet:
                 print("Running function", instruction)
