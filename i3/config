@@ -47,9 +47,9 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # programm starter
-bindsym $mod+d exec ~/.dotfiles/scripts/program_starter.sh
+bindsym $mod+d exec $DOTFILES_LOCATION/scripts/program_starter.sh
 # ssh starter
-bindsym $mod+Shift+d exec ~/.dotfiles/scripts/ssh_starter.sh
+bindsym $mod+Shift+d exec $DOTFILES_LOCATION/scripts/ssh_starter.sh
 
 # change focus
 bindsym $mod+$left focus left
@@ -174,20 +174,20 @@ bar {
 
 # Audio shortcuts
 # # Volume
-bindsym XF86AudioLowerVolume exec ~/.dotfiles/scripts/audio_control.sh -5
-bindsym XF86AudioRaiseVolume exec ~/.dotfiles/scripts/audio_control.sh +5
-bindsym XF86AudioMute exec ~/.dotfiles/scripts/audio_control.sh toggle
+bindsym XF86AudioLowerVolume exec $DOTFILES_LOCATION/scripts/audio_control.sh -5
+bindsym XF86AudioRaiseVolume exec $DOTFILES_LOCATION/scripts/audio_control.sh +5
+bindsym XF86AudioMute exec $DOTFILES_LOCATION/scripts/audio_control.sh toggle
 # # Music
-bindsym XF86AudioPrev exec ~/.dotfiles/scripts/media_control.sh prev
-bindsym XF86AudioPlay exec ~/.dotfiles/scripts/media_control.sh toggle
-bindsym XF86AudioNext exec ~/.dotfiles/scripts/media_control.sh next
+bindsym XF86AudioPrev exec $DOTFILES_LOCATION/scripts/media_control.sh prev
+bindsym XF86AudioPlay exec $DOTFILES_LOCATION/scripts/media_control.sh toggle
+bindsym XF86AudioNext exec $DOTFILES_LOCATION/scripts/media_control.sh next
 
 ## brightnescontroll
 bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight +10
 bindsym XF86MonBrightnessDown exec /usr/bin/xbacklight -10
                                                               
 # Toogle Touchpad with Batterybutton
-bindsym XF86Battery exec ~/.dotfiles/scripts/toggle_syn_touchpad.sh
+bindsym XF86Battery exec $DOTFILES_LOCATION/scripts/toggle_syn_touchpad.sh
 
 #hide broders
 new_window pixel 3
@@ -198,10 +198,10 @@ new_window pixel 3
 exec --no-startup-id xrandr --output HDMI1 --right-of eDP1
 
 # set i3lock as xscreensaver
-exec --no-startup-id xss-lock -- i3lock -i ~/.dotfiles/wallpapers/blue_screen.png #-lock
+exec --no-startup-id xss-lock -- i3lock -i $DOTFILES_LOCATION/wallpapers/blue_screen.png #-lock
 
 # Autostart Programms
-exec --no-startup-id feh --bg-fill ~/.dotfiles/wallpapers/nsa_wallpaper.png
+exec --no-startup-id feh --bg-fill $DOTFILES_LOCATION/wallpapers/nsa_wallpaper.png
 exec --no-startup-id syndaemon -i 1 -d
 #exec --no-startup-id nm-applet
 exec --no-startup-id owncloud

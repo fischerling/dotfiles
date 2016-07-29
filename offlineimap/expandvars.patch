@@ -1,0 +1,13 @@
+diff --git a/offlineimap/repository/IMAP.py b/offlineimap/repository/IMAP.py
+index e61f53d..8da0e19 100644
+--- a/offlineimap/repository/IMAP.py
++++ b/offlineimap/repository/IMAP.py
+@@ -378,7 +378,7 @@ class IMAPRepository(BaseRepository):
+         # 3. read password from file specified in Repository 'remotepassfile'
+         passfile = self.getconf('remotepassfile', None)
+         if passfile != None:
+-            fd = codecs.open(os.path.expanduser(passfile), 'r', 'UTF-8')
++            fd = codecs.open(os.path.expandvars(os.path.expanduser(passfile)), 'r', 'UTF-8')
+             password = fd.readline().strip()
+             fd.close()
+             return password.encode('UTF-8')

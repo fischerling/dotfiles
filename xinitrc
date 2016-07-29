@@ -44,6 +44,12 @@ export LANG
 [ -n "$LC_MEASUREMENT" ]    && export LC_MEASUREMENT
 [ -n "$LC_IDENTIFICATION" ] && export LC_IDENTIFICATION
 
+# Export DOTFILES_LOCATION (should be exported allready
+
+if [ -z "$DOTFILES_LOCATION" ]; then
+    export DOTFILES_LOCATION=$(get_dotfiles_location)
+fi
+
 eval $(ssh-agent -s -a ~/.ssh/agent.sock)
 
 [[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources

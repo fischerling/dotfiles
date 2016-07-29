@@ -44,7 +44,7 @@ TEXT
     ############### music/ spotify/ mpd ###################
 
     ${if_match "${nodename_short}"!="fishbowl"}
-	    {"name":"music", "color": "\#ffffff", "full_text": "${exec ~/.dotfiles/scripts/media_status.sh}"},
+	    {"name":"music", "color": "\#ffffff", "full_text": "${exec $DOTFILES_LOCATION/scripts/media_status.sh}"},
     ${endif}
 
 
@@ -73,7 +73,7 @@ TEXT
     ################ Volume ########################
 
     {"name": "volume status", "color": "\#ffffff", "full_text":
-    "${exec ~/.dotfiles/scripts/audio_status.sh}"},
+    "${exec $DOTFILES_LOCATION/scripts/audio_status.sh}"},
 
 
     ################# Battery ####################

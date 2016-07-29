@@ -53,7 +53,7 @@ then
             exit
         fi
 
-        spotify_playing=$($HOME/.dotfiles/scripts/media_is_spotify_playing.sh)
+        spotify_playing=$($DOTFILES_LOCATION/scripts/media_is_spotify_playing.sh)
         if mpc | grep "\[playing\]" &> /dev/null
         then
             mpd_playing=true

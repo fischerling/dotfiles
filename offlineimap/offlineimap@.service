@@ -5,6 +5,7 @@ After=network.target
 
 [Service]
 User=%i
+EnvironmentFile=/etc/systemd/system/offlineimap@fischerling.env
 ExecStart=/usr/bin/offlineimap
 KillSignal=SIGUSR2
 Restart=always

@@ -1,6 +1,6 @@
 #!/bin/bash
 mpd_playing=$(mpc 2>/dev/null | grep "\[playing\]")
-spotify_playing=$($HOME/.dotfiles/scripts/media_is_spotify_playing.sh)
+spotify_playing=$($DOTFILES_LOCATION/scripts/media_is_spotify_playing.sh)
 
 if [[ $spotify_playing == "true" ]] 
 then
@@ -14,7 +14,7 @@ then
         then
             echo "Spotify: ad :/"
         else
-            echo Spotify: "▶" $($HOME/.dotfiles/scripts/media_print_spotify_info.sh)
+            echo Spotify: "▶" $($DOTFILES_LOCATION/scripts/media_print_spotify_info.sh)
         fi
     fi
 elif [[ $mpd_playing != "" ]]
@@ -27,7 +27,7 @@ then
     fi
 elif pgrep spotify &>/dev/null
 then
-    echo Spotify: "▐▐" $($HOME/.dotfiles/scripts/media_print_spotify_info.sh)
+    echo Spotify: "▐▐" $($DOTFILES_LOCATION/scripts/media_print_spotify_info.sh)
 elif pgrep mpd &>/dev/null
 then
     if type mpc &>/dev/null

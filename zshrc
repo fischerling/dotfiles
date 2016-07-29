@@ -59,6 +59,9 @@ HIST_IGNORE_ALL_DUPS="true"
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
+# Export the path of our dotfiles
+export DOTFILES_LOCATION=$(get_dotfiles_location)
+
 # Preferred editor
 export EDITOR='vim'
 

@@ -4,9 +4,11 @@
 
 import argparse
 import os
+import pwd
 import sys
 import subprocess
 
+user = pwd.getpwuid(os.getuid())[0]
 home_dir = os.getenv("HOME")
 cwd = os.getcwd()
 
@@ -38,6 +40,46 @@ def fish_config(quiet):
 
     subprocess.run(["fish", dir_path+"fisher.fish"])
 
+def dotfile_loc_helper(quiet):
+    """Create a symlink of get_dotfiles_location.sh into the path"""
+
+    try:
+        os.symlink(cwd + "/get_dotfiles_location.sh",
+                home_dir + "/.local/bin/get_dotfiles_location")
+    except Exception as e:
+        if isinstance(e, FileExistsError):
+            pass
+        else:
+            return e
+
+def offlineimap_passwd(quiet):
+    """Write the environment file for the systemd unit"""
+    res = dotfile_loc_helper(quiet):
+    if res:
+        return res
+    env_file_path = "/etc/systemd/system/offlineimap@fischerling.env"
+    if not os.path.exists(env_file_path):
+        try:
+            subprocess.run(["get_dotfiles_location", ">",
+                env_file_path])
+        except Exception as e:
+            if isinstance(e, PermissionError):
+                subprocess.run(["get_dotfiles_location", "|", "sudo", "tee", "-a",
+                    env_file_path, ">", "/dev/null"])
+            else:
+                return e
+
+def offlineimap_warn(quiet):
+    """Print a warning about my offlineimap setup"""
+
+    if not quiet:
+        print("! WARNING !")
+        print("My offlineimap setup uses a patched version !")
+        print("The patch can be found at offlineimap/expandvars.patch.")
+        print("Only proceed if you know what you are doing")
+        if input("Want to continue ? (y/N) ") not in ["Y","y"]:
+            exit("Aborting.")
+
 # targets are a list of tuples<file name, link destination> and/or functions
 
 targets = {
@@ -48,7 +90,8 @@ targets = {
         "ssh-config":
             [("ssh/config", home_dir + "/.ssh/config")],
         "xinitrc":
-            [("xinitrc", home_dir + "/.xinitrc")],
+            [("xinitrc", home_dir + "/.xinitrc"),
+            dotfile_loc_helper],
         "Xresources":
             [("Xresources", home_dir + "/.Xresources")],
         "mutt":
@@ -58,21 +101,25 @@ targets = {
         "zshrc":
             [("zshrc", home_dir + "/zshrc")],
         "i3-config":
-            [("i3", home_dir + "/.i3")],
+            [("i3", home_dir + "/.i3"),
+            dotfile_loc_helper],
         "dir_colors":
             [("dir_colors", home_dir + "/.dir_colors")],
         "fish-config":
             [("config/fish/config.fish", home_dir + "/.config/fish/config.fish"),
             ("config/fish/fishfile", home_dir + "/.config/fish/fishfile"),
-            fish_config],
+            fish_config,
+            dotfile_loc_helper],
         "terminator-config":
             [("config/terminator/config", home_dir +
                                           "/.config/terminator/config")],
         "offlineimap":
-            [("offlineimap/offlineimaprc", home_dir + "/.offlineimaprc"),
-            ("offlineimap/FAU.IMAP.PASS.gpg", ""),
+            [offlineimap_warn,
+            ("offlineimap/offlineimaprc", home_dir + "/.offlineimaprc"),
+            ("offlineimap/FAU.IMAP.PASS.gpg", home_dir +"/.fau_imap_pass"),
             ("offlineimap/offlineimap@.service",
-                "/etc/systemd/system/offlineimap@.service")],
+                "/etc/systemd/system/offlineimap@" + user + ".service"),
+            offlineimap_passwd],
         "FAU":
             [("FAU/wl-FAU-STUD.gpg", "/etc/netctl/wl-FAU-STUD"),
             ("FAU/fau_stud.conf.gpg", "/etc/wpa_supplicant/fau_stud.conf"),
@@ -90,8 +137,9 @@ def install_target(target, quiet):
     for instruction in targets[target]:
         if isinstance(instruction, tuple):
             if not os.path.exists(instruction[0]):
-                print("Can't find", instruction[0] +
-                        ". Please make sure you are in the right directory.", file=sys.stderr)
+                print("Can't find", instruction[0],
+                        ". Please make sure you are in the right directory.",
+                        file=sys.stderr)
             else:
                 # check if file is encrypted
                 if instruction[0][-4:] == ".gpg":
@@ -110,7 +158,8 @@ def install_target(target, quiet):
                         # set privacy friendly file permissions 
                         if not subprocess.run(["chmod", "660", instruction[0]]):
                             print("Skipping because changing permissions of",
-                                    instruction[1], "failed. This could be a privacy risk!")
+                                    instruction[1], "failed. This could be a",
+                                    "privacy risk!", file=sys.stderr)
                             continue
                     else:
                         print("Decrypting failed", file=sys.stderr)
@@ -129,7 +178,7 @@ def install_target(target, quiet):
                         subprocess.run(["sudo", "ln", "-s",
                                 cwd + '/' + instruction[0], instruction[1]])
                     elif isinstance(e, FileExistsError):
-                        print("File already exists")
+                        print("File already exists", file=sys.stderr)
                     else:
                         print(e, file=sys.stderr)
 
@@ -138,14 +187,14 @@ def install_target(target, quiet):
                 print("Running function", instruction)
             res = instruction(quiet)
             if res:
-                if not quiet:
-                    print("The instruction", instruction, "of", target, "failed with", str(res) + ".")
-                    print("This can leaf your installation in a broken state")
-                    print("ABORTING to prevent failures.")
-                exit(res)
+                print("The instruction", instruction, "of", target,
+                        "failed with", str(res) + ".", file=sys.stderr)
+                print("This can leaf your installation in a broken state",
+                        file=sys.stderr)
         else:
             print("I don't understand", instruction,
-                    "\nThe instruction musst be a tuple or a function.\nSKIPPING IT")
+                    "\nThe instruction musst be a tuple or a function.",
+                    "\nSKIPPING IT", file=sys.stderr)
 
     if target in git_submodules_for:
         choice = input(target + " uses git submodules want to pull them ? (Y/n) ")
