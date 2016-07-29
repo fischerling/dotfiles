@@ -64,8 +64,7 @@ targets = {
         "fish-config":
             [("config/fish/config.fish", home_dir + "/.config/fish/config.fish"),
             ("config/fish/fishfile", home_dir + "/.config/fish/fishfile"),
-            fish_config,
-            ("fau_stud.conf.gpg", "/etc/wpa_supplicant/fau_stud.conf")],
+            fish_config],
         "terminator-config":
             [("config/terminator/config", home_dir +
                                           "/.config/terminator/config")],
@@ -73,7 +72,11 @@ targets = {
             [("offlineimap/offlineimaprc", home_dir + "/.offlineimaprc"),
             ("offlineimap/FAU.IMAP.PASS.gpg", ""),
             ("offlineimap/offlineimap@.service",
-                "/etc/systemd/system/offlineimap@.service")]
+                "/etc/systemd/system/offlineimap@.service")],
+        "FAU":
+            [("FAU/wl-FAU-STUD.gpg", "/etc/netctl/wl-FAU-STUD"),
+            ("FAU/fau_stud.conf.gpg", "/etc/wpa_supplicant/fau_stud.conf"),
+            ("FAU/start_fau_wlan.sh", home_dir + "/.local/bin/start_fau_wlan")]
         }
 
 git_submodules_for = ["vim.d"]
