@@ -1,5 +1,5 @@
 # export the path to our dotfiles
-if not set -q $DOTFILES_LOCATION
+if not set -q DOTFILES_LOCATION
     set -Ux DOTFILES_LOCATION (get_dotfiles_location)
 end
 
