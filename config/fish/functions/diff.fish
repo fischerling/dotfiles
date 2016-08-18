@@ -1,3 +1,3 @@
-function diff --description 'Alias for colordiff'
-	colordiff $argv; 
+function diff --description 'Compare files line by line'
+	command diff --color=auto $argv
 end
