@@ -35,7 +35,7 @@ conky.text = [[
     {"name": "cpuEnd", "color": "\#ffffff", "full_text": "]"},
 
 
-    ################ memory#########################
+    ################ memory #########################
 
     {"name": "memory", "color": ${if_match ${memperc}<80}"\#ffffff"${else}"\#ff0000"${endif},
         "full_text": "RAM: ${memperc}%"},  
@@ -98,7 +98,8 @@ conky.text = [[
 
 
     ############### Time ##################
-
+    {"name": "marks", "color": "\#FFFFFF", "full_text": "${exec fish -c 'mark get -r=3'}",
+    "separator": false},
     {"name": "time", "color": "\#CFCFCF", "full_text": "${time %d/%m/%y} ${time %H:%M}"}
 ],
 ]]
