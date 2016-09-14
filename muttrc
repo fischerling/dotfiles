@@ -60,6 +60,11 @@ set crypt_verify_sig=yes
 set sort=threads
 set sort_aux=last-date-received
 
+# use khard as external adressbook
+set query_command= "khard email --parsable %s"
+bind editor <Tab> complete-query
+bind editor ^T    complete
+
 # open links with urlscan
 macro pager,index \cb <pipe-entry>'urlscan -n | dmenu -l 15 | xargs -r $BROWSER '<enter> 'Follow links with urlscan'
 
