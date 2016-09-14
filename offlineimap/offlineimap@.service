@@ -8,7 +8,7 @@ User=%i
 EnvironmentFile=/etc/systemd/system/offlineimap@fischerling.env
 ExecStart=/usr/bin/offlineimap
 KillSignal=SIGUSR2
-Restart=always
+# Restart=always
 
 [Install]
 WantedBy=multi-user.target

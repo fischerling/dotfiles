@@ -8,6 +8,9 @@ accounts = FAUMail
 localrepository = Local
 remoterepository = Remote
 
+autorefresh=5
+quick=10
+
 [Repository Local]
 type = Maildir
 localfolders = ~/Mail
@@ -21,6 +24,3 @@ remotepassfile = $DOTFILES_LOCATION/decrypted/FAU.IMAP.PASS
 
 ssl=yes
 cert_fingerprint = BB9EE687E92693794C752F57C53483076DEF2755
-
-holdconnectionopen = yes
-keepalive = 180
