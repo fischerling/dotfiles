@@ -121,6 +121,8 @@ targets = {
             ("offlineimap/offlineimap@.service",
                 "/etc/systemd/system/offlineimap@" + user + ".service"),
             offlineimap_passwd],
+        "msmtp":
+            [("msmtprc", home_dir + "/.msmtprc")],
         "FAU":
             [("FAU/wl-FAU-STUD.gpg", "/etc/netctl/wl-FAU-STUD"),
             ("FAU/fau_stud.conf.gpg", "/etc/wpa_supplicant/fau_stud.conf"),
