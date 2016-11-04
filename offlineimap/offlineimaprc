@@ -1,26 +1,41 @@
-# Sample minimal config file.  Copy this to ~/.offlineimaprc and edit to
-# get started fast.
+# offlineimap config file
 
 [general]
-accounts = FAUMail
-
-[Account FAUMail]
-localrepository = Local
-remoterepository = Remote
+accounts = FAUMail,MUHQ
 
 autorefresh=5
 quick=10
 
-[Repository Local]
-type = Maildir
-localfolders = ~/Mail
+[Account FAUMail]
+localrepository = LocalFAU
+remoterepository = FAU
 
-[Repository Remote]
+[Account MUHQ]
+localrepository=LocalMUHQ
+remoterepository=MUHQ
+
+[Repository FAU]
 type = IMAP
 remotehost = faumail.uni-erlangen.de
 remoteport = 993
 remoteuser = aj46ezos
 remotepassfile = $DOTFILES_LOCATION/decrypted/FAU.IMAP.PASS
-
 ssl=yes
 cert_fingerprint = BB9EE687E92693794C752F57C53483076DEF2755
+
+[Repository LocalFAU]
+type = Maildir
+localfolders = ~/Mail/FAU/
+
+[Repository MUHQ]
+type = IMAP
+remotehost = antares.uberspace.de
+remoteport = 993
+remoteuser = muhq
+remotepassfile = $DOTFILES_LOCATION/decrypted/MUHQ.IMAP.PASS
+ssl=yes
+cert_fingerprint = B53A1586456E35E454DA3581980330903753AD3E
+
+[Repository LocalMUHQ]
+type = Maildir
+localfolders = ~/Mail/MUHQ/

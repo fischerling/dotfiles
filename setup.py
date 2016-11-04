@@ -54,7 +54,7 @@ def dotfile_loc_helper(quiet):
 
 def offlineimap_passwd(quiet):
     """Write the environment file for the systemd unit"""
-    res = dotfile_loc_helper(quiet):
+    res = dotfile_loc_helper(quiet)
     if res:
         return res
     env_file_path = "/etc/systemd/system/offlineimap@fischerling.env"
@@ -116,7 +116,8 @@ targets = {
         "offlineimap":
             [offlineimap_warn,
             ("offlineimap/offlineimaprc", home_dir + "/.offlineimaprc"),
-            ("offlineimap/FAU.IMAP.PASS.gpg", home_dir +"/.fau_imap_pass"),
+            ("offlineimap/FAU.IMAP.PASS.gpg", ""),
+            ("offlineimap/MUHQ.IMAP.PASS.gpg", ""),
             ("offlineimap/offlineimap@.service",
                 "/etc/systemd/system/offlineimap@" + user + ".service"),
             offlineimap_passwd],
@@ -156,7 +157,7 @@ def install_target(target, quiet):
                                 instruction[1])
 
                         # set privacy friendly file permissions 
-                        if not subprocess.run(["chmod", "660", instruction[0]]):
+                        if not subprocess.run(["chmod", "600", instruction[0]]):
                             print("Skipping because changing permissions of",
                                     instruction[1], "failed. This could be a",
                                     "privacy risk!", file=sys.stderr)
