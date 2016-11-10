@@ -1,6 +1,28 @@
+# PATH Stuff
+
+# include cargo binaries
+if type -q multirust
+    for p in $HOME/.multirust/toolchains/*/cargo/bin
+        if not contains $p $PATH
+            set PATH $PATH $p
+        end
+    end
+end
+
+if not contains /bin/core_perl $PATH
+    set PATH /bin/core_perl $PATH
+end
+
+if not contains ~/.local/bin $PATH
+    set PATH ~/.local/bin $PATH 
+end
+
+if not contains /usr/local/bin $PATH
+    set PATH /usr/local/bin $PATH 
+end
+
 # export the path to our dotfiles
 set -x DOTFILES_LOCATION (get_dotfiles_location)
-
 
 # autoload functions and completions in .dotfiles 
 set fish_function_path $DOTFILES_LOCATION/config/fish/functions $fish_function_path
@@ -37,25 +59,3 @@ if type -q yaourt
     end
 end
 
-# PATH Stuff
-
-# include cargo binaries
-if type -q multirust
-    for p in $HOME/.multirust/toolchains/*/cargo/bin
-        if not contains $p $PATH
-            set PATH $PATH $p
-        end
-    end
-end
-
-if not contains /bin/core_perl $PATH
-    set PATH /bin/core_perl $PATH
-end
-
-if not contains ~/.local/bin $PATH
-    set PATH ~/.local/bin $PATH 
-end
-
-if not contains /usr/local/bin $PATH
-    set PATH /usr/local/bin $PATH 
-end
