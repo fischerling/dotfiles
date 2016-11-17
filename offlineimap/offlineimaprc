@@ -37,7 +37,7 @@ remoteuser = muhq
 remotepassfile = $DOTFILES_LOCATION/decrypted/MUHQ.IMAP.PASS
 ssl=yes
 cert_fingerprint = B53A1586456E35E454DA3581980330903753AD3E
-newmail_hook = lambda: __import__("os").system("i3-nagbar -m \"new mail in MUHQ\" > /dev/null 2>&1")
+newmail_hook = lambda: __import__("os").system("i3-nagbar -m \"new mail in MUHQ\" > /dev/null 2>&1 &")
 
 [Repository LocalMUHQ]
 type = Maildir
