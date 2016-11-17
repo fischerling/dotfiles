@@ -98,8 +98,10 @@ conky.text = [[
 
 
     ############### Time ##################
-    {"name": "marks", "color": "\#FFFFFF", "full_text": "${exec fish -c 'mark get -r=3'}",
-    "separator": false},
+    ${if_match "${nodename_short}"!="fishbowl"}
+        {"name": "marks", "color": "\#FFFFFF",
+        "full_text": "${exec fish -c 'mark get -r=3'}", "separator": false},
+    ${endif}
     {"name": "time", "color": "\#CFCFCF", "full_text": "${time %d/%m/%y} ${time %H:%M}"}
 ],
 ]]
