@@ -1,10 +1,12 @@
 #!/bin/bash
 
 # Set my favorite terminal
-if type urxvt >/dev/null 2>/dev/null
+if type st >/dev/null 2>/dev/null
 then
-    export  TERMINAL=urxvt
-
+    export TERMINAL=st
+elif type urxvt >/dev/null 2>/dev/null
+then
+    export TERMINAL=urxvt
 elif type terminator >/dev/null 2>/dev/null
 then
     export TERMINAL=terminator
