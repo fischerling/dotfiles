@@ -21,7 +21,6 @@ local lexers = vis.lexers
 -- "#6c71c4",  /* 13: brmagenta*/ -> violet
 -- "#93a1a1",  /* 14: brcyan   */ -> base1
 -- "#fdf6e3",  /* 15: brwhite  */ -> base3
-                                                                 
 
 local colors = {
 	['base03']  = '8', -- '#002b36',
@@ -40,7 +39,7 @@ local colors = {
 	['blue']    = '4',  -- '#268bd2',
 	['cyan']    = '6',  -- '#2aa198',
 	['green']   = '2',  -- '#859900',
-} 
+}
 
 lexers.colors = colors
 -- dark
