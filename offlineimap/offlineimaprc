@@ -2,17 +2,21 @@
 
 [general]
 accounts = FAUMail,MUHQ
-
-autorefresh=5
-quick=10
+maxsyncaccounts = 2
 
 [Account FAUMail]
 localrepository = LocalFAU
 remoterepository = FAU
 
+autorefresh=1
+quick=10
+
 [Account MUHQ]
 localrepository=LocalMUHQ
 remoterepository=MUHQ
+
+autorefresh=1
+quick=10
 
 [Repository FAU]
 type = IMAP
