@@ -87,6 +87,8 @@ targets = {
             [("vimrc", home_dir + "/.vimrc")],
         "vim.d":
             [("vim", home_dir + "/.vim")],
+        "vis":
+            [("config/vis", home_dir + "./config/vis")],
         "ssh-config":
             [("ssh/config", home_dir + "/.ssh/config")],
         "xinitrc":
@@ -129,7 +131,7 @@ targets = {
             ("FAU/start_fau_wlan.sh", home_dir + "/.local/bin/start_fau_wlan")]
         }
 
-git_submodules_for = ["vim.d"]
+git_submodules_for = ["vim.d", "vis"]
 
 def install_target(target, quiet):
     """Install a target"""
