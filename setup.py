@@ -88,7 +88,7 @@ targets = {
         "vim.d":
             [("vim", home_dir + "/.vim")],
         "vis":
-            [("config/vis", home_dir + "./config/vis")],
+            [("config/vis", home_dir + "/.config/vis")],
         "ssh-config":
             [("ssh/config", home_dir + "/.ssh/config")],
         "xinitrc":
