@@ -189,6 +189,9 @@ bindsym XF86MonBrightnessDown exec /usr/bin/xbacklight -10
 # Toogle Touchpad with Batterybutton
 bindsym XF86Battery exec $DOTFILES_LOCATION/scripts/toggle_syn_touchpad.sh
 
+# Suspend
+bindsym $mod+F7 exec systemctl suspend
+
 #hide broders
 new_window pixel 3
 #hide_edge_borders both
