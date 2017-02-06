@@ -9,6 +9,13 @@ if type -q multirust
     end
 end
 
+#include go binaries
+set -x GOPATH ~/Desktop/projects/go
+
+if not contains $GOPATH/bin $PATH
+    set PATH $GOPATH/bin $PATH
+end
+
 if not contains /bin/core_perl $PATH
     set PATH /bin/core_perl $PATH
 end
