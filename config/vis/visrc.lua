@@ -16,6 +16,10 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 	vis:command('set autoindent')
 	vis:command('set colorcolumn 80')
 	vis:command('set show-tabs')
+
+	if win.file.name:find("COMMIT_EDITMSG") then
+		win.syntax = "diff"
+	end
 end)
 
 --vis.events.subscribe(vis.events.FILE_SAVE_PRE, function(file)
