@@ -110,8 +110,8 @@ targets = {
         "fish-config":
             [("config/fish/config.fish", home_dir + "/.config/fish/config.fish"),
             ("config/fish/fishfile", home_dir + "/.config/fish/fishfile"),
-            fish_config,
-            dotfile_loc_helper],
+            dotfile_loc_helper,
+            fish_config],
         "terminator-config":
             [("config/terminator/config", home_dir +
                                           "/.config/terminator/config")],
