@@ -43,6 +43,9 @@ def fish_config(quiet):
 def dotfile_loc_helper(quiet):
     """Create a symlink of get_dotfiles_location.sh into the path"""
 
+    if not os.path.exists(home_dir+"/.local/bin"):
+        os.mkdir(home_dir+"/.local/bin")
+
     try:
         os.symlink(cwd + "/get_dotfiles_location.sh",
                 home_dir + "/.local/bin/get_dotfiles_location")
