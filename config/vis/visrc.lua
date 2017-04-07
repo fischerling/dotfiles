@@ -3,6 +3,7 @@ require('vis')
 require('plugins/filetype')
 require('plugins/textobject-lexer')
 require('plugins/vis-cursors/cursors').cursors_path = string.format('%s/vis/cursors', os.getenv('XDG_DATA_HOME') or os.getenv('HOME').."/.local/share")
+require('plugins/vis-spellcheck/spellcheck')
 
 vis.events.subscribe(vis.events.INIT, function()
 	-- Your global configuration options
@@ -19,7 +20,7 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 
 	if win.file.name and win.file.name:find("COMMIT_EDITMSG") then
 		vis:command('set colorcolumn 72')
-		win.syntax = "diff"
+		win:set_syntax("diff")
 	end
 end)
 
