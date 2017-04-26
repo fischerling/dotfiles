@@ -10,23 +10,39 @@ if type -q multirust
 end
 
 #include go binaries
-set -x GOPATH ~/Desktop/projects/go
+if type -q go
+	set -x GOPATH ~/Desktop/projects/go
 
-if not contains $GOPATH/bin $PATH
-    set PATH $GOPATH/bin $PATH
+	if not contains $GOPATH/bin $PATH
+	    set PATH $GOPATH/bin $PATH
+	end
 end
 
-if not contains /bin/core_perl $PATH
-    set PATH /bin/core_perl $PATH
+# include guix paths
+if type -q guix
+	for p in /home/fischerling/.guix-profile/bin /run/setuid-programs /run/current-system/profile/bin /run/current-system/profile/sbin
+		if not contains $p $PATH
+			set PATH $PATH $p
+		end
+	end
+end
+
+# guixsd has nether /bin nor /usr
+# TODO find a  better way to check if we are on guixsd
+if not type -q guix
+	if not contains /bin/core_perl $PATH
+	    set PATH /bin/core_perl $PATH
+	end
+
+	if not contains /usr/local/bin $PATH
+	    set PATH /usr/local/bin $PATH
+	end
 end
 
 if not contains ~/.local/bin $PATH
     set PATH ~/.local/bin $PATH 
 end
 
-if not contains /usr/local/bin $PATH
-    set PATH /usr/local/bin $PATH 
-end
 
 # export the path to our dotfiles
 set -x DOTFILES_LOCATION (get_dotfiles_location)
