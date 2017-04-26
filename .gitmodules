@@ -19,3 +19,6 @@
 [submodule "config/vis/plugins/vis-cursors"]
 	path = config/vis/plugins/vis-cursors
 	url = https://github.com/erf/vis-cursors
+[submodule "config/vis/plugins/vis-spellcheck"]
+	path = config/vis/plugins/vis-spellcheck
+	url = https://github.com/fischerling/vis-spellcheck
