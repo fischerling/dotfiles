@@ -10,7 +10,7 @@ if type -q multirust
 end
 
 #include go binaries
-set -x GOPATH ~/Desktop/projects/go
+not set -q GOPATH; and set -x GOPATH ~/Desktop/projects/go
 
 if not contains $GOPATH/bin $PATH
     set PATH $GOPATH/bin $PATH
@@ -35,26 +35,32 @@ set -x DOTFILES_LOCATION (get_dotfiles_location)
 set fish_function_path $DOTFILES_LOCATION/config/fish/functions $fish_function_path
 set fish_complete_path $DOTFILES_LOCATION/config/fish/completions $fish_complete_path
 
-
 # add git-alias subdirectory to functions path
 set fish_function_path $DOTFILES_LOCATION/config/fish/functions/git-alias $fish_function_path
 
-
 set -x __fish_git_prompt_show_informative_status true
 
-set -x MPD_PORT 6601
+not set -q MPD_PORT; and set -x MPD_PORT 6601
 
-if type -q vis
-set -x EDITOR vis
-else
-set -x EDITOR vim
+if not set -q EDITOR
+	if type -q vis
+		set -x EDITOR vis
+	else if type -q vim
+		set -x EDITOR vim
+	end
 end
 
-set -x VISUAL $EDITOR
+not set -q VISUAL; and set -q EDITOR; set -x VISUAL $EDITOR
 
-set -x BROWSER qutebrowser
+not set -q SSH_KEY_PATH; and set -x SSH_KEY_PATH $HOME/.ssh/rsa_id
 
-set -x SSH_KEY_PATH $HOME/.ssh/rsa_id
+# start ssh-agent
+if not pgrep ssh-agent >/dev/null
+	not set -q SSH_AUTH_SOCK; set -x SSH_AUTH_SOCK ~/.ssh/agent.sock
+	test -e $SSH_AUTH_SOCK; and rm $SSH_AUTH_SOCK
+	set out (ssh-agent -a $SSH_AUTH_SOCK)
+	set -U SSH_AGENT_PID (string replace ";" "" (string split " " $out)[-1])
+end
 
 # set yaourt specific VARS
 if type -q yaourt
@@ -64,5 +70,10 @@ if type -q yaourt
     if not set -q AURSHOWDIFF
         set -x AURSHOWDIFF 1
     end
+end
+
+#start xsession
+if not set -q DISPLAY; and test "$XDG_VTNR" = "1"
+	startx ~/.xinitrc
 end
 
