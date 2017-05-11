@@ -1,11 +1,9 @@
 # PATH Stuff
 
 # include guix paths
-if type -q guix
-	for p in /home/fischerling/.guix-profile/bin /run/setuid-programs /run/current-system/profile/bin /run/current-system/profile/sbin
-		if not contains $p $PATH
-			set PATH $PATH $p
-		end
+for p in /home/fischerling/.guix-profile/bin /run/setuid-programs /run/current-system/profile/bin /run/current-system/profile/sbin
+	if test -d $p; and not contains $p $PATH
+		set PATH $PATH $p
 	end
 end
 
