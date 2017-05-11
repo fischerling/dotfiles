@@ -91,7 +91,7 @@ URxvt.internalBorder:                  3
 
 ! Fonts
 !URxvt.font:                            -*-terminus-medium-*-*-*-*-140-*-*-*-*-*
-URxvt*font:                            xft:xos4 Terminess Powerline:pixelsize=14,\
+URxvt*font:                            xft:Hack-Regular:pixelsize=14,\
                                        -*-fixed-*-*-*-*-*-*-*-*-*-*-*-*
 !URxvt*boldFont:                       xft:Monospace:pixelsize=14
 

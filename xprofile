@@ -1,0 +1,60 @@
+#!/bin/bash
+
+# Set my favorite terminal
+if type st >/dev/null 2>/dev/null
+then
+    export TERMINAL=st
+elif type urxvt >/dev/null 2>/dev/null
+then
+    export TERMINAL=urxvt
+elif type terminator >/dev/null 2>/dev/null
+then
+    export TERMINAL=terminator
+fi
+
+# Set browser
+if type qutebrowser >/dev/null 2>/dev/null
+then
+	export BROWSER=qutebrowser
+fi
+
+# agetty unsets passed locale vars.
+# See:
+#    /etc/systemd/system/getty.target.wants/getty@tty1.service
+#    /usr/lib/systemd/system/getty@.service
+# Because of problems with some locales.
+# See:
+#   https://github.com/fish-shell/fish-shell/issues/3092#issuecomment-223154845
+# => Set correct locale. Copied from arch's /etc/profile.d/locale.sh
+
+#if [ -z "$LANG" ]; then
+#  if [ -n "$XDG_CONFIG_HOME" ] && [ -r "$XDG_CONFIG_HOME/locale.conf" ]; then
+#    . "$XDG_CONFIG_HOME/locale.conf"
+#  elif [ -n "$HOME" ] && [ -r "$HOME/.config/locale.conf" ]; then
+#    . "$HOME/.config/locale.conf"
+#  elif [ -r /etc/locale.conf ]; then
+#    . /etc/locale.conf
+#  fi
+#fi
+#
+#LANG=${LANG:-C}
+#export LANG
+#[ -n "$LC_CTYPE" ]          && export LC_CTYPE
+#[ -n "$LC_NUMERIC" ]        && export LC_NUMERIC
+#[ -n "$LC_TIME" ]           && export LC_TIME
+#[ -n "$LC_COLLATE" ]        && export LC_COLLATE
+#[ -n "$LC_MONETARY" ]       && export LC_MONETARY
+#[ -n "$LC_MESSAGES" ]       && export LC_MESSAGES
+#[ -n "$LC_PAPER" ]          && export LC_PAPER
+#[ -n "$LC_NAME" ]           && export LC_NAME
+#[ -n "$LC_ADDRESS" ]        && export LC_ADDRESS
+#[ -n "$LC_TELEPHONE" ]      && export LC_TELEPHONE
+#[ -n "$LC_MEASUREMENT" ]    && export LC_MEASUREMENT
+#[ -n "$LC_IDENTIFICATION" ] && export LC_IDENTIFICATION
+
+# Export DOTFILES_LOCATION (should be already exported by fish)
+if [ -z "$DOTFILES_LOCATION" ]; then
+    export DOTFILES_LOCATION=$(get_dotfiles_location)
+fi
+
+[[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources

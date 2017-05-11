@@ -94,8 +94,9 @@ targets = {
             [("config/vis", home_dir + "/.config/vis")],
         "ssh-config":
             [("ssh/config", home_dir + "/.ssh/config")],
-        "xinitrc":
+        "X":
             [("xinitrc", home_dir + "/.xinitrc"),
+            ("xprofile", home_dir + "/.xprofile"),
             dotfile_loc_helper],
         "Xresources":
             [("Xresources", home_dir + "/.Xresources")],
