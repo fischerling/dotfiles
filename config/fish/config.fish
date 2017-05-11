@@ -1,5 +1,14 @@
 # PATH Stuff
 
+# include guix paths
+if type -q guix
+	for p in /home/fischerling/.guix-profile/bin /run/setuid-programs /run/current-system/profile/bin /run/current-system/profile/sbin
+		if not contains $p $PATH
+			set PATH $PATH $p
+		end
+	end
+end
+
 # include cargo binaries
 if type -q multirust
     for p in $HOME/.multirust/toolchains/*/cargo/bin
@@ -15,15 +24,6 @@ if type -q go
 
 	if not contains $GOPATH/bin $PATH
 	    set PATH $GOPATH/bin $PATH
-	end
-end
-
-# include guix paths
-if type -q guix
-	for p in /home/fischerling/.guix-profile/bin /run/setuid-programs /run/current-system/profile/bin /run/current-system/profile/sbin
-		if not contains $p $PATH
-			set PATH $PATH $p
-		end
 	end
 end
 
