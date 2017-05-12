@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 STATE=`synclient -l | grep TouchpadOff | awk '{ print $3 }'`;
 

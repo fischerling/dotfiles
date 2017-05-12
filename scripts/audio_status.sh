@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 function print_mute {
    echo -n "M " 

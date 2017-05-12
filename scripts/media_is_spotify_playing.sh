@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # this script returns 0 if spotify is playing 1 otherwise
 

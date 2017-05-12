@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 mpd_playing=$(mpc 2>/dev/null | grep "\[playing\]")
 spotify_playing=$($DOTFILES_LOCATION/scripts/media_is_spotify_playing.sh)
 
