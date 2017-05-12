@@ -7,8 +7,11 @@ require('plugins/vis-spellcheck/spellcheck')
 
 vis.events.subscribe(vis.events.INIT, function()
 	-- Your global configuration options
-	--vis:command("set theme ".. (vis.ui.colors <= 16 and "default-16" or "default-256"))
-	vis:command("set theme default")
+	local theme = "default"
+	if string.match(os.getenv('TERM'), '^st.*') then
+		theme = "st"
+	end
+	vis:command("set theme ".. theme .. (vis.ui.colors <= 16 and "-16" or "-256"))
 end)
 
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
