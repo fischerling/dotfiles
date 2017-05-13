@@ -86,6 +86,8 @@ def offlineimap_warn(quiet):
 # targets are a list of tuples<file name, link destination> and/or functions
 
 targets = {
+        "guixsd":
+            [("guix/system.scm", "/etc/guix/system.scm")],
         "vimrc":
             [("vimrc", home_dir + "/.vimrc")],
         "vim.d":
