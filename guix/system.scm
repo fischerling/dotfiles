@@ -64,7 +64,7 @@
 	(packages (cons*
 		i3-wm i3status dmenu conky ;; Desktop
 		
-		gcc python-wrapper git
+		gcc python-wrapper git make ;; Devel
 		fish
 		file
 		vis
