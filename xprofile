@@ -58,3 +58,5 @@ if [ -z "$DOTFILES_LOCATION" ]; then
 fi
 
 [[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources
+
+setxkbmap de
