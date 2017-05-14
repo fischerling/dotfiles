@@ -98,10 +98,10 @@ targets = {
             [("ssh/config", home_dir + "/.ssh/config")],
         "X":
             [("xinitrc", home_dir + "/.xinitrc"),
+            ("xinitrc", home_dir + "/.xsession"),
             ("xprofile", home_dir + "/.xprofile"),
-            dotfile_loc_helper],
-        "Xresources":
-            [("Xresources", home_dir + "/.Xresources")],
+            dotfile_loc_helper,
+            ("Xresources", home_dir + "/.Xresources")],
         "mutt":
             [("muttrc", home_dir + "/.muttrc"),
             ("mutt", home_dir + "/.mutt"),
