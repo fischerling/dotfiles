@@ -7,6 +7,9 @@ for p in /home/fischerling/.guix-profile/bin /run/setuid-programs /run/current-s
 	end
 end
 
+# export the path to our dotfiles
+set -x DOTFILES_LOCATION (get_dotfiles_location)
+
 # include cargo binaries
 if type -q multirust
     for p in $HOME/.multirust/toolchains/*/cargo/bin
@@ -27,7 +30,9 @@ end
 
 # guixsd has nether /bin nor /usr
 # TODO find a  better way to check if we are on guixsd
-if not type -q guix
+if type -q guix
+	set GUIX_PACKAGE_PATH $DOTFILES_LOCATION/guix/packages
+else
 	if not contains /bin/core_perl $PATH
 	    set PATH /bin/core_perl $PATH
 	end
@@ -42,8 +47,6 @@ if not contains ~/.local/bin $PATH
 end
 
 
-# export the path to our dotfiles
-set -x DOTFILES_LOCATION (get_dotfiles_location)
 
 # autoload functions and completions in .dotfiles 
 set fish_function_path $DOTFILES_LOCATION/config/fish/functions $fish_function_path
