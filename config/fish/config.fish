@@ -66,7 +66,7 @@ end
 
 not set -q VISUAL; and set -q EDITOR; set -x VISUAL $EDITOR
 
-not set -q SSH_KEY_PATH; and set -x SSH_KEY_PATH $HOME/.ssh/rsa_id
+not set -q SSH_KEY_PATH; and set -x SSH_KEY_PATH $HOME/.ssh/id_rsa
 
 # start ssh-agent
 if not pgrep ssh-agent >/dev/null
