@@ -1,4 +1,5 @@
 *~
+*.pyc
 i3/log
 vim/.netrwhist
 
