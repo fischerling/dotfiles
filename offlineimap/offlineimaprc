@@ -3,6 +3,7 @@
 [general]
 accounts = FAUMail,MUHQ
 maxsyncaccounts = 2
+pythonfile = $DOTFILES_LOCATION/offlineimap/offlineimap.py
 
 [Account FAUMail]
 localrepository = LocalFAU
@@ -23,7 +24,7 @@ type = IMAP
 remotehost = faumail.uni-erlangen.de
 remoteport = 993
 remoteuser = aj46ezos
-remotepassfile = $DOTFILES_LOCATION/decrypted/FAU.IMAP.PASS
+remotepasseval = get_passwd("FAU")
 ssl=yes
 cert_fingerprint = BB9EE687E92693794C752F57C53483076DEF2755
 newmail_hook = lambda: __import__("os").system("i3-nagbar -m \"new mail in FAU\" > /dev/null 2>&1 &")
@@ -38,7 +39,7 @@ type = IMAP
 remotehost = antares.uberspace.de
 remoteport = 993
 remoteuser = muhq
-remotepassfile = $DOTFILES_LOCATION/decrypted/MUHQ.IMAP.PASS
+remotepasseval = get_passwd("MUHQ")
 ssl=yes
 cert_fingerprint = B53A1586456E35E454DA3581980330903753AD3E
 newmail_hook = lambda: __import__("os").system("i3-nagbar -m \"new mail in MUHQ\" > /dev/null 2>&1 &")

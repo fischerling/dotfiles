@@ -124,8 +124,6 @@ targets = {
         "offlineimap":
             [offlineimap_warn,
             ("offlineimap/offlineimaprc", home_dir + "/.offlineimaprc"),
-            ("offlineimap/FAU.IMAP.PASS.gpg", ""),
-            ("offlineimap/MUHQ.IMAP.PASS.gpg", ""),
             ("offlineimap/offlineimap@.service",
                 "/etc/systemd/system/offlineimap@" + user + ".service"),
             offlineimap_passwd],
