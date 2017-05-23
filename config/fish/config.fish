@@ -1,10 +1,7 @@
 # PATH Stuff
 
-# include guix paths
-for p in /home/fischerling/.guix-profile/bin /run/setuid-programs /run/current-system/profile/bin /run/current-system/profile/sbin
-	if test -d $p; and not contains $p $PATH
-		set PATH $PATH $p
-	end
+if not contains ~/.local/bin $PATH
+    set PATH ~/.local/bin $PATH
 end
 
 # export the path to our dotfiles
@@ -41,12 +38,6 @@ else
 	    set PATH /usr/local/bin $PATH
 	end
 end
-
-if not contains ~/.local/bin $PATH
-    set PATH ~/.local/bin $PATH 
-end
-
-
 
 # autoload functions and completions in .dotfiles 
 set fish_function_path $DOTFILES_LOCATION/config/fish/functions $fish_function_path

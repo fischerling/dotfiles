@@ -87,7 +87,8 @@ def offlineimap_warn(quiet):
 
 targets = {
         "guixsd":
-            [("guix/system.scm", "/etc/guix/system.scm")],
+            [("guix/system.scm", "/etc/guix/system.scm"),
+            ("guix/bashrc", home_dir + "/.bashrc")],
         "vimrc":
             [("vimrc", home_dir + "/.vimrc")],
         "vim.d":
@@ -131,7 +132,7 @@ targets = {
             [("msmtprc", home_dir + "/.msmtprc")],
         "FAU":
             [("FAU/wl-FAU-STUD.gpg", "/etc/netctl/wl-FAU-STUD"),
-            ("FAU/fau_stud.conf.gpg", "/etc/wpa_supplicant/fau_stud.conf"),
+            ("FAU/fau_stud.conf.gpg", ""),
             ("FAU/start_fau_wlan.sh", home_dir + "/.local/bin/start_fau_wlan")]
         }
 
