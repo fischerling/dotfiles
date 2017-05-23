@@ -57,19 +57,17 @@
 			(group "users")
 			(supplementary-groups '("wheel" "netdev"
 						"audio" "video"))
-			(home-directory "/home/fischerling")
-			(shell #~(string-append #$fish "/bin/fish")))
+			(home-directory "/home/fischerling"))
 		%base-user-accounts))
 
 	(packages (cons*
-		i3-wm i3status dmenu conky ;; Desktop
+		i3-wm i3status dmenu ;; Desktop
 		
-		gcc python-wrapper git make ;; Devel
-		fish
-		file
+		gcc python-wrapper git ;; Devel
+		fish fish-guix
 		vis
-		htop
-		gnupg
+		htop file
+		gnupg pinentry
 		openssh
 		alsa-utils
 		nss-certs               ;for HTTPS access
