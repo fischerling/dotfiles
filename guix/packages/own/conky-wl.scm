@@ -1,7 +1,7 @@
 (define-module (own conky-wl)
-    #:use-module (gnu packages conky)    ; emacs
-    #:use-module (guix build-system cmake) ; gnu-build
-    #:use-module (guix packages))         ; package
+    #:use-module (gnu packages conky)
+    #:use-module (guix build-system cmake)
+    #:use-module (guix packages))
 
 (define-public conky-wl
     (package
