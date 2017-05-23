@@ -183,8 +183,8 @@ bindsym XF86AudioPlay exec $DOTFILES_LOCATION/scripts/media_control.sh toggle
 bindsym XF86AudioNext exec $DOTFILES_LOCATION/scripts/media_control.sh next
 
 ## brightnescontroll
-bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight +10
-bindsym XF86MonBrightnessDown exec /usr/bin/xbacklight -10
+bindsym XF86MonBrightnessUp exec xbacklight +10
+bindsym XF86MonBrightnessDown exec xbacklight -10
                                                               
 # Toogle Touchpad with Batterybutton
 bindsym XF86Battery exec $DOTFILES_LOCATION/scripts/toggle_syn_touchpad.sh
