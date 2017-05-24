@@ -28,7 +28,10 @@ end
 # guixsd has nether /bin nor /usr
 # TODO find a  better way to check if we are on guixsd
 if type -q guix
-	set GUIX_PACKAGE_PATH $DOTFILES_LOCATION/guix/packages
+	set -x GUIX_PACKAGE_PATH $DOTFILES_LOCATION/guix/packages
+	# source the system paths
+	set fish_function_path $fish_function_path /run/current-system/profile/share/fish/functions
+	set fish_complete_path $fish_complete_path /run/current-system/profile/share/fish/completions
 else
 	if not contains /bin/core_perl $PATH
 	    set PATH /bin/core_perl $PATH
