@@ -23,4 +23,4 @@ else
 fi
 
 # exec fish
-exec fish
+! shopt -q login_shell && exec fish
