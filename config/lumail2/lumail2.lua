@@ -208,6 +208,11 @@ function on_message_send(path)
   local added = false
   local is_header = "^%a+: .*"
   for l in io.lines(path) do
+    -- If this message was replaced by mimegpg don't mess with it
+    if (l == "-----BEGIN PGP SIGNATURE-----") or (l == "-----BEGIN PGP MESSAGE-----") then
+      return
+    end
+
     -- Find the last header.
     if not added
        and content[#content] and string.match(content[#content], is_header)
