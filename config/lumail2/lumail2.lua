@@ -200,3 +200,29 @@ do
     end
 end
 
+--
+-- Add Content-Type to the headers before sending
+--
+function on_message_send(path)
+  local content = {}
+  local added = false
+  local is_header = "^%a+: .*"
+  for l in io.lines(path) do
+    -- Find the last header.
+    if not added
+       and content[#content] and string.match(content[#content], is_header)
+       and not string.match(l, is_header)
+    then
+      -- Append Content-Type to the headers.
+      table.insert(content, "Content-Type: text/plain; charset=UTF-8\n")
+      added = true
+    end
+    table.insert(content, l.."\n")
+  end
+  
+  -- write the new content
+  local m = io.open(path, "w")
+  m:write(unpack(content))
+  m:close()
+end
+
