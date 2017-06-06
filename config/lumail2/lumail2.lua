@@ -20,9 +20,11 @@ keymap['global']['G'] = 'last()'
 Config:set( "global.iconv", 1 )
 
 --
--- Get our home-directory, as this is often used.
+-- Get our base-directories
 --
 local HOME = os.getenv("HOME")
+local DATA_HOME = os.getenv("XDG_DATA_HOME") or HOME .. "/.local/share"
+local CACHE_HOME = os.getenv("XDG_CONFIG_HOME") or HOME .. "/.cache"
 
 --
 -- The default Maildir location is ~/Maildir
@@ -80,12 +82,16 @@ Config:set( "global.editor", editor .. " +/^$ ++8" )
 --
 -- Save persistant history of our input in the named file.
 --
-Config:set( "global.history", HOME .. "/.lumail2/history" )
+Config:set( "global.history", DATA_HOME .. "/lumail2/history" )
 
 --
 -- Configure a cache-prefix, and populate it
 --
-Config:set( "cache.prefix", HOME .. "/.lumail2/cache" )
+Config:set( "cache.prefix", CACHE_HOME .. "/lumail2/" )
+
+-- Configure logging
+Config:set( "log.path" , DATA_HOME .. "/.lumail2/log" )
+Config:set ( "log.level", "")
 
 -- Index mode - which shows the list of messages:
 --
@@ -136,7 +142,6 @@ for i,o in ipairs(Global:modes()) do
    colour_table[o] = {}
 end
 
-
 --
 -- Setup our colours - for Maildir-mode
 --
@@ -166,10 +171,6 @@ colour_table['message'] = {
    ['^>%s*[^>%s]'] = 'blue',
    ['^>%s$']       = 'blue',
 }
-
--- set logfile
-Config:set( "log.path" , HOME .. "/.lumail2/log" )
-Config:set ( "log.level", "debug")
 
 --
 -- Include address book completion in on_complete
