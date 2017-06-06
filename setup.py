@@ -87,7 +87,7 @@ def offlineimap_warn(quiet):
 
 targets = {
         "lumail":
-            [("lumail2/lumail2.lua", home_dir + "/.lumail2/lumail2.lua")],
+            [("config/lumail2/lumail2.lua", home_dir + "/.config/lumail2/lumail2.lua")],
         "guixsd":
             [("guix/system.scm", "/etc/guix/system.scm"),
             ("guix/bashrc", home_dir + "/.bashrc")],
