@@ -29,7 +29,8 @@ local CACHE_HOME = os.getenv("XDG_CONFIG_HOME") or HOME .. "/.cache"
 --
 -- The default Maildir location is ~/Maildir
 --
-Config:set( "maildir.prefix", HOME .. "/Mail" );
+local MAILPREFIX = HOME .. "/.local/share/maildir"
+Config:set("maildir.prefix",  MAILPREFIX);
 
 --
 -- Handle both of my email accounts.
@@ -45,9 +46,9 @@ Config:set("global.address", "florian.fl.fischer@fau.de")
 -- Default From: address.
 Config:set("global.sender", "Florian Fischer <florian.fl.fischer@fau.de>")
 -- Default sent-folder.
-Config:set("global.sent-mail", HOME.."/Mail/FAU/Sent")
+Config:set("global.sent-mail", MAILPREFIX .. "/FAU/Sent")
 -- Default trash-folder.
-Config:set("global.trash-mail", HOME.."/Mail/FAU/Trash")
+Config:set("global.trash-mail", MAILPREFIX.."/FAU/Trash")
 -- Default GPG mode
 Config:set("gpg.mode", "auto")
 
@@ -56,14 +57,14 @@ function on_folder_changed(folder)
     if path:find("FAU") then
         account = "fau"
         Config:set("global.address", "florian.fl.fischer@fau.de")
-        Config:set("global.sent-mail", HOME.."/Mail/FAU/Sent")
-        Config:set( "global.trash-mail", HOME.."/Mail/FAU/Trash")
+        Config:set("global.sent-mail", MAILPREFIX .. "/FAU/Sent")
+        Config:set("global.trash-mail", MAILPREFIX.."/FAU/Trash")
         Config:set("gpg.mode", "auto")
     elseif path:find("MUHQ") then
         account = "muhq"
         Config:set("global.address", "florian.fischer@muhq.space")
-        Config:set("global.sent-mail", HOME.."/Mail/MUHQ/Sent")
-        Config:set( "global.trash-mail", HOME.."/Mail/MUHQ/Trash")
+        Config:set("global.sent-mail", MAILPREFIX .. "/MUHQ/Sent")
+        Config:set("global.trash-mail", MAILPREFIX.."/MUHQ/Trash")
         Config:set("gpg.mode", "")
     end
     -- update sender
