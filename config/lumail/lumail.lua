@@ -86,15 +86,15 @@ Config:set( "global.editor", editor .. " +/^$ ++8" )
 --
 -- Save persistant history of our input in the named file.
 --
-Config:set( "global.history", DATA_HOME .. "/lumail2/history" )
+Config:set( "global.history", DATA_HOME .. "/lumail/history" )
 
 --
 -- Configure a cache-prefix, and populate it
 --
-Config:set( "cache.prefix", CACHE_HOME .. "/lumail2/" )
+Config:set( "cache.prefix", CACHE_HOME .. "/lumail/" )
 
 -- Configure logging
-Config:set( "log.path" , DATA_HOME .. "/.lumail2/log" )
+Config:set( "log.path" , DATA_HOME .. "/.lumail/log" )
 Config:set ( "log.level", "")
 
 -- Index mode - which shows the list of messages:
