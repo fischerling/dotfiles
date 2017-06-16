@@ -43,11 +43,13 @@ Config:set("global.name", "Florian Fischer")
 -- Default address.
 Config:set("global.address", "florian.fl.fischer@fau.de")
 -- Default From: address.
-Config:set( "global.sender", "Florian Fischer <florian.fl.fischer@fau.de>" )
+Config:set("global.sender", "Florian Fischer <florian.fl.fischer@fau.de>")
 -- Default sent-folder.
-Config:set( "global.sent-mail", HOME.."/Mail/FAU/Sent")
+Config:set("global.sent-mail", HOME.."/Mail/FAU/Sent")
 -- Default trash-folder.
-Config:set( "global.trash-mail", HOME.."/Mail/FAU/Trash")
+Config:set("global.trash-mail", HOME.."/Mail/FAU/Trash")
+-- Default GPG mode
+Config:set("gpg.mode", "auto")
 
 function on_folder_changed(folder)
     local path = folder:path()
@@ -56,11 +58,13 @@ function on_folder_changed(folder)
         Config:set("global.address", "florian.fl.fischer@fau.de")
         Config:set("global.sent-mail", HOME.."/Mail/FAU/Sent")
         Config:set( "global.trash-mail", HOME.."/Mail/FAU/Trash")
+        Config:set("gpg.mode", "auto")
     elseif path:find("MUHQ") then
         account = "muhq"
         Config:set("global.address", "florian.fischer@muhq.space")
         Config:set("global.sent-mail", HOME.."/Mail/MUHQ/Sent")
         Config:set( "global.trash-mail", HOME.."/Mail/MUHQ/Trash")
+        Config:set("gpg.mode", "")
     end
     -- update sender
     Config:set("global.sender", Config:get("global.name").." <"..Config:get("global.address")..">")
