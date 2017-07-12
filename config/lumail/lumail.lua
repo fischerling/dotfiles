@@ -92,10 +92,10 @@ Config:set( "global.history", DATA_HOME .. "/lumail/history" )
 --
 -- Configure a cache-prefix, and populate it
 --
-Config:set( "cache.prefix", CACHE_HOME .. "/lumail/" )
+Config:set( "cache.prefix", CACHE_HOME .. "/lumail" )
 
 -- Configure logging
-Config:set( "log.path" , DATA_HOME .. "/.lumail/log" )
+Config:set( "log.path" , DATA_HOME .. "/lumail/log" )
 Config:set ( "log.level", "")
 
 -- Index mode - which shows the list of messages:
