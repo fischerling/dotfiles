@@ -12,13 +12,6 @@ remoterepository = FAU
 autorefresh=1
 quick=10
 
-[Account MUHQ]
-localrepository=LocalMUHQ
-remoterepository=MUHQ
-
-autorefresh=1
-quick=10
-
 [Repository FAU]
 type = IMAP
 remotehost = faumail.uni-erlangen.de
@@ -29,10 +22,17 @@ ssl=yes
 cert_fingerprint = BB9EE687E92693794C752F57C53483076DEF2755
 newmail_hook = lambda: __import__("os").system("i3-nagbar -m \"new mail in FAU\" > /dev/null 2>&1 &")
 
-
 [Repository LocalFAU]
 type = Maildir
-localfolders = ~/Mail/FAU/
+localfolders = ~/.local/share/maildir/FAU/
+
+
+[Account MUHQ]
+localrepository=LocalMUHQ
+remoterepository=MUHQ
+
+autorefresh=1
+quick=10
 
 [Repository MUHQ]
 type = IMAP
@@ -46,4 +46,4 @@ newmail_hook = lambda: __import__("os").system("i3-nagbar -m \"new mail in MUHQ\
 
 [Repository LocalMUHQ]
 type = Maildir
-localfolders = ~/Mail/MUHQ/
+localfolders = ~/.local/share/maildir/MUHQ/

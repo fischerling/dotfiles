@@ -86,6 +86,8 @@ def offlineimap_warn(quiet):
 # targets are a list of tuples<file name, link destination> and/or functions
 
 targets = {
+        "lumail":
+            [("config/lumail/lumail.lua", home_dir + "/.config/lumail/lumail.lua")],
         "guixsd":
             [("guix/system.scm", "/etc/guix/system.scm"),
             ("guix/bashrc", home_dir + "/.bashrc")],
