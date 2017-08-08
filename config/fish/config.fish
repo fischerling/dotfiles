@@ -5,7 +5,9 @@ if not contains ~/.local/bin $PATH
 end
 
 # export the path to our dotfiles
-set -x DOTFILES_LOCATION (get_dotfiles_location)
+if not set -q DOTFILES_LOCATION
+	set -x DOTFILES_LOCATION (get_dotfiles_location)
+end
 
 # include cargo binaries
 if type -q multirust

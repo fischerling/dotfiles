@@ -22,5 +22,11 @@ else
     PS1='\u@\h \w\$ '
 fi
 
+# set DOTFILES_LOCATION for i3 
+if [[ "$DOTFILES_LOCATION " == " " ]]
+then
+	export DOTFILES_LOCATION=$(~/.local/bin/get_dotfiles_location)
+fi
+
 # exec fish
 ! shopt -q login_shell && exec fish
