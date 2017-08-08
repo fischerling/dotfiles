@@ -12,11 +12,14 @@ else
 fi
 
 
-if [[ $cmd == *"ircbox"* ]] && [[ $TERMINAL == "urxvt" ]]
+if [[ "$cmd " != " " ]]
 then
-    exec i3-sensible-terminal -vb -e $cmd
+	if [[ $cmd == *"ircbox"* ]] && [[ $TERMINAL == "urxvt" ]]
+	then
+	    exec i3-sensible-terminal -vb -e $cmd
 
-else
-    exec i3-sensible-terminal -e $cmd
+	else
+	    exec i3-sensible-terminal -e $cmd
+	fi
 fi
 
