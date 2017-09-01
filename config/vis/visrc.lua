@@ -21,9 +21,16 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 	vis:command('set colorcolumn 80')
 	vis:command('set show-tabs')
 
-	if win.file.name and win.file.name:find("COMMIT_EDITMSG") then
-		vis:command('set colorcolumn 72')
-		win:set_syntax("diff")
+	if win.file.name then
+		if win.file.name:find("COMMIT_EDITMSG") then
+			vis:command('set colorcolumn 72')
+			win:set_syntax("diff")
+		end
+
+		local filetype = win.file.name:match(".*%.(.*)")
+		if filetype == "py" then
+			vis:command("set expand")
+		end
 	end
 end)
 
