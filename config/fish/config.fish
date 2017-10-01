@@ -11,7 +11,7 @@ end
 
 # include cargo binaries
 if type -q rustup
-    for p in $HOME/.rustup/toolchains/*/bin
+    for p in $HOME/.rustup/toolchains/*/bin $HOME/.cargo/bin
         if not contains $p $PATH
             set PATH $PATH $p
         end
