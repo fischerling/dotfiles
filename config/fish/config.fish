@@ -10,8 +10,8 @@ if not set -q DOTFILES_LOCATION
 end
 
 # include cargo binaries
-if type -q multirust
-    for p in $HOME/.multirust/toolchains/*/cargo/bin
+if type -q rustup
+    for p in $HOME/.rustup/toolchains/*/cargo/bin
         if not contains $p $PATH
             set PATH $PATH $p
         end
