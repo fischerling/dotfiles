@@ -5,6 +5,10 @@
 keymap['global']['gg'] = 'first()'
 keymap['global']['G'] = 'last()'
 
+-- change message binding to show headers
+keymap['message']['G'] = nil
+keymap['message']['^G'] = 'Config.toggle( "message.headers" )'
+
 -----------------------------------------------------------------------------
 
 --
@@ -178,30 +182,6 @@ colour_table['message'] = {
 }
 
 --
--- Include address book completion in on_complete
+-- Specify address book command.
 --
-do
-    local _on_complete = on_complete
-    function on_complete(token)
-        local res = _on_complete(token)
-
-        local handle = io.popen("khard email --parsable " ..  token)
-        local stdout = handle:read("*a")
-        handle:close()
-
-        local lines = {}
-
-        local function insert_mailaddr(line)
-            -- include @ to make sure match is email
-            local mailaddr = line:match("([^%s]*@[^%s]*)%s")
-            if mailaddr then
-                table.insert(res, mailaddr)
-            end
-        end
-
-        stdout:gsub("(.-)\r?\n", insert_mailaddr)
-
-        return res
-    end
-end
-
+Config:set("complete.addressbookcmd", "khard email --parsable")
