@@ -169,7 +169,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
 	#status_command i3status
-	status_command $HOME/.i3/conky-i3bar
+	status_command $HOME/.config/i3/conky-i3bar
 }
 
 # Audio shortcuts

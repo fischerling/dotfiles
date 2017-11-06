@@ -112,7 +112,7 @@ targets = {
         "zshrc":
             [("zshrc", home_dir + "/zshrc")],
         "i3-config":
-            [("i3", home_dir + "/.i3"),
+            [("config/i3", home_dir + "/.config/i3"),
             dotfile_loc_helper],
         "dir_colors":
             [("dir_colors", home_dir + "/.dir_colors")],

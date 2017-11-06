@@ -3,4 +3,5 @@
 [ -f /etc/xprofile ] && . /etc/xprofile
 [ -f ~/.xprofile ] && . ~/.xprofile
 
-exec i3 -V > ~/.i3/log
+[ ! -d ~/.local/share/i3 ] && mkdir -p ~/.local/share/i3
+exec i3 -V > ~/.local/share/i3/log
