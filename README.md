@@ -19,7 +19,7 @@ Good places are:
 
 ### Easy Installation
 
-If you just want to install all my dotfiles without customisation run:
+If you just want to install all my dotfiles without customization run:
 ```sh
 git clone https://github.com/fischerling/dotfiles ~/.dotfiles
 cd ~/.dotfiles
