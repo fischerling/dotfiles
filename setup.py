@@ -55,33 +55,6 @@ def dotfile_loc_helper(quiet):
         else:
             return e
 
-def offlineimap_passwd(quiet):
-    """Write the environment file for the systemd unit"""
-    res = dotfile_loc_helper(quiet)
-    if res:
-        return res
-    env_file_path = "/etc/systemd/system/offlineimap@fischerling.env"
-    if not os.path.exists(env_file_path):
-        try:
-            subprocess.run(["get_dotfiles_location", ">",
-                env_file_path])
-        except Exception as e:
-            if isinstance(e, PermissionError):
-                subprocess.run(["get_dotfiles_location", "|", "sudo", "tee", "-a",
-                    env_file_path, ">", "/dev/null"])
-            else:
-                return e
-
-def offlineimap_warn(quiet):
-    """Print a warning about my offlineimap setup"""
-
-    if not quiet:
-        print("! WARNING !")
-        print("My offlineimap setup uses a patched version !")
-        print("The patch can be found at offlineimap/expandvars.patch.")
-        print("Only proceed if you know what you are doing")
-        if input("Want to continue ? (y/N) ") not in ["Y","y"]:
-            exit("Aborting.")
 
 # targets are a list of tuples<file name, link destination> and/or functions
 
@@ -125,11 +98,7 @@ targets = {
             [("config/terminator/config", home_dir +
                                           "/.config/terminator/config")],
         "offlineimap":
-            [offlineimap_warn,
-            ("offlineimap/offlineimaprc", home_dir + "/.offlineimaprc"),
-            ("offlineimap/offlineimap@.service",
-                "/etc/systemd/system/offlineimap@" + user + ".service"),
-            offlineimap_passwd],
+            [("config/offlineimap", home_dir + "/.config/offlineimap")],
         "msmtp":
             [("msmtprc", home_dir + "/.msmtprc")],
         "FAU":

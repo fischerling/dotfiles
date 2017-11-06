@@ -3,7 +3,7 @@
 [general]
 accounts = FAUMail,MUHQ
 maxsyncaccounts = 2
-pythonfile = $DOTFILES_LOCATION/offlineimap/offlineimap.py
+pythonfile = ~/.config/offlineimap/offlineimap.py
 
 [Account FAUMail]
 localrepository = LocalFAU
