@@ -20,7 +20,7 @@ remoteuser = aj46ezos
 remotepasseval = get_passwd("FAU")
 ssl=yes
 cert_fingerprint = BB9EE687E92693794C752F57C53483076DEF2755
-newmail_hook = lambda: __import__("os").system("i3-nagbar -m \"new mail in FAU\" > /dev/null 2>&1 &")
+newmail_hook = lambda: __import__("os").system("notify-send \"new mail in FAU\"")
 
 [Repository LocalFAU]
 type = Maildir
@@ -42,7 +42,7 @@ remoteuser = muhq
 remotepasseval = get_passwd("MUHQ")
 ssl=yes
 cert_fingerprint = B53A1586456E35E454DA3581980330903753AD3E
-newmail_hook = lambda: __import__("os").system("i3-nagbar -m \"new mail in MUHQ\" > /dev/null 2>&1 &")
+newmail_hook = lambda: __import__("os").system("notify-send \"new mail in MUHQ\"")
 
 [Repository LocalMUHQ]
 type = Maildir
