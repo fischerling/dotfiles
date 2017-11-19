@@ -55,6 +55,10 @@ set -x __fish_git_prompt_show_informative_status true
 
 not set -q MPD_PORT; and set -x MPD_PORT 6601
 
+if type -q mpd; and not pgrep mpd >/dev/null
+	mpd
+end
+
 if not set -q EDITOR
 	if type -q vis
 		set -x EDITOR vis

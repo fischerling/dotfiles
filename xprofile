@@ -59,7 +59,14 @@ fi
 
 [[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources
 
+# Set keyboard layout
 setxkbmap de
 
-# start notification service
+# Start notification service
 dunst &
+
+# Start touchpad daemon
+syndaemon -i 1 -d
+
+# Start owncloud client
+owncloud &
