@@ -60,3 +60,6 @@ fi
 [[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources
 
 setxkbmap de
+
+# start notification service
+dunst &
