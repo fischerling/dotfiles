@@ -101,6 +101,8 @@ targets = {
             [("config/offlineimap", home_dir + "/.config/offlineimap")],
         "msmtp":
             [("msmtprc", home_dir + "/.msmtprc")],
+        "dunst":
+            [("config/dunst/dunstrc", home_dir + "./config/dunst/dunstrc")],
         "FAU":
             [("FAU/wl-FAU-STUD.gpg", "/etc/netctl/wl-FAU-STUD"),
             ("FAU/fau_stud.conf.gpg", ""),
