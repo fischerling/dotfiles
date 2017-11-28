@@ -170,6 +170,9 @@ bar {
 	status_command $HOME/.config/i3/conky-i3bar
 }
 
+# Open content of primary selection in $BROWSER
+bindsym $mod+Shift+o exec $DOTFILES_LOCATION/scripts/open_primary_in_browser.sh
+
 # Audio shortcuts
 # # Volume
 bindsym XF86AudioLowerVolume exec $DOTFILES_LOCATION/scripts/audio_control.sh -5
