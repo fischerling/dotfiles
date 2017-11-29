@@ -81,7 +81,7 @@ if not pgrep ssh-agent >/dev/null
 	not set -q SSH_AUTH_SOCK; set -x SSH_AUTH_SOCK ~/.ssh/agent.sock
 	test -e $SSH_AUTH_SOCK; and rm $SSH_AUTH_SOCK
 	set out (ssh-agent -a $SSH_AUTH_SOCK)
-	set -U SSH_AGENT_PID (string replace ";" "" (string split " " $out)[-1])
+	set -x SSH_AGENT_PID (string replace ";" "" (string split " " $out)[-1])
 end
 
 # set yaourt specific VARS
