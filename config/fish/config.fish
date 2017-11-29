@@ -89,6 +89,11 @@ if type -q yaourt
     end
 end
 
+# Change TERM on antares.uberspace.de
+if test (hostname) = "antares.uberspace.de" -a "$TERM" = "st-256color"
+	set -x TERM "xterm-256color"
+end
+
 #start xsession
 if not set -q DISPLAY; and test "$XDG_VTNR" = "1"
 	startx ~/.xinitrc
