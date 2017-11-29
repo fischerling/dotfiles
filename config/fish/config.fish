@@ -63,7 +63,7 @@ end
 
 if not set -q EDITOR
 	if type -q vis
-		not set -q VIS_PATH; and set VIS_PATH "~/.config/vis"
+		not set -q VIS_PATH; and set VIS_PATH "$DOTFILES_LOCATION/config/vis"
 		set -x EDITOR vis
 	else if type -q vim
 		set -x EDITOR vim
@@ -90,26 +90,6 @@ if type -q yaourt
     if not set -q AURSHOWDIFF
         set -x AURSHOWDIFF 1
     end
-end
-
-################### HOST SETTINGS #############################################
-
-# Antares.uberspace.de
-# Change TERM on antares.uberspace.de
-if test (hostname) = "antares.uberspace.de"
-	if test "$TERM" = "st-256color"
-		set -x TERM "xterm-256color"
-	end
-
-	# Use gcc 4.9
-	if not contains "/package/host/localhost/gcc-4/bin" $PATH
-		set -x PATH "/package/host/localhost/gcc-4/bin" $PATH
-	end
-
-	# Include libraries for gcc 4.9
-	if not contains "/package/host/localhost/gcc-4/lib64" $LD_LIBRARY_PATH
-		set -x LD_LIBRARY_PATH "/package/host/localhost/gcc-4/lib64" $LD_LIBRARY_PATH
-	end
 end
 
 #start xsession if we are not in ssh
