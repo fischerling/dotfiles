@@ -98,9 +98,7 @@ if not set -q SSH_CLIENT; or not set -q SSH_TTY
 		startx ~/.xinitrc
 	end
 else
-	# Is bobthefish our prompt
-	if functions -a | grep -q bobthefish
-		set -g theme_display_user yes
-	end
+	# display user in theme
+	set -g theme_display_user yes
 end
 
