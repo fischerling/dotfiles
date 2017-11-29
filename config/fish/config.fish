@@ -109,8 +109,10 @@ if test (hostname) = "antares.uberspace.de"
 	end
 end
 
-#start xsession
-if not set -q DISPLAY; and test "$XDG_VTNR" = "1"
-	startx ~/.xinitrc
+#start xsession if we are not in ssh
+if not set -q SSH_CLIENT or not set -q SSH_TTY
+	if not set -q DISPLAY; and test "$XDG_VTNR" = "1"
+		startx ~/.xinitrc
+	end
 end
 
