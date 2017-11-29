@@ -1,7 +1,7 @@
 # offlineimap config file
 
 [general]
-accounts = FAUMail,MUHQ
+accounts = FAUMail,MUHQ,SNFMT
 maxsyncaccounts = 2
 pythonfile = ~/.config/offlineimap/offlineimap.py
 
@@ -47,3 +47,24 @@ newmail_hook = lambda: __import__("os").system("notify-send \"new mail in MUHQ\"
 [Repository LocalMUHQ]
 type = Maildir
 localfolders = ~/.local/share/maildir/MUHQ/
+
+[Account SNFMT]
+localrepository=LocalSNFMT
+remoterepository=SNFMT
+
+autorefresh=1
+quick=10
+
+[Repository SNFMT]
+type = IMAP
+remotehost = alnilam.uberspace.de
+remoteport = 993
+remoteuser = snfmt
+remotepasseval = get_passwd("SNFMT")
+ssl=yes
+cert_fingerprint = ED32CD6A6126478D47EFDB2B2E79EC1F3A6BD39A
+newmail_hook = lambda: __import__("os").system("notify-send \"new mail in SNFMT\"")
+
+[Repository LocalSNFMT]
+type = Maildir
+localfolders = ~/.local/share/maildir/SNFMT/

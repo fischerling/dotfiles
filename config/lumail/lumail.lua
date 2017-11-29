@@ -60,16 +60,24 @@ function on_folder_changed(folder)
     local path = folder:path()
     if path:find("FAU") then
         account = "fau"
+        Config:set("global.name", "Florian Fischer")
         Config:set("global.address", "florian.fl.fischer@fau.de")
         Config:set("global.sent-mail", MAILPREFIX .. "/FAU/Sent")
         Config:set("global.trash-mail", MAILPREFIX.."/FAU/Trash")
         Config:set("gpg.mode", "auto")
     elseif path:find("MUHQ") then
         account = "muhq"
+        Config:set("global.name", "Florian Fischer")
         Config:set("global.address", "florian.fischer@muhq.space")
         Config:set("global.sent-mail", MAILPREFIX .. "/MUHQ/Sent")
         Config:set("global.trash-mail", MAILPREFIX.."/MUHQ/Trash")
         Config:set("gpg.mode", "")
+    elseif path:find("SNFMT") then
+        account = "snfmt"
+        Config:set("global.name", "The Supernova")
+        Config:set("global.address", "snfmt@supernovafickmichtot.de")
+        Config:set("global.sent-mail", MAILPREFIX .. "/SNFMT/Sent")
+        Config:set("global.trash-mail", MAILPREFIX.."/SNFMT/Trash")
     end
     -- update sender
     Config:set("global.sender", Config:get("global.name").." <"..Config:get("global.address")..">")
@@ -185,3 +193,5 @@ colour_table['message'] = {
 -- Specify address book command.
 --
 Config:set("complete.addressbookcmd", "khard email --parsable")
+
+_G["message_replace"] = nil
