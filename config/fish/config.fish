@@ -63,6 +63,7 @@ end
 
 if not set -q EDITOR
 	if type -q vis
+		not set -q VIS_PATH; and set VIS_PATH "~/.config/vis"
 		set -x EDITOR vis
 	else if type -q vim
 		set -x EDITOR vim
