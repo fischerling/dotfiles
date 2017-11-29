@@ -97,5 +97,10 @@ if not set -q SSH_CLIENT; or not set -q SSH_TTY
 	if not set -q DISPLAY; and test "$XDG_VTNR" = "1"
 		startx ~/.xinitrc
 	end
+else
+	# Is bobthefish our prompt
+	if functions -a | grep -q bobthefish
+		set -g theme_display_user yes
+	end
 end
 
