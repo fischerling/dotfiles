@@ -63,7 +63,9 @@ end
 
 if not set -q EDITOR
 	if type -q vis
-		not set -q VIS_PATH; and set -x VIS_PATH "$DOTFILES_LOCATION/config/vis"
+		if not contains "$DOTFILES_LOCATION/config/vis/?.lua" $VIS_PATH
+			set -x VIS_PATH "$DOTFILES_LOCATION/config/vis/?.lua" $VIS_PATH
+		end
 		set -x EDITOR vis
 	else if type -q vim
 		set -x EDITOR vim
