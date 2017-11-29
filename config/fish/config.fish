@@ -20,10 +20,12 @@ end
 
 #include go binaries
 if type -q go
-    not set -q GOPATH; and set -x GOPATH ~/Desktop/projects/go
+	if not set -q GOPATH; and test -d ~/Desktop/projects/go
+		set -x GOPATH ~/Desktop/projects/go
 
-	if not contains $GOPATH/bin $PATH
-	    set PATH $GOPATH/bin $PATH
+		if not contains $GOPATH/bin $PATH
+			set PATH $GOPATH/bin $PATH
+		end
 	end
 end
 
@@ -35,7 +37,7 @@ if type -q guix
 	set fish_function_path $fish_function_path /run/current-system/profile/share/fish/functions
 	set fish_complete_path $fish_complete_path /run/current-system/profile/share/fish/completions
 else
-	if not contains /bin/core_perl $PATH
+	if test -d /bin/core_perl; and not contains /bin/core_perl $PATH
 	    set PATH /bin/core_perl $PATH
 	end
 
@@ -110,7 +112,7 @@ if test (hostname) = "antares.uberspace.de"
 end
 
 #start xsession if we are not in ssh
-if not set -q SSH_CLIENT or not set -q SSH_TTY
+if not set -q SSH_CLIENT; or not set -q SSH_TTY
 	if not set -q DISPLAY; and test "$XDG_VTNR" = "1"
 		startx ~/.xinitrc
 	end
