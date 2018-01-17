@@ -1,11 +1,14 @@
+set mbox_type="Maildir"
+mailboxes `find ~/.local/share/maildir/ -type d -name cur -printf '%h '`
+#mailboxes `find ~/.Maildir/ -type d -name cur -printf '%h '`
 ################# IMAP ####################
-set imap_user=aj46ezos
+#set imap_user=aj46ezos
 # Automatically log in to this mailbox at startup
-set folder="imaps://$imap_user@faumail.uni-erlangen.de/"
+#set folder="imaps://$imap_user@faumail.uni-erlangen.de/"
 # Define the = shortcut, and the entry point for the folder browser (c?)
-set spoolfile="+INBOX"
-set record="+Sent"
-set postponed="+Drafts"
+#set spoolfile="+INBOX"
+#set record="+Sent"
+#set postponed="+Drafts"
 
 # activate TLS if available on the server
 set ssl_starttls=yes
@@ -43,7 +46,7 @@ set smtp_url="smtps://$imap_user@smtp-auth.uni-erlangen.de"
 # see: http://www.mail-archive.com/mutt-users@mutt.org/msg36375.html
 
 set smtp_pass=$FAU_PASS
-set imap_pass=$FAU_PASS
+#set imap_pass=$FAU_PASS
 
 ############### GPG ########################
 
