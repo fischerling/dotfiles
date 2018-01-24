@@ -102,7 +102,7 @@ Config:set( "global.editor", editor .. " +/^$ ++8" )
 Config:set( "global.history", DATA_HOME .. "/lumail/history" )
 
 --
--- Configure a cache-prefix, and populate it
+-- Configure a cache-prefix, and populate it.
 --
 Config:set( "cache.prefix", CACHE_HOME .. "/lumail" )
 
@@ -194,4 +194,28 @@ colour_table['message'] = {
 --
 Config:set("complete.addressbookcmd", "khard email --parsable")
 
-_G["message_replace"] = nil
+--
+-- Move messages
+--
+
+function Message.move(maildir)
+	local msg = Message.at_point()
+
+	Message.save(maildir)
+	msg:delete()
+end
+
+--
+-- Move message to Geschaefte
+--
+keymap["index"]["mg"] = "Message.move('" .. MAILPREFIX .. "/FAU/Geschaefte')"
+keymap["message"]["mg"] = "Message.move('" .. MAILPREFIX .. "/FAU/Geschaefte')"
+
+keymap["index"]["mga"] = "Message.move('" .. MAILPREFIX .. "/FAU/Geschaefte.Auto')"
+keymap["message"]["mga"] = "Message.move('" .. MAILPREFIX .. "/FAU/Geschaefte.Auto')"
+
+keymap["index"]["mgh"] = "Message.move('" .. MAILPREFIX .. "/FAU/Geschaefte.Handy')"
+keymap["message"]["mgh"] = "Message.move('" .. MAILPREFIX .. "/FAU/Geschaefte.Handy')"
+
+keymap["index"]["mgw"] = "Message.move('" .. MAILPREFIX .. "/FAU/Geschaefte.Wohnung')"
+keymap["message"]["mgw"] = "Message.move('" .. MAILPREFIX .. "/FAU/Geschaefte.Wohnung')"
