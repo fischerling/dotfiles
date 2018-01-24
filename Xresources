@@ -36,18 +36,6 @@ Xft.hintstyle:                         hintslight
 #define S_base2                        #eee8d5
 #define S_base3                        #fdf6e3
 
-! Light
-
-! #define S_base03                     #fdf6e3
-! #define S_base02                     #eee8d5
-! #define S_base01                     #93a1a1
-! #define S_base00                     #839496
-! #define S_base0                      #657b83
-! #define S_base1                      #586e75
-! #define S_base2                      #073642
-! #define S_base3                      #002b36
-
-
 ! To only apply colors to your terminal, for example, prefix
 ! the color assignment statement with its name. Example:
 !
@@ -76,7 +64,7 @@ Xft.hintstyle:                         hintslight
 *color12:                              S_base0
 *color13:                              S_violet
 *color14:                              S_base1
-*color15:                              S_base3                                 
+*color15:                              S_base3
 
 !-------------------------------------------------------------------------------
 ! URxvt settings
@@ -91,12 +79,7 @@ URxvt.internalBorder:                  3
 
 ! Fonts
 !URxvt.font:                            -*-terminus-medium-*-*-*-*-140-*-*-*-*-*
-URxvt*font:                            xft:Hack-Regular:pixelsize=14,\
-                                       -*-fixed-*-*-*-*-*-*-*-*-*-*-*-*
-!URxvt*boldFont:                       xft:Monospace:pixelsize=14
-
-! Fix font space
-!URxvt*letterSpace:                    -1
+URxvt*font:                            xft:Hack-Regular:pixelsize=14
 
 ! Scrollbar
 URxvt.scrollBar:                       false
@@ -120,5 +103,6 @@ URxvt.pointerBlank:                    true
 
 ! Ssh command to execute
 rofi.ssh-command:                      echo {ssh-client} {host}
+
 ! Run command to execute that runs in shell
 rofi.run-shell-command:                {terminal} -e {cmd}
