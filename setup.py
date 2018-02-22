@@ -64,13 +64,12 @@ targets = {
         "guixsd":
             [("guix/system.scm", "/etc/guix/system.scm"),
             ("guix/bashrc", home_dir + "/.bashrc")],
-        "vimrc":
-            [("vimrc", home_dir + "/.vimrc")],
-        "vim.d":
-            [("vim", home_dir + "/.vim")],
+        "vim":
+            [("vimrc", home_dir + "/.vimrc"),
+            ("vim", home_dir + "/.vim")],
         "vis":
             [("config/vis", home_dir + "/.config/vis")],
-        "ssh-config":
+        "ssh":
             [("ssh/config", home_dir + "/.ssh/config")],
         "X":
             [("xinitrc", home_dir + "/.xinitrc"),
@@ -84,17 +83,17 @@ targets = {
             ("scripts/mutt.sh", home_dir+"/.local/bin/mutt.sh")],
         "zshrc":
             [("zshrc", home_dir + "/zshrc")],
-        "i3-config":
+        "i3":
             [("config/i3", home_dir + "/.config/i3"),
             dotfile_loc_helper],
         "dir_colors":
             [("dir_colors", home_dir + "/.dir_colors")],
-        "fish-config":
+        "fish":
             [("config/fish/config.fish", home_dir + "/.config/fish/config.fish"),
             ("config/fish/fishfile", home_dir + "/.config/fish/fishfile"),
             dotfile_loc_helper,
             fish_config],
-        "terminator-config":
+        "terminator":
             [("config/terminator/config", home_dir +
                                           "/.config/terminator/config")],
         "offlineimap":
@@ -109,7 +108,7 @@ targets = {
             ("FAU/start_fau_wlan.sh", home_dir + "/.local/bin/start_fau_wlan")]
         }
 
-git_submodules_for = ["vim.d", "vis"]
+git_submodules_for = ["vim", "vis"]
 
 def install_target(target, quiet):
     """Install a target"""
