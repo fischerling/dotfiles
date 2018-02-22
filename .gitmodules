@@ -26,3 +26,6 @@
 [submodule "config/vis/plugins/vis-editorconfig"]
 	path = config/vis/plugins/vis-editorconfig
 	url = https://github.com/vktec/vis-editorconfig
+[submodule "config/vis/plugins/vis-commentary"]
+	path = config/vis/plugins/vis-commentary
+	url = https://github.com/lutobler/vis-commentary

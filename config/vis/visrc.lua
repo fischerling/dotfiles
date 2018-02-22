@@ -4,6 +4,7 @@ require('plugins/filetype')
 require('plugins/textobject-lexer')
 require('plugins/vis-cursors/cursors').cursors_path = string.format('%s/vis/cursors', os.getenv('XDG_DATA_HOME') or os.getenv('HOME').."/.local/share")
 require('plugins/vis-spellcheck/spellcheck')
+require('plugins/vis-commentary/vis-commentary')
 
 vis.events.subscribe(vis.events.INIT, function()
 	-- Your global configuration options
