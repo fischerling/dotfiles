@@ -15,9 +15,10 @@ vis.events.subscribe(vis.events.INIT, function()
 end)
 
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
-	vis:command('set number')
+	-- Default settings
 	vis:command('set tabwidth 4')
 	vis:command('set autoindent')
+	vis:command('set number')
 	vis:command('set colorcolumn 80')
 	vis:command('set show-tabs')
 
@@ -33,6 +34,10 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 		end
 	end
 end)
+
+-- load plugins that hook WIN_OPEN to change settings after hook with default settings
+require('plugins/vis-editorconfig/editorconfig')
+require('plugins/vis-simple-modeline/simple-modeline')
 
 --vis.events.subscribe(vis.events.FILE_SAVE_PRE, function(file)
 	---- purge trailing whitespace

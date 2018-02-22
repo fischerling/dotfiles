@@ -22,3 +22,7 @@
 [submodule "config/vis/plugins/vis-spellcheck"]
 	path = config/vis/plugins/vis-spellcheck
 	url = https://github.com/fischerling/vis-spellcheck
+
+[submodule "config/vis/plugins/vis-editorconfig"]
+	path = config/vis/plugins/vis-editorconfig
+	url = https://github.com/vktec/vis-editorconfig
