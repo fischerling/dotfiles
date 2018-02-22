@@ -5,6 +5,8 @@ require('plugins/textobject-lexer')
 require('plugins/vis-cursors/cursors').cursors_path = string.format('%s/vis/cursors', os.getenv('XDG_DATA_HOME') or os.getenv('HOME').."/.local/share")
 require('plugins/vis-spellcheck/spellcheck')
 require('plugins/vis-commentary/vis-commentary')
+-- This hooks vis.events.START so its fine to load it before the default settings
+require('plugins/vis-modelines/vis-modelines')
 
 vis.events.subscribe(vis.events.INIT, function()
 	-- Your global configuration options
@@ -38,7 +40,6 @@ end)
 
 -- load plugins that hook WIN_OPEN to change settings after hook with default settings
 require('plugins/vis-editorconfig/editorconfig')
-require('plugins/vis-simple-modeline/simple-modeline')
 
 --vis.events.subscribe(vis.events.FILE_SAVE_PRE, function(file)
 	---- purge trailing whitespace

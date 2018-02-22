@@ -29,3 +29,6 @@
 [submodule "config/vis/plugins/vis-commentary"]
 	path = config/vis/plugins/vis-commentary
 	url = https://github.com/lutobler/vis-commentary
+[submodule "config/vis/plugins/vis-modelines"]
+	path = config/vis/plugins/vis-modelines
+	url = https://github.com/lutobler/vis-modelines
