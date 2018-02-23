@@ -10,6 +10,7 @@ import subprocess
 
 user = pwd.getpwuid(os.getuid())[0]
 home_dir = os.getenv("HOME")
+config_dir = os.getenv("XDG_CONFIG_HOME") or home_dir + "/.config"
 cwd = os.getcwd()
 
 def fish_config(quiet):
@@ -60,7 +61,7 @@ def dotfile_loc_helper(quiet):
 
 targets = {
         "lumail":
-            [("config/lumail/lumail.lua", home_dir + "/.config/lumail/lumail.lua")],
+            [("config/lumail/lumail.lua", config_dir + "/lumail/lumail.lua")],
         "guixsd":
             [("guix/system.scm", "/etc/guix/system.scm"),
             ("guix/bashrc", home_dir + "/.bashrc")],
@@ -68,7 +69,7 @@ targets = {
             [("vimrc", home_dir + "/.vimrc"),
             ("vim", home_dir + "/.vim")],
         "vis":
-            [("config/vis", home_dir + "/.config/vis")],
+            [("config/vis", config_dir + "/vis")],
         "ssh":
             [("ssh/config", home_dir + "/.ssh/config")],
         "X":
@@ -84,24 +85,25 @@ targets = {
         "zshrc":
             [("zshrc", home_dir + "/zshrc")],
         "i3":
-            [("config/i3", home_dir + "/.config/i3"),
+            [("config/i3", config_dir + "/i3"),
             dotfile_loc_helper],
         "dir_colors":
             [("dir_colors", home_dir + "/.dir_colors")],
         "fish":
-            [("config/fish/config.fish", home_dir + "/.config/fish/config.fish"),
-            ("config/fish/fishfile", home_dir + "/.config/fish/fishfile"),
+            [("config/fish/config.fish", config_dir + "/fish/config.fish"),
+            ("config/fish/fishfile", config_dir + "/fish/fishfile"),
             dotfile_loc_helper,
             fish_config],
         "terminator":
-            [("config/terminator/config", home_dir +
-                                          "/.config/terminator/config")],
+            [("config/terminator/config", config_dir + "/terminator/config")],
         "offlineimap":
-            [("config/offlineimap", home_dir + "/.config/offlineimap")],
+            [("config/offlineimap", config_dir + "/offlineimap")],
         "msmtp":
             [("msmtprc", home_dir + "/.msmtprc")],
         "dunst":
-            [("config/dunst/dunstrc", home_dir + "./config/dunst/dunstrc")],
+            [("config/dunst/dunstrc", config_dir + "/dunst/dunstrc")],
+        "qutebrowser":
+            [("config/qutebrowser/config.py", config_dir + "/qutebrowser/config.py")],
         "FAU":
             [("FAU/wl-FAU-STUD.gpg", "/etc/netctl/wl-FAU-STUD"),
             ("FAU/fau_stud.conf.gpg", ""),
