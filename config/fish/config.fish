@@ -50,7 +50,7 @@ end
 set fish_function_path $DOTFILES_LOCATION/config/fish/functions $fish_function_path
 # add arch specific functions
 if type -q pacman
-	set fish_function_path $DOTFILES_LOCATION/arch $fish_function_path
+	set fish_function_path $DOTFILES_LOCATION/arch-linux $fish_function_path
 end
 set fish_complete_path $DOTFILES_LOCATION/config/fish/completions $fish_complete_path
 
