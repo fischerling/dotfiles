@@ -145,7 +145,7 @@ bindsym $mod+r mode "resize"
 # Select Display orientation
 mode "display-orientation" {
 		# Default layout
-		bindsym d exec xrandr --output eDP1 --auto --output HDMI1 --auto --right-of eDP1
+		bindsym d exec xrandr --output eDP1 --auto --output HDMI1 --auto --left-of eDP1
 
 		# Disable eDP1 or HDMI1
 		bindsym h exec xrandr --output HDMI1 --off
@@ -198,7 +198,7 @@ new_window pixel 3
 hide_edge_borders smart
 
 # Set Displayorientation
-exec --no-startup-id xrandr --output HDMI1 --right-of eDP1
+exec --no-startup-id xrandr --output HDMI1 --left--of eDP1
 
 # set i3lock as xscreensaver
 exec --no-startup-id xss-lock -- i3lock -i $DOTFILES_LOCATION/wallpapers/blue_screen.png #-lock
