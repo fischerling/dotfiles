@@ -10,6 +10,9 @@ then
 elif type terminator >/dev/null 2>/dev/null
 then
     export TERMINAL=terminator
+elif type xterm >/dev/null 2>/dev/null
+then
+    export TERMINAL=xterm
 fi
 
 # Set browser
