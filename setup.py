@@ -107,7 +107,9 @@ targets = {
         "FAU":
             [("FAU/wl-FAU-STUD.gpg", "/etc/netctl/wl-FAU-STUD"),
             ("FAU/fau_stud.conf.gpg", ""),
-            ("FAU/start_fau_wlan.sh", home_dir + "/.local/bin/start_fau_wlan")]
+            ("FAU/start_fau_wlan.sh", home_dir + "/.local/bin/start_fau_wlan")],
+        "mpd":
+            [("mpdconfig", home_dir + "/.mpdconf")]
         }
 
 git_submodules_for = ["vim", "vis"]
