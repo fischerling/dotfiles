@@ -1,5 +1,4 @@
 function timer
-
 	set usage "Usage: timer [-q] <minutes to wait>"
 
 	if test (count $argv) -lt 1
@@ -28,12 +27,6 @@ function timer
         echo (string replace -r '0m left' ready! (echo (math $time - $i)m left))
     end
     if not set -q quiet
-        while true
-            for i in (seq 1 20)
-                xkbbell
-                sleep 1
-            end
-            sleep 1m
-        end
+    	alert -l
     end
 end
