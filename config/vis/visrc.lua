@@ -8,6 +8,8 @@ require('plugins/vis-commentary/vis-commentary')
 -- This hooks vis.events.START so its fine to load it before the default settings
 require('plugins/vis-modelines/vis-modelines')
 
+require('plugins/suw')
+
 vis.events.subscribe(vis.events.INIT, function()
 	-- Your global configuration options
 	local theme = "default"
@@ -31,8 +33,7 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 			win:set_syntax("diff")
 		end
 
-		local filetype = win.file.name:match(".*%.(.*)")
-		if filetype == "py" then
+		if win.syntax == "python" then
 			vis:command("set expand")
 		end
 	end
