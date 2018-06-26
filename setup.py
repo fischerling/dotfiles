@@ -83,7 +83,7 @@ targets = {
             ("mutt", home_dir + "/.mutt"),
             ("scripts/mutt.sh", home_dir+"/.local/bin/mutt.sh")],
         "zshrc":
-            [("zshrc", home_dir + "/zshrc")],
+            [("zshrc", home_dir + "/.zshrc")],
         "i3":
             [("config/i3", config_dir + "/i3"),
             dotfile_loc_helper],
