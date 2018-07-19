@@ -65,11 +65,18 @@ fi
 # Set keyboard layout
 setxkbmap de
 
+function start_if_avail {
+	if type $1 >/dev/null
+	then
+		eval "$1 $2"
+	fi
+}
+
 # Start notification service
-dunst &
+start_if_avail dunst '&'
 
 # Start touchpad daemon
-syndaemon -i 1 -d
+start_if_avail "syndaemon" "-i 1 -d"
 
 # Start owncloud client
-owncloud &
+start_if_avail owncloud "&"
