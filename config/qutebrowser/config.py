@@ -6,7 +6,7 @@ config.bind(',x', 'hint links spawn mpv {hint-url}')
 
 config.bind('<Ctrl-l>', 'spawn --userscript password_fill')
 
-c.editor.command = [os.environ["TERMINAL"], "-e", "vim", "{}"]
+c.editor.command = [os.environ["TERMINAL"], "-e", os.environ["VISUAL"], "+{line}", "{}"]
 
 c.content.headers.do_not_track = True
 
