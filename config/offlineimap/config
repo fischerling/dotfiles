@@ -1,15 +1,15 @@
 # offlineimap config file
 
 [general]
-accounts = FAUMail,MUHQ,SNFMT
-maxsyncaccounts = 2
+accounts = FAU,MUHQ,SNFMT
+maxsyncaccounts = 1
 pythonfile = ~/.config/offlineimap/offlineimap.py
 
-[Account FAUMail]
+[Account FAU]
 localrepository = LocalFAU
 remoterepository = FAU
 
-autorefresh=1
+autorefresh=0.5
 quick=10
 
 [Repository FAU]
@@ -31,7 +31,7 @@ localfolders = ~/.local/share/maildir/FAU/
 localrepository=LocalMUHQ
 remoterepository=MUHQ
 
-autorefresh=1
+autorefresh=0.5
 quick=10
 
 [Repository MUHQ]
@@ -52,7 +52,7 @@ localfolders = ~/.local/share/maildir/MUHQ/
 localrepository=LocalSNFMT
 remoterepository=SNFMT
 
-autorefresh=1
+autorefresh=5
 quick=10
 
 [Repository SNFMT]
