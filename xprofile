@@ -78,8 +78,8 @@ start_if_avail dunst '&'
 # Start touchpad daemon
 start_if_avail "syndaemon" "-i 1 -d"
 
-# Start owncloud client
-start_if_avail owncloud "&"
+# Start nextcloud client
+start_if_avail nextcloud "&"
 
 # Start email sync
 for ACC in FAU MUHQ SNFMT
