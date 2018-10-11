@@ -94,7 +94,7 @@ bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8: mail
-bindsym $mod+9 workspace 9: spotify
+bindsym $mod+9 workspace 9: music
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
@@ -106,7 +106,7 @@ bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8: mail
-bindsym $mod+Shift+9 move container to workspace 9: spotify
+bindsym $mod+Shift+9 move container to workspace 9: music
 bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
@@ -193,7 +193,7 @@ bindsym XF86Battery exec $DOTFILES_LOCATION/scripts/toggle_syn_touchpad.sh
 # Suspend
 bindsym $mod+F7 exec systemctl suspend
 
-#hide broders
+#hide borders
 new_window pixel 3
 hide_edge_borders smart
 
@@ -205,6 +205,9 @@ exec --no-startup-id xss-lock -- i3lock -i $DOTFILES_LOCATION/wallpapers/blue_sc
 
 # Autostart Programms
 exec --no-startup-id feh --bg-fill $DOTFILES_LOCATION/wallpapers/nsa_wallpaper.png
+
+# Unlock GPG key
+exec --no-startup-id bash -c "echo | gpg -s > /dev/null"
 
 # Autorestore Layout
 #exec --no-startup-id "i3-msg 'workspace 1; append_layout /home/fischerling/.i3/workspace-1.json'"

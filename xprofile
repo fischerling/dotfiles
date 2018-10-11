@@ -80,3 +80,9 @@ start_if_avail "syndaemon" "-i 1 -d"
 
 # Start owncloud client
 start_if_avail owncloud "&"
+
+# Start email sync
+for ACC in FAU MUHQ SNFMT
+do
+	systemctl --user start offlineimap@$ACC.service
+done
