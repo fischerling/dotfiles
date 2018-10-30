@@ -106,7 +106,7 @@ if not set -q SSH_CLIENT; or not set -q SSH_TTY
 		if type -q sway
 			set -x TERMINAL termite
 			set -x BROWSER qutebrowser
-			touch ~/.local/share/sway/log
+			mkdir -p ~/.local/share/sway
 			sway -V ^ ~/.local/share/sway/log
 		else
 			startx ~/.xinitrc
