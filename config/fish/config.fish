@@ -98,10 +98,19 @@ if type -q yaourt
     end
 end
 
+set -x GPG_TTY (tty)
+
 #start xsession if we are not in ssh
 if not set -q SSH_CLIENT; or not set -q SSH_TTY
 	if not set -q DISPLAY; and test "$XDG_VTNR" = "1"
-		startx ~/.xinitrc
+		if type -q sway
+			set -x TERMINAL termite
+			set -x BROWSER qutebrowser
+			touch ~/.local/share/sway/log
+			sway -V ^ ~/.local/share/sway/log
+		else
+			startx ~/.xinitrc
+		end
 	end
 else
 	# display user in theme
