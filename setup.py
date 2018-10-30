@@ -87,6 +87,9 @@ targets = {
         "i3":
             [("config/i3", config_dir + "/i3"),
             dotfile_loc_helper],
+        "sway":
+            [("config/sway", config_dir + "/sway"),
+            dotfile_loc_helper],
         "dir_colors":
             [("dir_colors", home_dir + "/.dir_colors")],
         "fish":

@@ -1,0 +1,107 @@
+conky.config = {
+    background = false,
+    out_to_x = false,
+    out_to_console = true,
+    update_interval = 1,
+    mpd_port = 6601,
+
+    -- Network interface must have an ip address to be considered up
+    if_up_strictness = "address"
+}
+
+conky.text = [[
+[
+    #{"name": "uptime", "color":"\#ffffff", "full_text":"${uptime_short}"},
+    
+    ################## cpu #################
+
+    #{"name": "cpuTemperature", "full_text": "${exec sensors | grep -A 1 'temp1' | cut -c13-16 | sed '/^$/d'}C"},
+
+    {"name": "cpuStart", "color" : "\#ffffff", "full_text": "CPU: [", "separator": false},
+
+    {"name": "cpu1", "color": ${if_match ${cpu cpu1}<89}"\#ffffff"${else}"\#ff0000"${endif},
+    "full_text": "${cpu cpu1}%,", "separator": false},  
+
+    {"name": "cpu2", "color": ${if_match ${cpu cpu2}<89}"\#ffffff"${else}"\#ff0000"${endif},
+
+    "full_text": "${cpu cpu2}%,", "separator": false},  
+
+    {"name": "cpu3", "color": ${if_match ${cpu cpu3}<89}"\#ffffff"${else}"\#ff0000"${endif},
+    "full_text": "${cpu cpu3}%,", "separator": false},  
+
+    {"name": "cpu4", "color": ${if_match ${cpu cpu4}<89}"\#ffffff"${else}"\#ff0000"${endif},
+    "full_text": "${cpu cpu4}%", "separator": false},  
+
+    {"name": "cpuEnd", "color": "\#ffffff", "full_text": "]"},
+
+
+    ################ memory #########################
+
+    {"name": "memory", "color": ${if_match ${memperc}<80}"\#ffffff"${else}"\#ff0000"${endif},
+        "full_text": "RAM: ${memperc}%"},  
+
+    #{"name": "disk", "color": "\#ffffff", "full_text": " ${fs_used_perc /}%"},  
+
+
+    ############### music/ spotify/ mpd ###################
+
+    ${if_match "${nodename_short}"!="fishbowl"}
+	    {"name":"music", "color": "\#ffffff", "full_text": "${exec $DOTFILES_LOCATION/scripts/media_status.sh}"},
+    ${endif}
+
+
+    ########### networking ########################
+
+    ${if_up wlp2s0} 
+	    {"name":"wifi", "color": ${if_match ${wireless_link_qual_perc wlp2s0}>60}"\#339966"${else}"\#FF9200"${endif},
+        "full_text": "${addr wlp2s0} ${wireless_link_qual_perc wlp2s0}%"}, 
+        {"name":"download", "color":"\#ffffff", "full_text": "⤋: ${downspeed wlp2s0}"}, 
+
+    ${else} ${if_up enp0s20u1}
+	            {"name":"ethernet", "color": "\#339966", "full_text": "IP: ${addr enp0s20u1} "}, 
+                {"name":"download", "color":"\#ffffff", "full_text": "⤋: ${downspeed enp0s20u1}"}, 
+
+            ${else} ${if_up eth0}
+	                    {"name":"ethernet", "color": "\#339966", "full_text": "IP: ${addr eth0} "}, 
+                        {"name":"download", "color":"\#ffffff", "full_text": "⤋: ${downspeed eth0}"}, 
+
+	                ${else}
+	                    {"name":"nonet", "full_text": "no connection" }, 
+                    ${endif}  
+            ${endif}  
+    ${endif}  
+
+
+    ################ Volume ########################
+
+    {"name": "volume status", "color": "\#ffffff", "full_text":
+    "${exec $DOTFILES_LOCATION/scripts/audio_status.sh}"},
+
+
+    ################# Battery ####################
+
+    {"name": "battery","color":
+        ${if_match ${battery_percent BAT0}<50}
+            ${if_match ${battery_percent BAT0}<25}"\#ff0000"
+            ${else}"\#ff9200"
+            ${endif}
+        ${else}"\#ffffff"
+        ${endif}, "full_text": "${battery BAT0}"},  
+    
+    {"name": "battery","color":
+        ${if_match ${battery_percent BAT1}<50}
+            ${if_match ${battery_percent BAT1}<25}"\#ff0000"
+            ${else}"\#ff9200"
+            ${endif}
+        ${else}"\#ffffff"
+        ${endif}, "full_text": "${battery BAT1}"},  
+
+
+    ############### Time ##################
+    ${if_match "${nodename_short}"!="fishbowl"}
+        {"name": "marks", "color": "\#FFFFFF",
+        "full_text": "${exec fish -c 'mark get -r=3'}", "separator": false},
+    ${endif}
+    {"name": "time", "color": "\#CFCFCF", "full_text": "${time %d/%m/%y} ${time %H:%M}"}
+],
+]]
