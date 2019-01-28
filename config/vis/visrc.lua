@@ -21,7 +21,8 @@ end)
 
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 	-- Default settings
-	vis:command('set tabwidth 4')
+	tabwidth = 4
+	vis:command('set tabwidth '..tabwidth)
 	vis:command('set autoindent')
 	vis:command('set number')
 	vis:command('set colorcolumn 80')
@@ -34,10 +35,22 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 		end
 
 		if win.syntax == "python" then
-			vis:command("set expand")
+			vis:command('set expandtab')
+			vis:map(vis.modes.INSERT, '<Backspace>', function()
+				local found_tab = true
+				for selection in vis.win:selections_iterator() do
+					local pos = selection.pos
+					if not pos or pos < tabwidth or vis.win.file:content(pos - tabwidth, tabwidth) ~= string.rep(' ', tabwidth) then
+						found_tab = false
+						break
+					end
+				end
+				vis:feedkeys(string.rep('<vis-delete-char-prev>', found_tab and tabwidth or 1))
+			end)
 		end
 	end
 end)
+
 
 -- load plugins that hook WIN_OPEN to change settings after hook with default settings
 require('plugins/vis-editorconfig/editorconfig')
