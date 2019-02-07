@@ -17,7 +17,7 @@ then
        print_unmute
    fi
 
-   echo -n $(pacmd info | grep 'Default sink' | grep -o '[^.]*$')
+   echo -n $(pacmd info | grep 'active port.*output' | cut -d"-" -f3 | sed "s/>//")
 
    echo " [$(pamixer --get-volume)%]"
 
