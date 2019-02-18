@@ -25,7 +25,9 @@ function upgrade -d "universal upgrade function"
 
     # Arch
     if is_command pacman
-        if is_command pacaur
+        if is_command yay
+            yay -Syu
+        else if is_command pacaur
             pacaur -Syu
         else if is_command yaourt
             yaourt -Syua
