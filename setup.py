@@ -106,7 +106,8 @@ targets = {
         "dunst":
             [("config/dunst/dunstrc", config_dir + "/dunst/dunstrc")],
         "qutebrowser":
-            [("config/qutebrowser/config.py", config_dir + "/qutebrowser/config.py")],
+            [("config/qutebrowser/config.py", config_dir + "/qutebrowser/config.py"),
+             ("config/qutebrowser/qutoconfig.yml", config_dir + "/qutebrowser/autoconfig.yml")],
         "FAU":
             [("FAU/wl-FAU-STUD.gpg", "/etc/netctl/wl-FAU-STUD"),
             ("FAU/fau_stud.conf.gpg", ""),
