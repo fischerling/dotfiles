@@ -16,23 +16,20 @@ conky.text = [[
 
     #{"name": "cpuTemperature", "full_text": "${exec sensors | grep -A 1 'temp1' | cut -c13-16 | sed '/^$/d'}C"},
 
-    {"name": "cpuStart", "color" : "\#ffffff", "full_text": "CPU: [", "separator": false},
+    {"name": "cpuStart", "color" : "\#ffffff", "full_text": "CPU:", "separator": false},
 
     {"name": "cpu1", "color": ${if_match ${cpu cpu1}<89}"\#ffffff"${else}"\#ff0000"${endif},
-    "full_text": "${cpu cpu1}%,", "separator": false},  
+    "full_text": "${cpu cpu1}%,", "separator": false},
 
     {"name": "cpu2", "color": ${if_match ${cpu cpu2}<89}"\#ffffff"${else}"\#ff0000"${endif},
 
-    "full_text": "${cpu cpu2}%,", "separator": false},  
+    "full_text": "${cpu cpu2}%,", "separator": false},
 
     {"name": "cpu3", "color": ${if_match ${cpu cpu3}<89}"\#ffffff"${else}"\#ff0000"${endif},
-    "full_text": "${cpu cpu3}%,", "separator": false},  
+    "full_text": "${cpu cpu3}%,", "separator": false},
 
     {"name": "cpu4", "color": ${if_match ${cpu cpu4}<89}"\#ffffff"${else}"\#ff0000"${endif},
-    "full_text": "${cpu cpu4}%", "separator": false},  
-
-    {"name": "cpuEnd", "color": "\#ffffff", "full_text": "]"},
-
+    "full_text": "${cpu cpu4}%"},
 
     ################ memory #########################
 
