@@ -99,7 +99,7 @@ conky.text = [[
         "full_text": "${exec worklog show}", "separator": false},
 
         {"name": "marks", "color": "\#FFFFFF",
-        "full_text": "${exec fish -c 'mark get -r=3'}", "separator": false},
+        "full_text": "${exec fish -c 'echo (mark print (date -I) 2)'}", "separator": false},
     ${endif}
     {"name": "time", "color": "\#CFCFCF", "full_text": "${time %d/%m/%y} ${time %H:%M}"}
 ],
