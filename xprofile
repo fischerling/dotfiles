@@ -57,7 +57,7 @@ fi
 
 # Export DOTFILES_LOCATION (should be already exported by fish)
 if [ -z "$DOTFILES_LOCATION" ]; then
-    export DOTFILES_LOCATION=$(get_dotfiles_location)
+    export DOTFILES_LOCATION=$(~/.local/bin/get_dotfiles_location)
 fi
 
 [[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources
