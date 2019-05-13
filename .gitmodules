@@ -32,3 +32,6 @@
 [submodule "config/vis/plugins/vis-modelines"]
 	path = config/vis/plugins/vis-modelines
 	url = https://github.com/lutobler/vis-modelines
+[submodule "config/vis/plugins/vis-ctags"]
+	path = config/vis/plugins/vis-ctags
+	url = /home/fischerling/.config/vis/plugins/vis-ctags
