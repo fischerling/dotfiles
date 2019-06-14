@@ -41,7 +41,7 @@ remoteport = 993
 remoteuser = muhq
 remotepasseval = get_passwd("MUHQ")
 ssl=yes
-cert_fingerprint = B53A1586456E35E454DA3581980330903753AD3E
+cert_fingerprint = B5C9B25A59EA394A89D60EB4751CD4AF47CB900C
 newmail_hook = lambda: __import__("os").system("notify-send \"new mail in MUHQ\"")
 
 [Repository LocalMUHQ]
