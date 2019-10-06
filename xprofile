@@ -63,7 +63,12 @@ fi
 [[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources
 
 # Set keyboard layout
-setxkbmap de
+if [ $HOSTNAME = "fishtank" ]
+then
+	setxkbmap gb
+else
+	setxkbmap de
+fi
 
 function start_if_avail {
 	if type $1 >/dev/null
@@ -77,6 +82,12 @@ start_if_avail dunst '&'
 
 # Start touchpad daemon
 start_if_avail "syndaemon" "-i 1 -d"
+
+# Start gnome-keyring mostly for nextcloud
+if type gnome-keyring-daemon >/dev/null
+then
+	eval $(gnome-keyring-daemon --start --components=pkcs11,secrets)
+fi
 
 # Start nextcloud client
 start_if_avail nextcloud "&"
