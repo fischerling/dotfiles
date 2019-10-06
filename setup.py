@@ -42,7 +42,7 @@ def fish_config(quiet):
     subprocess.run(["fish", dir_path+"fisher.fish"])
 
 def dotfile_loc_helper(quiet):
-    """Create a symlink of get_dotfiles_location.sh into the path"""
+    """Create a symlink to get_dotfiles_location.sh into PATH"""
 
     if not os.path.exists(home_dir+"/.local/bin"):
         os.mkdir(home_dir+"/.local/bin")
@@ -97,6 +97,8 @@ targets = {
             ("config/fish/fishfile", config_dir + "/fish/fishfile"),
             dotfile_loc_helper,
             fish_config],
+        "xonsh":
+            [("config/xonsh/rc.xsh", config_dir + "/xonsh/rc.xsh")],
         "terminator":
             [("config/terminator/config", config_dir + "/terminator/config")],
         "offlineimap":
