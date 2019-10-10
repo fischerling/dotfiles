@@ -1,0 +1,25 @@
+# Selections
+alias c2p="xclip -o -selection clipboard | xclip -i -selection primary"
+alias p2c="xclip -o -selection primary | xclip -i -selection clipboard"
+
+alias diff="diff --color=auto"
+
+alias ll="ls -l -h"
+alias la="ll -a"
+
+alias open="xdg-open"
+
+alias screensavoff="xset s off; xset -dpms"
+alias screensavon="xset s on; xset +dpms"
+
+# git
+alias ga="git add"
+alias gca="git commit -v -a"
+alias gcm="git commit -m"
+alias gl="git pull"
+alias glg="git log --stat --color"
+alias gp="git push"
+alias gsi="git submodule init"
+alias gst="git status"
+alias gsu="git submodule update"
+
