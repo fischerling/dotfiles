@@ -195,10 +195,16 @@ bindsym $mod+Shift+o exec $DOTFILES_LOCATION/scripts/open_primary_in_browser.sh
 bindsym XF86AudioLowerVolume exec $DOTFILES_LOCATION/scripts/audio_control.sh -5
 bindsym XF86AudioRaiseVolume exec $DOTFILES_LOCATION/scripts/audio_control.sh +5
 bindsym XF86AudioMute exec $DOTFILES_LOCATION/scripts/audio_control.sh toggle
+
+bindsym $mod+Next exec $DOTFILES_LOCATION/scripts/audio_control.sh -5
+bindsym $mod+Prior exec $DOTFILES_LOCATION/scripts/audio_control.sh +5
+
 # # Music
 bindsym XF86AudioPrev exec $DOTFILES_LOCATION/scripts/media_control.sh prev
 bindsym XF86AudioPlay exec $DOTFILES_LOCATION/scripts/media_control.sh toggle
 bindsym XF86AudioNext exec $DOTFILES_LOCATION/scripts/media_control.sh next
+
+bindsym $mod+Pause exec $DOTFILES_LOCATION/scripts/media_control.sh toggle
 
 ## brightnescontroll
 bindsym XF86MonBrightnessUp exec xbacklight +10
