@@ -32,7 +32,7 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 			win:set_syntax("diff")
 		end
 
-		if win.syntax == "python" then
+		if win.syntax == "python" or win.syntax == "rust" then
 			vis:command('set expandtab')
 			vis:map(vis.modes.INSERT, '<Backspace>', function()
 				local found_tab = true
@@ -49,9 +49,31 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 	end
 end)
 
-
 -- load plugins that hook WIN_OPEN to change settings after hook with default settings
 require('plugins/vis-editorconfig/editorconfig')
+
+vis:command_register("fzf", function(argv, force, cur_win, selection, range)
+	local out = io.popen("fzf"):read()
+	if out then
+		if argv[1] then
+			vis:command(string.format('e "%s"', out))
+			-- should e return false when failed
+		else
+			vis:command(string.format('open "%s"', out))
+		end
+		vis:feedkeys("<vis-redraw>")
+	end
+end)
+
+vis:map(vis.modes.NORMAL, ";l", function()
+	vis:command('fzf')
+end)
+
+vis:map(vis.modes.NORMAL, ";o", function()
+	vis:command('fzf true')
+end)
+
+vis:map(vis.modes.NORMAL, ";;", "<vis-window-next>")
 
 --vis.events.subscribe(vis.events.FILE_SAVE_PRE, function(file)
 	---- purge trailing whitespace
