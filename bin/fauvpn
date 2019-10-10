@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# Run openvpn with fau settings in eather full or split mode
+
+# Author: Florian Fischer
+# License: WTFPL
+
+if test -n "$1"; then
+	if test "$1" = "full"; then
+		MODE=Full
+	elif test "$1" = "split"; then
+		MODE=Split
+	fi
+fi
+
+if test -z "$MODE"; then
+	echo "Usage: $0 [full | split]"
+	exit 1
+fi
+
+pushd . >/dev/null
+cd $HOME/Documents/MyDocuments/Study/FAU-Erlangen/Allgemein && \
+sudo openvpn FAU-${MODE}tunnel.ovpn
+popd >/dev/null
+

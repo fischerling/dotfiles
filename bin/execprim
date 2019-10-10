@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Print primary selection with all special chars to stdout and
+# prompt if this should be evaluated
+
+# Author: Florian Fischer
+# License: WTFPL
+
+! type xclip &>/dev/null && echo "Please install xclip" && exit 1
+
+PRIMARY=$(xclip -o)
+echo $PRIMARY | cat -A # show special chars
+echo  -e "\nExecute? (y/N): "
+read CHOICE
+[[ "$CHOICE" -eq "y" ]] && eval $PRIMARY

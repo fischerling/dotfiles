@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Print info for running processes mathing PATTERN
+
+# Author: Florian Fischer
+# License: WTFPL
+
+if test -z "$1"
+then
+	echo "Usage: $0 PATTERN"
+	exit 1
+fi
+
+PIDS=$(pgrep -d , -f $1)
+test -n "$PIDS" && ps -Fp $PIDS

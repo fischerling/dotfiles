@@ -12,6 +12,8 @@ pathadd ${HOME}/.local/bin
 DOTFILES_LOCATION=$(dirname $(readlink -f $HOME/.bashrc))
 export DOTFILES_LOCATION
 
+pathadd ${DOTFILES_LOCATION}/bin
+
 source $DOTFILES_LOCATION/aliases
 
 #exec xonsh

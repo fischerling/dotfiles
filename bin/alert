@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# Print and ring Bell
+
+# Author: Florian Fischer
+# License: WTFPL
+
+if test -n "$1" -a ! \(  "$1" == "-l" -o "$1" == "--loop" \)
+then
+	echo "Usage: $0 [-l | --loop]"
+	exit 1
+fi
+
+CMD="xkbbell ^/dev/null; echo -n -e \a"
+
+eval $CMD
+
+if test -n "$1"
+then
+	while true
+	do
+		eval $CMD
+		sleep 1
+	done
+fi
