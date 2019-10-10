@@ -5,6 +5,7 @@ require('plugins/textobject-lexer')
 require('plugins/vis-cursors/cursors').cursors_path = string.format('%s/vis/cursors', os.getenv('XDG_DATA_HOME') or os.getenv('HOME').."/.local/share")
 require('plugins/vis-spellcheck/spellcheck')
 require('plugins/vis-commentary/vis-commentary')
+require('plugins/vis-ctags/ctags')
 -- This hooks vis.events.START so its fine to load it before the default settings
 require('plugins/vis-modelines/vis-modelines')
 
@@ -12,11 +13,8 @@ require('plugins/suw')
 
 vis.events.subscribe(vis.events.INIT, function()
 	-- Your global configuration options
-	local theme = "default"
-	if string.match(os.getenv('TERM'), '^st.*') then
-		theme = "st"
-	end
-	vis:command("set theme ".. theme .. (vis.ui.colors <= 16 and "-16" or "-256"))
+	local theme = "theme"
+	vis:command("set theme ".. theme)
 end)
 
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
