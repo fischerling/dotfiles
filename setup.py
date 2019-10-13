@@ -103,6 +103,8 @@ targets = {
             [("config/terminator/config", config_dir + "/terminator/config")],
         "offlineimap":
             [("config/offlineimap", config_dir + "/offlineimap")],
+        "mbsync":
+            [("mbsyncrc", home_dir + "/.mbsyncrc")],
         "msmtp":
             [("msmtprc", home_dir + "/.msmtprc")],
         "dunst":
