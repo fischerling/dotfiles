@@ -104,7 +104,9 @@ targets = {
         "offlineimap":
             [("config/offlineimap", config_dir + "/offlineimap")],
         "mbsync":
-            [("mbsyncrc", home_dir + "/.mbsyncrc")],
+            [("mbsync/mbsyncrc", home_dir + "/.mbsyncrc"),
+             ("mbsync/mbsync.service", config_dir + "/systemd/user/mbsync.service"),
+             ("mbsync/mbsync.timer", config_dir + "/systemd/user/mbsync.timer")],
         "msmtp":
             [("msmtprc", home_dir + "/.msmtprc")],
         "dunst":
