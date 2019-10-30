@@ -23,3 +23,5 @@ alias gsi="git submodule init"
 alias gst="git status"
 alias gsu="git submodule update"
 
+alias jsonfmt="python3 -mjson.tool"
+
