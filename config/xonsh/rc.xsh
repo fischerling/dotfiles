@@ -32,7 +32,7 @@ aliases["upto"] = upto
 ### STYLE ###
 $XONSH_COLOR_STYLE = 'native'
 
-$PL_PROMPT = "cwd>branch"
+$PL_PROMPT = "short_cwd>branch"
 $PL_RPROMPT = "rtns>timing"
 $PL_TOOLBAR = "!"
 
@@ -43,6 +43,9 @@ $PL_COLORS["branch"] = "WHITE"
 $COMPLETIONS_CONFIRM = True
 $XONSH_HISTORY_MATCH_ANYWHERE = True
 $XONSH_SHOW_TRACEBACK = True
+
+xontrib load autojump
+xontrib load readable-traceback
 
 # make modules in CWD importable
 import sys
