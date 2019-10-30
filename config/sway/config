@@ -169,7 +169,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     # Maybe this works someday
     assign [class=Spotify] "9:music"
 
-    # Assign workspaces to screens                                                  
+    # Assign workspaces to screens
     workspace 1 output HDMI-A-1
     workspace "2 www" output HDMI-A-1
     workspace "3:work" output HDMI-A-1
@@ -240,22 +240,22 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #
-# Audio shortcuts                                                               
+# Audio shortcuts
 #
-# Volume                                                                      
+# Volume
 bindsym --locked XF86AudioLowerVolume exec $DOTFILES_LOCATION/scripts/audio_control.sh -5
 bindsym --locked XF86AudioRaiseVolume exec $DOTFILES_LOCATION/scripts/audio_control.sh +5
-bindsym --locked XF86AudioMute exec $DOTFILES_LOCATION/scripts/audio_control.sh toggle   
-# Music                                                                       
-bindsym --locked XF86AudioPrev exec $DOTFILES_LOCATION/scripts/media_control.sh prev     
-bindsym --locked XF86AudioPlay exec $DOTFILES_LOCATION/scripts/media_control.sh toggle   
+bindsym --locked XF86AudioMute exec $DOTFILES_LOCATION/scripts/audio_control.sh toggle
+# Music
+bindsym --locked XF86AudioPrev exec $DOTFILES_LOCATION/scripts/media_control.sh prev
+bindsym --locked XF86AudioPlay exec $DOTFILES_LOCATION/scripts/media_control.sh toggle
 bindsym --locked XF86AudioNext exec $DOTFILES_LOCATION/scripts/media_control.sh next
 
-# Suspend                                                                       
+# Suspend
 bindsym $mod+F7 exec systemctl suspend
 
-#hide borders                                                                   
-new_window pixel 3                                                              
+#hide borders
+default_border pixel 3
 hide_edge_borders smart
 
 #
@@ -281,7 +281,7 @@ bar {
 # Session
 #
 
-# Unlock GPG key                                                                
+# Unlock GPG key
 exec --no-startup-id bash -c "echo | gpg -s > /dev/null"
 
 # Start notification service
