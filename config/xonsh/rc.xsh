@@ -15,7 +15,7 @@ for line in common_aliases.splitlines():
 def fd(args, stdin=None, stdout=None, stderr=None):
     if len(args) != 1:
         print("Usage: fd name", file=stderr)
-    $[find -name @(f"*{args[0]}*")]
+    find -name @(f"*{args[0]}*")
 aliases["fd"] = fd
 
 def upto(args, stdin=None, stdout=None, stderr=None):
@@ -25,7 +25,7 @@ def upto(args, stdin=None, stdout=None, stderr=None):
     dirs = $PWD.split(path.sep)
     for i, d in enumerate(dirs):
         if args[0] in d:
-            ![cd @("/".join(dirs[:i+1]))]
+            cd @("/".join(dirs[:i+1]))
             break
 aliases["upto"] = upto
 
