@@ -1,23 +1,16 @@
 ### ALIASES ###
-aliases["ll"] = "ls -l -h"
-aliases["la"] = "ll -a"
 
-# git
-aliases["ga"] = "git add"
-aliases["gca"] = "git commit -v -a"
-aliases["gcm"] = "git commit -m"
-aliases["gl"] = "git pull"
-aliases["glg"] = "git log --stat --color"
-aliases["gp"] = "git push"
-aliases["gst"] = "git status"
+# import shell aliases
+import re
+alias_file = p'$DOTFILES_LOCATION/aliases'
+with alias_file.open('r') as af:
+    common_aliases = af.read()
 
-def pss(args, stdin=None, stdout=None, stderr=None):
-    if len(args) != 1:
-        print("Usage: pss PATTERN", file=stderr)
-    pids = $(pgrep -d , -f @(args[0]))[:-1]
-    if pids:
-        $[ps -Fp @(pids)]
-aliases["pss"] = pss
+for line in common_aliases.splitlines():
+    if line.startswith('alias '):
+        match = re.match(r'^alias ([\w-]*)=[\'\"](.*?)[\"\']$', line)
+        if match:
+            aliases[match.group(1)] = match.group(2)
 
 def fd(args, stdin=None, stdout=None, stderr=None):
     if len(args) != 1:
