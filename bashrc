@@ -9,8 +9,11 @@ pathadd() {
 
 pathadd ${HOME}/.local/bin
 
-DOTFILES_LOCATION=$(dirname $(readlink -f $HOME/.bashrc))
-export DOTFILES_LOCATION
+if [[ -z "$DOTFILES_LOCATION" ]]
+then
+	DOTFILES_LOCATION=$(dirname $(readlink -f $HOME/.bashrc))
+	export DOTFILES_LOCATION
+fi
 
 pathadd ${DOTFILES_LOCATION}/bin
 
