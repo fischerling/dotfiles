@@ -23,8 +23,8 @@ end
 
 #include go binaries
 if type -q go
-	if not set -q GOPATH; and test -d ~/Desktop/projects/go
-		set -x GOPATH ~/Desktop/projects/go
+	if not set -q GOPATH; and test -d ~/code/go
+		set -x GOPATH ~/code/go
 
 		if not contains $GOPATH/bin $PATH
 			set PATH $GOPATH/bin $PATH
