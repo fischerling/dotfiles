@@ -139,6 +139,8 @@ def install_target(target, quiet):
             else:
                 # check if file is encrypted
                 if instruction[0][-4:] == ".gpg":
+                    if not os.path.isdir("decrypted"):
+                        os.makedirs("decrypted")
                     start_filename = instruction[0].rfind("/") + 1
                     if subprocess.run([
                             "gpg",
