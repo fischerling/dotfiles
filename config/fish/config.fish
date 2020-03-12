@@ -1,3 +1,6 @@
+# set umask
+umask 027
+
 # PATH Stuff
 
 if not contains ~/.local/bin $PATH
