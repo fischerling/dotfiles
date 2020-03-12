@@ -71,7 +71,7 @@ targets = {
         "vis":
             [("config/vis", config_dir + "/vis")],
         "ssh":
-            [("ssh/config", home_dir + "/.ssh/config")],
+            [("ssh/config.gpg", home_dir + "/.ssh/config")],
         "X":
             [("xinitrc", home_dir + "/.xinitrc"),
             ("xinitrc", home_dir + "/.xsession"),
