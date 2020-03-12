@@ -37,7 +37,8 @@ $PL_RPROMPT = "rtns>timing"
 $PL_TOOLBAR = "!"
 
 xontrib load powerline2
-$PL_COLORS["branch"] = "WHITE"
+if type($PL_COLORS) == dict:
+    $PL_COLORS["branch"] = "WHITE"
 
 ### BEHAVIOUR ###
 $COMPLETIONS_CONFIRM = True
