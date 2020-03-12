@@ -7,17 +7,21 @@
 config_version: 2
 settings:
   content.javascript.enabled:
+    '*://*.bandcamp.com/*': true
     '*://*.duckduckgo.com/*': true
-    '*://192.168.178.1/*': true
-    '*://localhost/*': true
     '*://*.fau.de/*': true
+    '*://*.funkwhale-paftown.ddns.net/*': true
     '*://*.lineageos.org/*': true
+    '*://*.media.ccc.de/*': true
+    '*://*.social.tchncs.de/*': true
     '*://*.uni-erlangen.de/*': true
+    '*://192.168.178.1/*': true
     '*://banking.sparda-n.de/*': true
     '*://dict.leo.org/*': true
     '*://docs.python.org/*': true
     '*://github.com/*': true
     '*://gitlab.com/*': true
+    '*://localhost/*': true
     '*://media.ccc.de/*': true
     '*://mediathekviewweb.de/*': true
     '*://paftown.ddns.net/*': true
