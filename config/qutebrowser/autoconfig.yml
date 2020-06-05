@@ -19,12 +19,16 @@ settings:
     '*://banking.sparda-n.de/*': true
     '*://dict.leo.org/*': true
     '*://docs.python.org/*': true
+    '*://fau.zoom.us/*': true
     '*://github.com/*': true
     '*://gitlab.com/*': true
+    '*://lab.uberspace.de/*': true
     '*://localhost/*': true
     '*://media.ccc.de/*': true
     '*://mediathekviewweb.de/*': true
     '*://paftown.ddns.net/*': true
+    '*://riot.muhq.space/*': true
+    '*://stackoverflow.com/*': true
     '*://vimeo.com/*': true
     '*://www.cardmarket.com/*': true
     '*://www.cubetutor.com/*': true
