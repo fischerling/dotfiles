@@ -17,6 +17,7 @@ settings:
     '*://*.uni-erlangen.de/*': true
     '*://192.168.178.1/*': true
     '*://banking.sparda-n.de/*': true
+    '*://cubecobra.com/*': true
     '*://dict.leo.org/*': true
     '*://docs.python.org/*': true
     '*://fau.zoom.us/*': true
