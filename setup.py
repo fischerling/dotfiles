@@ -175,6 +175,10 @@ def install_target(target, quiet):
 
                 if not quiet:
                     print("Installing", instruction[0], "to", instruction[1])
+
+                # make sure the target directory exists
+                os.makedirs(os.path.dirname(instruction[1]), exist_ok=True)
+
                 try:
                     os.symlink(cwd + "/" + instruction[0], instruction[1])
                 except Exception as e:
