@@ -231,6 +231,7 @@ exec --no-startup-id xss-lock -- i3lock -i $DOTFILES_LOCATION/wallpapers/blue_sc
 
 # Autostart Programms
 exec --no-startup-id feh --bg-fill $DOTFILES_LOCATION/wallpapers/nsa_wallpaper.png
+exec --no-startup-id redshift -l 49.59099:11.00783
 
 # Unlock GPG key
 exec --no-startup-id bash -c "echo | gpg -s > /dev/null"
