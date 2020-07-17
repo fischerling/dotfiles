@@ -114,6 +114,16 @@ Config:set ( "log.level", "")
 --
 Config:set( "index.format",
             "[${4|flags}] ${2|message_flags} | ${10|date} | ${20|sender} | ${indent}${subject}" )
+
+-- Override Message:to_ctime to use the lua header cache
+
+do
+	local old_ctime = Message.ctime
+	function Message:ctime()
+		return self.header("Delivery-Date") or self.header("Date") or old_ctime(self)
+	end
+end
+
 --
 --  Options include:
 --
@@ -137,9 +147,16 @@ Config:set( "index.format",
 --  `subject` - Sort by subject.
 --  `from`    - Sort by sender.
 --
-sorting_method( "threads" )
+sorting_method( "date" )
+-- sorting_method( "threads" )
 
 Config:set("threads.sort", "date")
+
+
+--
+-- Only show unread messages by default
+--
+Config:set( "index.limit", "new" )
 
 --
 -- Unread messages/maildirs are drawn in red.
