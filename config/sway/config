@@ -293,9 +293,4 @@ exec --no-startup-id mako
 # Start touchpad daemon
 exec --no-startup-id syndaemon -i 1 -d
 
-# Start email sync
-exec --no-startup-id systemctl --user start offlineimap@FAU.service
-exec --no-startup-id systemctl --user start offlineimap@MUHQ.service
-exec --no-startup-id systemctl --user start offlineimap@SNFMT.service
-
 include /etc/sway/config.d/*
