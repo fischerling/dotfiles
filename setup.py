@@ -119,6 +119,9 @@ targets = {
             [("config/mako/config", config_dir + "/mako/config")],
         "qutebrowser":
             [("config/qutebrowser/config.py", config_dir + "/qutebrowser/config.py"),
+             ("config/qutebrowser/dark.py", config_dir + "/qutebrowser/theme.py"), # default theme
+             ("config/qutebrowser/dark.py", config_dir + "/qutebrowser/dark.py"),
+             ("config/qutebrowser/light.py", config_dir + "/qutebrowser/light.py"),
              ("config/qutebrowser/autoconfig.yml", config_dir + "/qutebrowser/autoconfig.yml")],
         "FAU":
             [("FAU/wl-FAU-STUD.gpg", "/etc/netctl/wl-FAU-STUD"),
