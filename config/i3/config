@@ -28,6 +28,9 @@ bindsym $mod+d exec $DOTFILES_LOCATION/scripts/program_starter.sh
 # ssh starter
 bindsym $mod+Shift+d exec $DOTFILES_LOCATION/scripts/ssh_starter.sh
 
+# bibtex browser
+bindsym $mod+Shift+b exec rofi-bibbrowser
+
 # change focus
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
