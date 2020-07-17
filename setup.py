@@ -101,6 +101,10 @@ targets = {
             [("config/xonsh/rc.xsh", config_dir + "/xonsh/rc.xsh")],
         "terminator":
             [("config/terminator/config", config_dir + "/terminator/config")],
+        "termite":
+            [("config/termite/dark", config_dir + "/termite/config"), # default colors
+             ("config/termite/dark", config_dir + "/termite/dark"),
+             ("config/termite/light", config_dir + "/termite/light")],
         "offlineimap":
             [("config/offlineimap", config_dir + "/offlineimap")],
         "mbsync":
