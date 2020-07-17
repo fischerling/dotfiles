@@ -115,6 +115,8 @@ targets = {
             [("msmtprc", home_dir + "/.msmtprc")],
         "dunst":
             [("config/dunst/dunstrc", config_dir + "/dunst/dunstrc")],
+        "mako":
+            [("config/mako/config", config_dir + "/mako/config")],
         "qutebrowser":
             [("config/qutebrowser/config.py", config_dir + "/qutebrowser/config.py"),
              ("config/qutebrowser/autoconfig.yml", config_dir + "/qutebrowser/autoconfig.yml")],
