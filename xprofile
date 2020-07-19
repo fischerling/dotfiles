@@ -62,13 +62,7 @@ fi
 
 [[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources
 
-# Set keyboard layout
-if [ $HOSTNAME = "fishtank" ]
-then
-	setxkbmap gb
-else
-	setxkbmap de
-fi
+setxkbmap de
 
 function start_if_avail {
 	if type $1 >/dev/null
