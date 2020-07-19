@@ -121,6 +121,10 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 
     # exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+    # open primary selection in browser
+    bindsym $mod+Shift+o exec $DOTFILES_LOCATION/scripts/open_primary_in_browser.sh
+
 #
 # Moving around:
 #
