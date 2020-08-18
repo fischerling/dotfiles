@@ -1,0 +1,14 @@
+# this file contains generic part of an account change
+# setting the new folders aswell as the smtp command
+
+set sendmail = "/usr/local/bin/msmtp -a $my_account"
+
+# Set folders
+set spoolfile = "+$my_account/INBOX"
+set mbox = "+$my_account/Archive"
+set postponed = "+$my_account/Drafts"
+set record = "+$my_account/Sent"
+set trash = "+$my_account/Trash"
+
+# resource account dependent macros
+source $my_cfgdir/accounts/macros

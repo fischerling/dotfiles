@@ -1,0 +1,18 @@
+# The macros in this file depend on the variable my_account but they evaluate its value
+# at runtime so they must be redefined when changing accounts
+
+macro index o "<shell-escape>mbsync $my_account<enter>" "run mbsync to sync mail for this account"
+
+macro index,pager s \
+  "<enter-command>set my_old_resolve=\$resolve noresolve<enter>\
+  <tag-prefix><clear-flag>n<enter-command>set resolve=\$my_old_resolve<enter>\
+  <save-message>+$my_account/Junk<enter>" \
+  "mark as read and move to junk folder"
+
+macro index,pager a \
+  "<save-message>+$my_account/Archive<enter>"  \
+  "move message to the archive"
+
+macro index,pager i \
+  "<save-message>+$my_account/INBOX<enter>"  \
+  "move message to the inbox"

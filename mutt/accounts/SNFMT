@@ -1,0 +1,7 @@
+set from = "jesus@supernovafickmichtot.de"
+alternates ^[:graph:]*@supernovafickmichtot.de$
+
+set my_account = "SNFMT"
+source $my_cfgdir/accounts/change_account
+
+color status magenta default

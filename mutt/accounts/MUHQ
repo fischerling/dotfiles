@@ -1,0 +1,7 @@
+set from = "florian.fischer@muhq.space"
+alternates ^[:graph:]*@muhq.space$
+
+set my_account = "MUHQ"
+source $my_cfgdir/accounts/change_account
+
+color status red default
