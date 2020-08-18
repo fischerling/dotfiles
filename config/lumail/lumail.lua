@@ -42,7 +42,7 @@ Config:set("maildir.prefix",  MAILPREFIX);
 --
 
 -- This is the account used by msmtp
-local account = "fau"
+local account = "FAU"
 -- Default name to use
 Config:set("global.name", "Florian Fischer")
 -- Default address.
@@ -59,21 +59,21 @@ Config:set("gpg.mode", "auto")
 function on_folder_changed(folder)
     local path = folder:path()
     if path:find("FAU") then
-        account = "fau"
+        account = "FAU"
         Config:set("global.name", "Florian Fischer")
         Config:set("global.address", "florian.fl.fischer@fau.de")
         Config:set("global.sent-mail", MAILPREFIX .. "/FAU/Sent")
         Config:set("global.trash-mail", MAILPREFIX.."/FAU/Trash")
         Config:set("gpg.mode", "auto")
     elseif path:find("MUHQ") then
-        account = "muhq"
+        account = "MUHQ"
         Config:set("global.name", "Florian Fischer")
         Config:set("global.address", "florian.fischer@muhq.space")
         Config:set("global.sent-mail", MAILPREFIX .. "/MUHQ/Sent")
         Config:set("global.trash-mail", MAILPREFIX.."/MUHQ/Trash")
         Config:set("gpg.mode", "")
     elseif path:find("SNFMT") then
-        account = "snfmt"
+        account = "SNFMT"
         Config:set("global.name", "The Supernova")
         Config:set("global.address", "snfmt@supernovafickmichtot.de")
         Config:set("global.sent-mail", MAILPREFIX .. "/SNFMT/Sent")
