@@ -1,49 +1,16 @@
-################# IMAP ####################
-set imap_user=aj46ezos
-# Automatically log in to this mailbox at startup
-set folder="imaps://$imap_user@faumail.uni-erlangen.de/"
+################# MAILDIR ####################
+set mbox_type=Maildir
+set folder=~/.local/share/maildir/FAU
 # Define the = shortcut, and the entry point for the folder browser (c?)
-set spoolfile="+INBOX"
+set spoolfile="+/INBOX"
 set record="+Sent"
 set postponed="+Drafts"
-
-# activate TLS if available on the server
-set ssl_starttls=yes
-# always use SSL when connecting to a server
-set ssl_force_tls=yes
-# Don't wait to enter mailbox manually 
-unset imap_passive        
-# Automatically poll subscribed mailboxes for new mail (new in 1.5.11)
-set imap_check_subscribed
-# Reduce polling frequency to a sane level
-set mail_check=60
-# And poll the current mailbox more often (not needed with IDLE in post 1.5.11)
-set timeout=10
-# keep a cache of headers for faster loading (1.5.9+?)
-set header_cache=~/.hcache
-# Display download progress every 5K
-set net_inc=5
-
 
 ############### SMTP #######################
 
 set realname = 'Florian Fischer'
 set from = "florian.fl.fischer@fau.de"
 set use_from = yes
-
-set smtp_url="smtps://$imap_user@smtp-auth.uni-erlangen.de"
-
-
-############### PASSWORDS ##################
-# the passwords are stored in the file .mutt/passwords
-# and this file is read and evaluated before mutt is started.
-# the file format should be:
-#   export <var> <passwd>
-#
-# see: http://www.mail-archive.com/mutt-users@mutt.org/msg36375.html
-
-set smtp_pass=$FAU_PASS
-set imap_pass=$FAU_PASS
 
 ############### GPG ########################
 
@@ -65,9 +32,6 @@ set query_command= "khard email --parsable %s"
 bind editor <Tab> complete-query
 bind editor ^T    complete
 
-# open links with urlscan
-macro pager,index \cb <pipe-entry>'urlscan -n | dmenu -l 15 | xargs -r $BROWSER '<enter> 'Follow links with urlscan'
-
 ############## Bindings ####################
 
 bind pager j next-line
@@ -81,4 +45,4 @@ bind attach,index G last-entry
 
 ############## COLOR #######################
 
-source ~/.mutt/solarized-dark-256
+source ~/.mutt/theme.muttrc

@@ -56,9 +56,10 @@ def dotfile_loc_helper(quiet):
         else:
             return e
 
+mutt_target = [("muttrc", home_dir + "/.muttrc"),
+               ("mutt", home_dir + "/.mutt")]
 
 # targets are a list of tuples<file name, link destination> and/or functions
-
 targets = {
         "lumail":
             [("config/lumail/lumail.lua", config_dir + "/lumail/lumail.lua")],
@@ -78,10 +79,8 @@ targets = {
             ("xprofile", home_dir + "/.xprofile"),
             dotfile_loc_helper,
             ("Xresources", home_dir + "/.Xresources")],
-        "mutt":
-            [("muttrc", home_dir + "/.muttrc"),
-            ("mutt", home_dir + "/.mutt"),
-            ("scripts/mutt.sh", home_dir+"/.local/bin/mutt.sh")],
+        "mutt": mutt_target,
+        "neomutt": mutt_target,
         "zshrc":
             [("zshrc", home_dir + "/.zshrc")],
         "i3":
