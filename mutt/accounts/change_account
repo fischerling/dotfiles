@@ -1,7 +1,7 @@
 # this file contains generic part of an account change
 # setting the new folders aswell as the smtp command
 
-set sendmail = "/usr/local/bin/msmtp -a $my_account"
+set sendmail = "msmtp -a $my_account"
 
 # Set folders
 set spoolfile = "+$my_account/INBOX"
