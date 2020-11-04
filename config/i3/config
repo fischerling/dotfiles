@@ -96,14 +96,17 @@ assign [title=lumail2] "8: mail"
 # Maybe this works someday
 assign [class=Spotify] "9: music"
 
-# Assign workspaces to screens
-workspace 1 output HDMI1
-workspace "2: www" output HDMI1
-workspace "3: work" output HDMI1
+set $primary-display HDMI1
+set $secondary-display eDP1
 
-workspace "7" output eDP1
-workspace "8: mail" output eDP1
-workspace "9: music" output eDP1
+# Assign workspaces to screens
+workspace 1 output $primary-display
+workspace "2: www" output $primary-display
+workspace "3: work" output $primary-display
+
+workspace "7" output $secondary-display
+workspace "8: mail" output $secondary-display
+workspace "9: music" output $secondary-display
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -166,6 +169,10 @@ bindsym $mod+r mode "resize"
 mode "display-orientation" {
 		# Default layout
 		bindsym d exec xrandr --output eDP1 --auto --output HDMI1 --auto --right-of eDP1
+
+		# Switch primary display
+		bindsym Shift+h exec sed -i "s/set \$primary-display.*/set \$primary-display HDMI1/" /home/fischerling/.config/i3/config
+		bindsym Shift+e exec sed -i "s/set \$primary-display.*/set \$primary-display eDPI1/" /home/fischerling/.config/i3/config
 
 		# Disable eDP1 or HDMI1
 		bindsym h exec xrandr --output HDMI1 --off
