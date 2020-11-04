@@ -93,7 +93,7 @@ targets = {
             [("dir_colors", home_dir + "/.dir_colors")],
         "fish":
             [("config/fish/config.fish", config_dir + "/fish/config.fish"),
-            ("config/fish/fishfile", config_dir + "/fish/fishfile"),
+            ("config/fish/fish_plugins", config_dir + "/fish/fish_plugins"),
             dotfile_loc_helper,
             fish_config],
         "xonsh":
