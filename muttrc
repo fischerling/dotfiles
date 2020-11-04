@@ -79,3 +79,7 @@ source $my_cfgdir/bindings
 ############# MAILING LISTS ################
 
 source $my_cfgdir/mailinglists
+
+############# NOTMUCH ######################
+
+source $my_cfgdir/notmuch
