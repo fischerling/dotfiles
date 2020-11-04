@@ -33,7 +33,7 @@ SyncState *
 ### MUHQ ###
 
 IMAPAccount MUHQ
-Host antares.uberspace.de
+Host euporie.uberspace.de
 User muhq
 PassCmd "pass email/MUHQ"
 SSLType IMAPS
@@ -57,7 +57,7 @@ SyncState *
 ### SNFMT ###
 
 IMAPAccount SNFMT
-Host alnilam.uberspace.de
+Host eurydome.uberspace.de
 User snfmt
 PassCmd "pass email/SNFMT"
 SSLType IMAPS
