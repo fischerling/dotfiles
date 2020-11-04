@@ -6,7 +6,11 @@ config.bind(',x', 'hint links spawn mpv {hint-url}')
 
 config.bind('<Ctrl-l>', 'spawn --userscript password_fill')
 
-c.editor.command = [os.environ["TERMINAL"], "-e", os.environ["VISUAL"], "{}"]
+terminal = os.environ['TERMINAL']
+if terminal in ["st", "urxvt"]:
+    c.editor.command = [terminal, "-e", os.environ['VISUAL'],  "{}"]
+else:
+    c.editor.command = [terminal, "-e", f"{os.environ['VISUAL']} {{}}"]
 
 c.content.headers.do_not_track = True
 
@@ -20,6 +24,5 @@ config.load_autoconfig()
 import theme
 
 # set qutebrowser colors
-
 for setting, color in theme.theme.items():
     config.set(setting, color)
