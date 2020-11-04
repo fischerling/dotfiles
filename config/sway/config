@@ -109,6 +109,9 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     # start your launcher
     bindsym $mod+d exec $menu
 
+    # start bibliography browser
+    bindsym $mod+Shift+b exec rofi-bibbrowser
+
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
