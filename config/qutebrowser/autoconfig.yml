@@ -12,11 +12,15 @@ settings:
     '*://*.fau.de/*': true
     '*://*.funkwhale-paftown.ddns.net/*': true
     '*://*.lineageos.org/*': true
+    '*://*.manual.uberspace.de/*': true
     '*://*.media.ccc.de/*': true
+    '*://*.mesonbuild.com/*': true
     '*://*.social.tchncs.de/*': true
     '*://*.uni-erlangen.de/*': true
+    '*://*.goteo.de/*': true
     '*://192.168.178.1/*': true
     '*://banking.sparda-n.de/*': true
+    '*://blockhelden.de/*': true
     '*://cubecobra.com/*': true
     '*://dict.leo.org/*': true
     '*://docs.python.org/*': true
@@ -31,6 +35,7 @@ settings:
     '*://riot.muhq.space/*': true
     '*://stackoverflow.com/*': true
     '*://vimeo.com/*': true
+    '*://www.abgeordnetenwatch.de/*': true
     '*://www.cardmarket.com/*': true
     '*://www.cubetutor.com/*': true
     '*://www.mtggoldfish.com/*': true
