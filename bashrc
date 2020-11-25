@@ -3,10 +3,12 @@
 
 pathadd() {
 	if [ -d "$1" ] && [[ "$PATH" != *"$1"* ]]; then
-		PATH=$PATH":$1"
+		PATH="$1":$PATH
 	fi
 }
 
+pathadd /bin
+pathadd /sbin
 pathadd ${HOME}/.local/bin
 
 if [[ -z "$DOTFILES_LOCATION" ]]
