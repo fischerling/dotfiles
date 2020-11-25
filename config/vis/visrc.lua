@@ -30,7 +30,7 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 		if win.file.name:find("COMMIT_EDITMSG") then
 			vis:command('set colorcolumn 72')
 			win:set_syntax("diff")
-		elseif win.file.name:find('meson.build') then
+		elseif win.file.name:find('meson.build') and win.syntax ~= 'meson' then
 			win:set_syntax('python')
 		end
 
