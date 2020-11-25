@@ -4,6 +4,9 @@ alias p2c="xclip -o -selection primary | xclip -i -selection clipboard"
 
 alias diff="diff --color=auto"
 
+alias pss="ps -ax | grep"
+
+alias ls="ls --color=auto"
 alias ll="ls -l -h"
 alias la="ll -a"
 
