@@ -21,5 +21,13 @@ pathadd ${DOTFILES_LOCATION}/bin
 
 source $DOTFILES_LOCATION/aliases
 
-#exec xonsh
+# navigate to first parent directory matching a regex
+upto() {
+	if [ -z "$1" ]; then
+		return
+	fi
+
+	local upto=$1
+	cd "${PWD/\/$upto\/*//$upto}"
+}
 
