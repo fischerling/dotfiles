@@ -3,8 +3,10 @@ umask 027
 
 # PATH Stuff
 
-if not contains ~/.local/bin $PATH
-    set PATH ~/.local/bin $PATH
+for dir in /bin/sbin ~/.local/bin
+	if not contains $dir $PATH and test -d $dir
+		set PATH $dir $PATH
+	end
 end
 
 # export the path to our dotfiles
