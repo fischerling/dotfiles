@@ -3,8 +3,8 @@ umask 027
 
 # PATH Stuff
 
-for dir in /bin/sbin ~/.local/bin
-	if not contains $dir $PATH and test -d $dir
+for dir in /bin /sbin ~/.local/bin
+	if not contains $dir $PATH; and test -d $dir
 		set PATH $dir $PATH
 	end
 end
