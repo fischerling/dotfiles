@@ -26,3 +26,6 @@ import theme
 # set qutebrowser colors
 for setting, color in theme.theme.items():
     config.set(setting, color)
+
+# request dark mode from pages
+config.set("colors.webpage.prefers_color_scheme_dark", True)
