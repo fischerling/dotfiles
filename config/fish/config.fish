@@ -78,14 +78,7 @@ end
 not set -q VISUAL; and set -q EDITOR; set -x VISUAL $EDITOR
 
 not set -q SSH_KEY_PATH; and set -x SSH_KEY_PATH $HOME/.ssh/id_rsa
-
-# start ssh-agent
-if not pgrep ssh-agent >/dev/null
-	not set -q SSH_AUTH_SOCK; set -x SSH_AUTH_SOCK ~/.ssh/agent.sock
-	test -e $SSH_AUTH_SOCK; and rm $SSH_AUTH_SOCK
-	set out (ssh-agent -a $SSH_AUTH_SOCK)
-	set -x SSH_AGENT_PID (string replace ";" "" (string split " " $out)[-1])
-end
+not set -q SSH_AUTH_SOCK; set -x SSH_AUTH_SOCK $HOME/.ssh/agent.sock
 
 # set yaourt specific VARS
 if type -q yaourt
