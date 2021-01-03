@@ -25,6 +25,7 @@ alias gp="git push"
 alias gsi="git submodule init"
 alias gst="git status"
 alias gsu="git submodule update"
+alias gff="git diff"
 
 alias jsonfmt="python3 -mjson.tool"
 
