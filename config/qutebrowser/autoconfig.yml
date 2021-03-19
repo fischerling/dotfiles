@@ -8,16 +8,20 @@ config_version: 2
 settings:
   content.javascript.enabled:
     '*://*.bandcamp.com/*': true
+    '*://*.dashboard.uberspace.de/*': true
     '*://*.duckduckgo.com/*': true
     '*://*.fau.de/*': true
     '*://*.funkwhale-paftown.ddns.net/*': true
+    '*://*.git.hopfenspace.org/*': true
+    '*://*.goteo.de/*': true
     '*://*.lineageos.org/*': true
     '*://*.manual.uberspace.de/*': true
     '*://*.media.ccc.de/*': true
     '*://*.mesonbuild.com/*': true
     '*://*.social.tchncs.de/*': true
+    '*://*.uberspace.de/*': true
     '*://*.uni-erlangen.de/*': true
-    '*://*.goteo.de/*': true
+    '*://*.web.goteo.de/*': true
     '*://192.168.178.1/*': true
     '*://banking.sparda-n.de/*': true
     '*://blockhelden.de/*': true
@@ -27,6 +31,7 @@ settings:
     '*://fau.zoom.us/*': true
     '*://github.com/*': true
     '*://gitlab.com/*': true
+    '*://idp.sparda-n.de/*': true
     '*://lab.uberspace.de/*': true
     '*://localhost/*': true
     '*://media.ccc.de/*': true
@@ -34,6 +39,8 @@ settings:
     '*://paftown.ddns.net/*': true
     '*://riot.muhq.space/*': true
     '*://stackoverflow.com/*': true
+    '*://uberspace.de/*': true
+    '*://ubuntu.com/*': true
     '*://vimeo.com/*': true
     '*://www.abgeordnetenwatch.de/*': true
     '*://www.cardmarket.com/*': true
