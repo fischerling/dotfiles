@@ -92,6 +92,8 @@ targets = {
         "sway":
             [("config/sway", config_dir + "/sway"),
             dotfile_loc_helper],
+        "wofi":
+            [("config/wofi", config_dir + "/wofi")],
         "dir_colors":
             [("dir_colors", home_dir + "/.dir_colors")],
         "fish":
