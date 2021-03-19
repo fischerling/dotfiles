@@ -14,13 +14,13 @@ config_dir = os.getenv("XDG_CONFIG_HOME") or home_dir + "/.config"
 cwd = os.getcwd()
 
 def fish_config(quiet):
-    """install and run fisherman"""
-    # download fisherman
+    """install and run fisher"""
+    # download fisher
     import urllib.request
 
     if not quiet:
-        print("Installing fisherman, see: https://github.com/fisherman/fisherman")
-    with urllib.request.urlopen("https://git.io/fisherman") as f:
+        print("Installing fisher, see: https://github.com/jorgebucaran/fisher")
+    with urllib.request.urlopen("https://git.io/fisher") as f:
         fisher = f.read().decode("utf-8")
 
     dir_path = home_dir+"/.config/fish/functions/"
@@ -33,11 +33,11 @@ def fish_config(quiet):
             file.write(fisher)
         else:
             if not quiet:
-                print("fisherman already installed")
+                print("fisheralready installed")
                 return
 
     if not quiet:
-        print("Installed fisherman -> execute fisher to pull plugins")
+        print("Installed fisher -> execute fisher to pull plugins")
 
     subprocess.run(["fish", dir_path+"fisher.fish"])
 
