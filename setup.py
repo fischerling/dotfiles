@@ -71,6 +71,9 @@ targets = {
             ("vim", home_dir + "/.vim")],
         "vis":
             [("config/vis", config_dir + "/vis")],
+        "gdb":
+            [("gdbinit", home_dir + "/.gdbinit"),
+            ("config/gdb", config_dir + "/gdb")],
         "ssh":
             [("ssh/config.gpg", home_dir + "/.ssh/config")],
         "X":
