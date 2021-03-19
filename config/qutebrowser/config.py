@@ -17,6 +17,10 @@ c.content.headers.do_not_track = True
 # Disable javascript by default
 config.set('content.javascript.enabled', False)
 
+config.set('content.cookies.accept', 'no-3rdparty')
+
+config.set('content.autoplay', False)
+
 # Load autoconfig to enable javascript on trusted domains
 config.load_autoconfig()
 
@@ -28,4 +32,4 @@ for setting, color in theme.theme.items():
     config.set(setting, color)
 
 # request dark mode from pages
-config.set("colors.webpage.prefers_color_scheme_dark", True)
+config.set("colors.webpage.preferred_color_scheme", "dark")
