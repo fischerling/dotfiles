@@ -4,9 +4,7 @@ umask 027
 # PATH Stuff
 
 for dir in /bin /sbin ~/.local/bin
-	if not contains $dir $PATH; and test -d $dir
-		set PATH $dir $PATH
-	end
+	fish_add_path $dir
 end
 
 # export the path to our dotfiles
@@ -17,9 +15,7 @@ end
 # include cargo binaries
 if type -q rustup
     for p in $HOME/.rustup/toolchains/*/bin $HOME/.cargo/bin
-        if not contains $p $PATH
-            set PATH $PATH $p
-        end
+        fish_add_path $p
     end
 end
 
@@ -34,22 +30,16 @@ if type -q go
 	end
 end
 
-# guixsd has nether /bin nor /usr
 # TODO find a  better way to check if we are on guixsd
 if type -q guix
 	set -x GUIX_PACKAGE_PATH $DOTFILES_LOCATION/guix/packages
 	# source the system paths
 	set fish_function_path $fish_function_path /run/current-system/profile/share/fish/functions
 	set fish_complete_path $fish_complete_path /run/current-system/profile/share/fish/completions
-else
-	if test -d /bin/core_perl; and not contains /bin/core_perl $PATH
-	    set PATH /bin/core_perl $PATH
-	end
-
-	if not contains /usr/local/bin $PATH
-	    set PATH /usr/local/bin $PATH
-	end
 end
+
+fish_add_path /bin/core_perl
+fish_add_path /usr/local/bin
 
 # autoload functions and completions in .dotfiles 
 set fish_function_path $DOTFILES_LOCATION/config/fish/functions $fish_function_path
