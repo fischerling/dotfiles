@@ -11,10 +11,9 @@ conky.config = {
 
 conky.text = [[
 [
-    
     ################## cpu #################
 
-    #{"name": "cpuTemperature", "full_text": "${exec sensors | grep -A 1 'temp1' | cut -c13-16 | sed '/^$/d'}C"},
+    {"name": "cpuTemperature", "full_text": "${exec sensors | grep 'CPU:' | cut -d" " -f11}"},
 
     {"name": "cpuStart", "color" : "\#ffffff", "full_text": "CPU:", "separator": false},
 
@@ -90,7 +89,7 @@ conky.text = [[
             ${else}"\#ff9200"
             ${endif}
         ${else}"\#ffffff"
-        ${endif}, "full_text": "${battery BAT1}"},  
+        ${endif}, "full_text": "${battery BAT1}"},
 
 
     ############### Time ##################
