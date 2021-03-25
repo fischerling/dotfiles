@@ -70,16 +70,6 @@ not set -q VISUAL; and set -q EDITOR; set -x VISUAL $EDITOR
 not set -q SSH_KEY_PATH; and set -x SSH_KEY_PATH $HOME/.ssh/id_rsa
 not set -q SSH_AUTH_SOCK; set -x SSH_AUTH_SOCK $HOME/.ssh/agent.sock
 
-# set yaourt specific VARS
-if type -q yaourt
-    if not set -q AURUSEGIT
-        set -x AURUSEGIT 1
-    end
-    if not set -q AURSHOWDIFF
-        set -x AURSHOWDIFF 1
-    end
-end
-
 set -x GPG_TTY (tty)
 
 #start xsession if we are not in ssh
