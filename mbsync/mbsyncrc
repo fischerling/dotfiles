@@ -21,8 +21,8 @@ Path ~/.local/share/maildir/FAU/
 Inbox ~/.local/share/maildir/FAU/INBOX
 
 Channel FAU
-Master :FAU-remote:
-Slave :FAU-local:
+Far :FAU-remote:
+Near :FAU-local:
 # Or include everything
 Patterns *
 # Automatically create missing mailboxes, both locally and on the server
@@ -48,8 +48,8 @@ Path ~/.local/share/maildir/MUHQ/
 Inbox ~/.local/share/maildir/MUHQ/INBOX
 
 Channel MUHQ
-Master :MUHQ-remote:
-Slave :MUHQ-local:
+Far :MUHQ-remote:
+Near :MUHQ-local:
 Patterns *
 Create Both
 SyncState *
@@ -72,8 +72,8 @@ Path ~/.local/share/maildir/SNFMT/
 Inbox ~/.local/share/maildir/SNFMT/INBOX
 
 Channel SNFMT
-Master :SNFMT-remote:
-Slave :SNFMT-local:
+Far :SNFMT-remote:
+Near :SNFMT-local:
 Patterns *
 Create Both
 SyncState *
