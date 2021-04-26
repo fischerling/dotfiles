@@ -94,6 +94,10 @@ targets = {
             dotfile_loc_helper],
         "wofi":
             [("config/wofi", config_dir + "/wofi")],
+        "alacritty":
+            [("config/alacritty", config_dir + "/alacritty")],
+        "vdirsyncer":
+            [("config/vdirsyncer/config.gpg", config_dir + "/vdirsyncer/config")],
         "dir_colors":
             [("dir_colors", home_dir + "/.dir_colors")],
         "fish":
@@ -155,15 +159,16 @@ def install_target(target, quiet):
                     if not os.path.isdir("decrypted"):
                         os.makedirs("decrypted")
                     start_filename = instruction[0].rfind("/") + 1
+                    filename = f'{target}-{instruction[0][start_filename:-4]}'
                     if subprocess.run([
                             "gpg",
                             "--output",
-                            "decrypted/" + instruction[0][start_filename:-4],
+                            "decrypted/" + filename,
                             "-d",
                             instruction[0]]):
                         # adjust instruction[0]
                         instruction = (
-                                "decrypted/" + instruction[0][start_filename:-4],
+                                "decrypted/" + filename,
                                 instruction[1])
 
                         # set privacy friendly file permissions 
