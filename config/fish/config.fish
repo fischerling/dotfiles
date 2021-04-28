@@ -74,7 +74,7 @@ set -x GPG_TTY (tty)
 
 #start xsession if we are not in ssh
 if not set -q SSH_CLIENT; or not set -q SSH_TTY
-	if not set -q DISPLAY; and test "$XDG_VTNR" = "1"
+	if not set -q DISPLAY; and not set -q WAYLAND_DISPLAY; and test "$XDG_VTNR" = "1"
 		if type -q sway
 			set -x TERMINAL termite
 			set -x BROWSER qutebrowser
