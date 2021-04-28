@@ -75,7 +75,8 @@ targets = {
             [("gdbinit", home_dir + "/.gdbinit"),
             ("config/gdb", config_dir + "/gdb")],
         "ssh":
-            [("ssh/config.gpg", home_dir + "/.ssh/config")],
+            [("ssh/config.gpg", home_dir + "/.ssh/config"),
+             ("ssh/ssh-agent.service", config_dir + "/systemd/user/ssh-agent.service")],
         "X":
             [("xinitrc", home_dir + "/.xinitrc"),
             ("xinitrc", home_dir + "/.xsession"),
