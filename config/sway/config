@@ -259,6 +259,14 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #
+# Brightness control
+#
+# set brightness logarithmically by factor 1.4
+# https://www.reddit.com/r/swaywm/comments/fk08lu/nicer_brightness_control/
+bindsym --locked XF86MonBrightnessUp exec light -T 1.4
+bindsym --locked XF86MonBrightnessDown exec light -T 0.72
+
+#
 # Audio shortcuts
 #
 # Volume
