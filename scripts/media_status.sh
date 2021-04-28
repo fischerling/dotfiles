@@ -32,7 +32,11 @@ elif pgrep mpd &>/dev/null
 then
     if type mpc &>/dev/null
     then
-        echo MPD: "▐▐" $(mpc current)
+        current_song=$(mpc current)
+        if test -n "$current_song"
+        then
+            echo "MPD: ▐▐ $current_song"
+        fi
     else
         echo "for mpd status mpc is needed"
     fi
