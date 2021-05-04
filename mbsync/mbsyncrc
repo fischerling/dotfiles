@@ -1,3 +1,13 @@
+### Global ###
+# Propagate message deletion
+Expunge Both
+
+# Automatically create missing mailboxes, both locally and on the server
+Create Both
+
+# Save the synchronization state files in the relevant directory
+SyncState *
+
 ### FAU ###
 
 IMAPAccount FAU
@@ -25,10 +35,6 @@ Far :FAU-remote:
 Near :FAU-local:
 # Or include everything
 Patterns *
-# Automatically create missing mailboxes, both locally and on the server
-Create Both
-# Save the synchronization state files in the relevant directory
-SyncState *
 
 ### MUHQ ###
 
@@ -51,7 +57,6 @@ Channel MUHQ
 Far :MUHQ-remote:
 Near :MUHQ-local:
 Patterns *
-Create Both
 SyncState *
 
 ### SNFMT ###
@@ -75,5 +80,4 @@ Channel SNFMT
 Far :SNFMT-remote:
 Near :SNFMT-local:
 Patterns *
-Create Both
 SyncState *
