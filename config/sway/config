@@ -309,15 +309,15 @@ bar {
 #
 
 # Unlock GPG key
-exec --no-startup-id bash -c "echo | gpg -s > /dev/null"
+exec bash -c "echo | gpg -s > /dev/null"
 
 # Start notification service
-exec --no-startup-id mako
+exec mako
 
 # Start notification service
-# exec --no-startup-id nextcloud
+# exec nextcloud
 
 # Start touchpad daemon
-exec --no-startup-id syndaemon -i 1 -d
+exec syndaemon -i 1 -d
 
 include /etc/sway/config.d/*
