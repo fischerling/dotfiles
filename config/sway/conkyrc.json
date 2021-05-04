@@ -18,18 +18,23 @@ conky.text = [[
 
     {"name": "cpuStart", "color" : "\#ffffff", "full_text": "CPU:", "separator": false},
 
-    {"name": "cpu1", "color": ${if_match ${cpu cpu1}<89}"\#ffffff"${else}"\#ff0000"${endif},
-    "full_text": "${cpu cpu1}%,", "separator": false},
+    ${if_match "${exec nproc}"=="4"}
+        {"name": "cpu1", "color": ${if_match ${cpu cpu1}<89}"\#ffffff"${else}"\#ff0000"${endif},
+        "full_text": "${cpu cpu1}%,", "separator": false},
 
-    {"name": "cpu2", "color": ${if_match ${cpu cpu2}<89}"\#ffffff"${else}"\#ff0000"${endif},
+        {"name": "cpu2", "color": ${if_match ${cpu cpu2}<89}"\#ffffff"${else}"\#ff0000"${endif},
 
-    "full_text": "${cpu cpu2}%,", "separator": false},
+        "full_text": "${cpu cpu2}%,", "separator": false},
 
-    {"name": "cpu3", "color": ${if_match ${cpu cpu3}<89}"\#ffffff"${else}"\#ff0000"${endif},
-    "full_text": "${cpu cpu3}%,", "separator": false},
+        {"name": "cpu3", "color": ${if_match ${cpu cpu3}<89}"\#ffffff"${else}"\#ff0000"${endif},
+        "full_text": "${cpu cpu3}%,", "separator": false},
 
-    {"name": "cpu4", "color": ${if_match ${cpu cpu4}<89}"\#ffffff"${else}"\#ff0000"${endif},
-    "full_text": "${cpu cpu4}%"},
+        {"name": "cpu4", "color": ${if_match ${cpu cpu4}<89}"\#ffffff"${else}"\#ff0000"${endif},
+        "full_text": "${cpu cpu4}%"},
+    ${else}
+        {"name": "cpu", "color": ${if_match ${cpu cpu0}<89}"\#ffffff"${else}"\#ff0000"${endif},
+        "full_text": "${cpu cpu0}%"},
+    ${endif}
 
     ################ memory #########################
 
