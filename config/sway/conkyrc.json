@@ -41,8 +41,6 @@ conky.text = [[
     {"name": "memory", "color": ${if_match ${memperc}<80}"\#ffffff"${else}"\#ff0000"${endif},
         "full_text": "RAM: ${memperc}%"},  
 
-    #{"name": "disk", "color": "\#ffffff", "full_text": " ${fs_used_perc /}%"},
-
 
     ############### music/ spotify/ mpd ###################
 
@@ -53,24 +51,31 @@ conky.text = [[
 
     ########### networking ########################
 
-    ${if_up wlp2s0} 
+    ${if_up wlp1s0}
+        {"name":"wifi", "color": ${if_match ${wireless_link_qual_perc wlp1s0}>60}"\#339966"${else}"\#FF9200"${endif},
+        "full_text": "${addr wlp1s0} ${wireless_link_qual_perc wlp1s0}%", "separator": false},
+        {"name":"download", "color":"\#ffffff", "full_text": "${downspeed wlp1s0}"},
+
+    ${else} ${if_up wlp2s0}
         {"name":"wifi", "color": ${if_match ${wireless_link_qual_perc wlp2s0}>60}"\#339966"${else}"\#FF9200"${endif},
-        "full_text": "${addr wlp2s0} ${wireless_link_qual_perc wlp2s0}%"}, 
-        {"name":"download", "color":"\#ffffff", "full_text": "⤋: ${downspeed wlp2s0}"},
+        "full_text": "${addr wlp2s0} ${wireless_link_qual_perc wlp2s0}%", "separator": false},
+        {"name":"download", "color":"\#ffffff", "full_text": "${downspeed wlp2s0}"},
 
     ${else} ${if_up enp0s20u1}
-                {"name":"ethernet", "color": "\#339966", "full_text": "IP: ${addr enp0s20u1} "},
-                {"name":"download", "color":"\#ffffff", "full_text": "⤋: ${downspeed enp0s20u1}"},
+        {"name":"ethernet", "color": "\#339966", "full_text": "${addr enp0s20u1}", "separator": false},
+        {"name":"download", "color":"\#ffffff", "full_text": "${downspeed enp0s20u1}"},
 
-            ${else} ${if_up eth0}
-                        {"name":"ethernet", "color": "\#339966", "full_text": "IP: ${addr eth0} "},
-                        {"name":"download", "color":"\#ffffff", "full_text": "⤋: ${downspeed eth0}"},
+    ${else} ${if_up eth0}
+        {"name":"ethernet", "color": "\#339966", "full_text": "${addr eth0}", "separator": false},
+        {"name":"download", "color":"\#ffffff", "full_text": "${downspeed eth0}"},
 
-                    ${else}
-                        {"name":"nonet", "full_text": "no connection" },
-                    ${endif}
-            ${endif}
-    ${endif}
+    ${else} ${if_up eno1}
+        {"name":"ethernet", "color": "\#339966", "full_text": "${addr eno1}", "separator": false},
+        {"name":"download", "color":"\#ffffff", "full_text": "${downspeed eno1}"},
+
+    ${else}
+        {"name":"nonet", "full_text": "no connection" },
+    ${endif} ${endif} ${endif} ${endif} ${endif}
 
 
     ################ Volume ########################
