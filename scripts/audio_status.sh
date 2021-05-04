@@ -17,9 +17,12 @@ then
        print_unmute
    fi
 
-   echo -n $(pacmd info | grep 'active port.*output' | cut -d"-" -f3 | sed "s/>//")
+   if type pacmd &>/dev/null
+   then
+       echo -n $(pacmd info | grep 'active port.*output' | cut -d"-" -f3 | sed "s/>//") ""
+   fi
 
-   echo " [$(pamixer --get-volume)%]"
+   echo "[$(pamixer --get-volume)%]"
 
 elif type amixer &>/dev/null
 then
