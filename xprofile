@@ -85,9 +85,3 @@ fi
 
 # Start nextcloud client
 start_if_avail nextcloud "&"
-
-# Start email sync
-for ACC in FAU MUHQ SNFMT
-do
-	systemctl --user start offlineimap@$ACC.service
-done
