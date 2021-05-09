@@ -14,7 +14,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    # family: 'Fira Code'
+    family: 'Fira Code'
     # family: 'Droid Sans Mono'
     # family: Hack
 
