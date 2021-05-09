@@ -76,7 +76,7 @@ set -x GPG_TTY (tty)
 if not set -q SSH_CLIENT; or not set -q SSH_TTY
 	if not set -q DISPLAY; and not set -q WAYLAND_DISPLAY; and test "$XDG_VTNR" = "1"
 		if type -q sway
-			set -x TERMINAL termite
+			set -x TERMINAL alacritty
 			set -x BROWSER qutebrowser
 			mkdir -p ~/.local/share/sway
 			sway -V ^ ~/.local/share/sway/log
