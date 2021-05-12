@@ -47,6 +47,9 @@ set query_command= "khard email --parsable %s"
 bind editor <Tab> complete-query
 bind editor ^T    complete
 
+# use xdg-mime to determine mime types
+set mime_type_query_command = "xdg-mime query filetype"
+
 ############## COLOR #######################
 
 source ~/.mutt/theme
