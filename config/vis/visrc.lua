@@ -17,7 +17,7 @@ if next(lspc) then
 	lspc.ls_map.lua = {name = 'lua', cmd = 'lua-language-server'}
 end
 
-require('plugins/vis-fzf-open')
+require('plugins/vis-fzf-open/fzf-open')
 require('plugins/suw')
 
 vis.events.subscribe(vis.events.INIT, function()
