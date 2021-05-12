@@ -137,6 +137,8 @@ targets = {
             [("msmtprc", home_dir + "/.msmtprc")],
         "khard":
             [("config/khard", config_dir + "/khard")],
+        "khal":
+            [("config/khal", config_dir + "/khal")],
         "dunst":
             [("config/dunst/dunstrc", config_dir + "/dunst/dunstrc")],
         "mako":
