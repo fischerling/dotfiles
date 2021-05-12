@@ -52,7 +52,7 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 end)
 
 -- load plugins that hook WIN_OPEN to change settings after hook with default settings
-require('plugins/vis-editorconfig/editorconfig')
+require('plugins/vis-editorconfig')
 
 vis:command_register("fzf", function(argv, force, cur_win, selection, range)
 	local out = io.popen("fzf"):read()
