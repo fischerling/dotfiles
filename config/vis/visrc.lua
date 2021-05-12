@@ -2,13 +2,22 @@
 require('vis')
 require('plugins/filetype')
 require('plugins/textobject-lexer')
-require('plugins/vis-cursors').cursors_path = string.format('%s/vis/cursors', os.getenv('XDG_DATA_HOME') or os.getenv('HOME').."/.local/share")
-require('plugins/vis-spellcheck/spellcheck')
+local cursors = require('plugins/vis-cursors')
+cursors.cursors_path = string.format('%s/vis/cursors',
+                                     os.getenv('XDG_DATA_HOME') or
+                                     os.getenv('HOME').."/.local/share")
+require('plugins/vis-spellcheck')
 require('plugins/vis-commentary/vis-commentary')
 require('plugins/vis-ctags/ctags')
 -- This hooks vis.events.START so its fine to load it before the default settings
 require('plugins/vis-modelines/vis-modelines')
+local lspc = require('plugins/vis-lspc')
+if next(lspc) then
+	lspc.logging = true
+	lspc.ls_map.lua = {name = 'lua', cmd = 'lua-language-server'}
+end
 
+require('plugins/vis-fzf-open')
 require('plugins/suw')
 
 vis.events.subscribe(vis.events.INIT, function()
@@ -54,35 +63,8 @@ end)
 -- load plugins that hook WIN_OPEN to change settings after hook with default settings
 require('plugins/vis-editorconfig')
 
-vis:command_register("fzf", function(argv, force, cur_win, selection, range)
-	local out = io.popen("fzf"):read()
-	if out then
-		if argv[1] then
-			vis:command(string.format('e "%s"', out))
-			-- should e return false when failed
-		else
-			vis:command(string.format('open "%s"', out))
-		end
-		vis:feedkeys("<vis-redraw>")
-	end
-end)
-
-vis:map(vis.modes.NORMAL, ";l", function()
+vis:map(vis.modes.NORMAL, ";o", function()
 	vis:command('fzf')
 end)
 
-vis:map(vis.modes.NORMAL, ";o", function()
-	vis:command('fzf true')
-end)
-
 vis:map(vis.modes.NORMAL, ";;", "<vis-window-next>")
-
---vis.events.subscribe(vis.events.FILE_SAVE_PRE, function(file)
-	---- purge trailing whitespace
-	--local i = 1
-	--while i <= #file.lines do
-		--file.lines[i] = file.lines[i]:match("(.-)%s*$")
-		--i = i + 1
-	--end
-    --return true
---end)

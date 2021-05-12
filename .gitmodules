@@ -35,3 +35,9 @@
 [submodule "config/vis/plugins/vis-ctags"]
 	path = config/vis/plugins/vis-ctags
 	url = https://github.com/kupospelov/vis-ctags
+[submodule "config/vis/plugins/vis-lspc"]
+	path = config/vis/plugins/vis-lspc
+	url = https://github.com/fischerling/vis-lspc.git
+[submodule "config/vis/plugins/vis-fzf-open"]
+	path = config/vis/plugins/vis-fzf-open
+	url = https://git.sr.ht/~mcepl/vis-fzf-open
