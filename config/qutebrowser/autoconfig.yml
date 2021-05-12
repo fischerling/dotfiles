@@ -14,9 +14,11 @@ settings:
     '*://*.funkwhale-paftown.ddns.net/*': true
     '*://*.git.hopfenspace.org/*': true
     '*://*.goteo.de/*': true
+    '*://*.lichess.org/*': true
     '*://*.lineageos.org/*': true
     '*://*.manual.uberspace.de/*': true
     '*://*.media.ccc.de/*': true
+    '*://*.meet.jit.si/*': true
     '*://*.mesonbuild.com/*': true
     '*://*.social.tchncs.de/*': true
     '*://*.uberspace.de/*': true
@@ -45,6 +47,7 @@ settings:
     '*://www.abgeordnetenwatch.de/*': true
     '*://www.cardmarket.com/*': true
     '*://www.cubetutor.com/*': true
+    '*://www.jinteki.net/*': true
     '*://www.mtggoldfish.com/*': true
     '*://www.openstreetmap.org/*': true
     '*://www.twitch.tv/*': true
