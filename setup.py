@@ -41,6 +41,17 @@ def fish_config(quiet):
 
     subprocess.run(["fish", dir_path+"fisher.fish"])
 
+def vdirsyncer_init(quiet):
+    """discover and sync"""
+    if not quiet:
+        print("Running vdirscyner discover")
+
+    subprocess.run("yes | vdirsyncer discover", shell=True, check=True)
+
+    if not quiet:
+        print("Running vdirscyner sync")
+    subprocess.run("vdirsyncer sync", shell=True, check=True)
+
 def dotfile_loc_helper(quiet):
     """Create a symlink to get_dotfiles_location.sh into PATH"""
 
@@ -98,7 +109,8 @@ targets = {
         "alacritty":
             [("config/alacritty", config_dir + "/alacritty")],
         "vdirsyncer":
-            [("config/vdirsyncer/config.gpg", config_dir + "/vdirsyncer/config")],
+            [("config/vdirsyncer/config.gpg", config_dir + "/vdirsyncer/config"),
+             vdirsyncer_init],
         "dir_colors":
             [("dir_colors", home_dir + "/.dir_colors")],
         "fish":
