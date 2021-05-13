@@ -7,7 +7,7 @@ config.bind(',x', 'hint links spawn mpv {hint-url}')
 config.bind('<Ctrl-l>', 'spawn --userscript password_fill')
 
 terminal = os.environ['TERMINAL']
-if terminal in ["st", "urxvt"]:
+if terminal in ["st", "urxvt", "alacritty"]:
     c.editor.command = [terminal, "-e", os.environ['VISUAL'],  "{}"]
 else:
     c.editor.command = [terminal, "-e", f"{os.environ['VISUAL']} {{}}"]
