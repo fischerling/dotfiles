@@ -155,6 +155,8 @@ targets = {
             ("FAU/start_fau_wlan.sh", home_dir + "/.local/bin/start_fau_wlan")],
         "mpd":
             [("mpdconf", home_dir + "/.mpdconf")],
+        "mpv":
+            [("config/mpv/config", config_dir + "/mpv/config")],
         "xdg":
             [("mimeapps.list", config_dir + "/mimeapps.list")],
         "gpg":
