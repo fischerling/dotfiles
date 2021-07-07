@@ -26,15 +26,23 @@ vis.events.subscribe(vis.events.INIT, function()
 	vis:command("set theme ".. theme)
 end)
 
-vis.events.subscribe(vis.events.WIN_OPEN, function(win)
-	-- Default settings
+-- seperate default settings into per file and per window to not override settings from
+-- vis-editorconf which are set on FILE_OPEN
+-- default file settings
+vis.events.subscribe(vis.events.FILE_OPEN, function(file)
 	tabwidth = 4
 	vis:command('set tabwidth '..tabwidth)
 	vis:command('set autoindent')
+end)
+
+-- load plugins that hook FILE_OPEN to change settings after hook with default settings
+require('plugins/vis-editorconfig')
+
+-- default window settings
+vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 	vis:command('set number')
 	vis:command('set colorcolumn 80')
 	vis:command('set show-tabs')
-
 	if win.file.name then
 		if win.file.name:find("COMMIT_EDITMSG") then
 			vis:command('set colorcolumn 72')
@@ -59,9 +67,6 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 		end
 	end
 end)
-
--- load plugins that hook WIN_OPEN to change settings after hook with default settings
-require('plugins/vis-editorconfig')
 
 vis:map(vis.modes.NORMAL, ";o", function()
 	vis:command('fzf')
