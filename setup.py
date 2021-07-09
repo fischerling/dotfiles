@@ -97,6 +97,8 @@ targets = {
             ("Xresources", home_dir + "/.Xresources")],
         "mutt": mutt_target,
         "neomutt": mutt_target,
+        "notmuch":
+            [("notmuch-config", home_dir + "/.notmuch-config")],
         "zshrc":
             [("zshrc", home_dir + "/.zshrc")],
         "i3":
