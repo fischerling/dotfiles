@@ -6,6 +6,8 @@
 
 config_version: 2
 settings:
+  content.desktop_capture:
+    https://meet.jit.si: true
   content.javascript.enabled:
     '*://*.bandcamp.com/*': true
     '*://*.dashboard.uberspace.de/*': true
@@ -23,7 +25,6 @@ settings:
     '*://*.social.tchncs.de/*': true
     '*://*.uberspace.de/*': true
     '*://*.uni-erlangen.de/*': true
-    '*://*.web.goteo.de/*': true
     '*://192.168.178.1/*': true
     '*://banking.sparda-n.de/*': true
     '*://blockhelden.de/*': true
@@ -51,3 +52,7 @@ settings:
     '*://www.mtggoldfish.com/*': true
     '*://www.openstreetmap.org/*': true
     '*://www.twitch.tv/*': true
+  content.media.video_capture:
+    https://meet.jit.si: true
+  content.notifications.enabled:
+    https://www.netflix.com: false
