@@ -50,7 +50,23 @@ bind editor ^T    complete
 # use xdg-mime to determine mime types
 set mime_type_query_command = "xdg-mime query filetype"
 
+set mailcap_path = ~/.mutt/mailcap
+
 ############## COLOR #######################
+
+# Patch syntax highlighting
+# https://www.do-not-panic.com/2014/07/colored-diffs-with-mutt.html
+color   normal  white           default
+color   body    brightwhite     default         ^[[:space:]].*
+color   body    brightwhite     default         ^(diff).*
+color   body    white           default         ^[\-\-\-].*
+color   body    white           default         ^[\+\+\+].*
+color   body    green           default         ^[\+].*
+color   body    red             default         ^[\-].*
+color   body    brightblue      default         [@@].*
+color   body    brightwhite     default         ^(\s).*
+color   body    brightwhite     default         ^(Signed-off-by).*
+color   body    brightwhite     default         ^(Cc)
 
 source ~/.mutt/theme
 

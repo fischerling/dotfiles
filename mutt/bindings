@@ -9,6 +9,16 @@ bind index gg first-entry
 bind pager G bottom
 bind index G last-entry
 
+# Scrolling
+bind attach,browser,pager,index \CF next-page
+bind attach,browser,pager,index \CB previous-page
+bind attach,browser,pager,index \Cu half-up
+bind attach,browser,pager,index \Cd half-down
+bind browser,pager              \Ce next-line
+bind browser,pager              \Cy previous-line
+bind index                      \Ce next-line
+bind index                      \Cy previous-line
+
 bind index,pager \Cd purge-message
 
 # Sidebar Navigation

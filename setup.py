@@ -68,8 +68,7 @@ def dotfile_loc_helper(quiet):
             return e
 
 mutt_target = [("muttrc", home_dir + "/.muttrc"),
-               ("mutt", home_dir + "/.mutt"),
-               ("mailcap", home_dir + "/.mailcap")]
+               ("mutt", home_dir + "/.mutt")]
 
 # targets are a list of tuples<file name, link destination> and/or functions
 targets = {
