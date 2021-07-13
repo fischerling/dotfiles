@@ -7,7 +7,7 @@ cursors.cursors_path = string.format('%s/vis/cursors',
                                      os.getenv('XDG_DATA_HOME') or
                                      os.getenv('HOME').."/.local/share")
 require('plugins/vis-spellcheck')
-require('plugins/vis-commentary/vis-commentary')
+require('plugins/vis-commentary')
 require('plugins/vis-ctags/ctags')
 -- This hooks vis.events.START so its fine to load it before the default settings
 require('plugins/vis-modelines/vis-modelines')
