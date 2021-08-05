@@ -22,10 +22,12 @@ settings:
     '*://*.media.ccc.de/*': true
     '*://*.meet.jit.si/*': true
     '*://*.mesonbuild.com/*': true
+    '*://*.noip.com/*': true
     '*://*.social.tchncs.de/*': true
     '*://*.uberspace.de/*': true
     '*://*.uni-erlangen.de/*': true
     '*://192.168.178.1/*': true
+    '*://b12-tuebingen.de/*': true
     '*://banking.sparda-n.de/*': true
     '*://blockhelden.de/*': true
     '*://cubecobra.com/*': true
@@ -35,10 +37,12 @@ settings:
     '*://github.com/*': true
     '*://gitlab.com/*': true
     '*://idp.sparda-n.de/*': true
+    '*://jellyfin-paftown.ddns.net/*': true
     '*://lab.uberspace.de/*': true
     '*://localhost/*': true
     '*://media.ccc.de/*': true
     '*://mediathekviewweb.de/*': true
+    '*://mesonbuild.com/*': true
     '*://paftown.ddns.net/*': true
     '*://riot.muhq.space/*': true
     '*://stackoverflow.com/*': true
@@ -52,7 +56,15 @@ settings:
     '*://www.mtggoldfish.com/*': true
     '*://www.openstreetmap.org/*': true
     '*://www.twitch.tv/*': true
+  content.media.audio_capture:
+    https://bbb-5b2.cs.fau.de: true
+    https://bbb-6a4.cs.fau.de: true
   content.media.video_capture:
+    https://bbb-5b2.cs.fau.de: true
+    https://bbb-6a4.cs.fau.de: true
     https://meet.jit.si: true
   content.notifications.enabled:
+    https://gitlab.cs.fau.de: true
+    https://i4corona.cs.fau.de: true
+    https://jellyfin-paftown.ddns.net: true
     https://www.netflix.com: false
