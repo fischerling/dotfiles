@@ -79,7 +79,7 @@ if not set -q SSH_CLIENT; or not set -q SSH_TTY
 			set -x TERMINAL alacritty
 			set -x BROWSER qutebrowser
 			mkdir -p ~/.local/share/sway
-			sway -V ^ ~/.local/share/sway/log
+			sway -d 2> ~/.local/share/sway/log
 		else
 			startx ~/.xinitrc
 		end
