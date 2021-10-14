@@ -5,7 +5,7 @@ umask 027
 
 if not functions -q fish_add_path
 	function fish_add_path
-		fish_add_path_fallback
+		fish_add_path_fallback $argv
 	end
 end
 

@@ -47,7 +47,7 @@ function fish_add_path_fallback --description 'Add paths to the PATH'
         # We could add a non-canonical version of the given path if no duplicate exists, but tbh that's a recipe for disaster.
 
         # realpath complains if a parent directory does not exist, so we silence stderr.
-        set -l p (builtin realpath -s -- $path 2>/dev/null)
+        set -l p (realpath -s -- $path 2>/dev/null)
 
         # Ignore non-existing paths
         test -d "$p"; or continue
