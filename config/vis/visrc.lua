@@ -36,7 +36,11 @@ vis.events.subscribe(vis.events.FILE_OPEN, function(file)
 end)
 
 -- load plugins that hook FILE_OPEN to change settings after hook with default settings
-require('plugins/vis-editorconfig')
+if vis:module_exist('editorconfig') then
+	require('plugins/vis-editorconfig')
+else
+	vis:info('skip vis-editorconfig: editorconfig not available from lua')
+end
 
 -- default window settings
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
