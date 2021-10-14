@@ -1,8 +1,9 @@
 import os
 
 # Keybindings
-config.bind('x', 'spawn mpv {url}')
-config.bind(',x', 'hint links spawn mpv {hint-url}')
+mpv_cmd = 'mpv --ytdl-format=best[height<=1080]'
+config.bind('x', f'spawn {mpv_cmd} {{url}}')
+config.bind(',x', f'hint links spawn {mpv_cmd} {{hint-url}}')
 
 config.bind('<Ctrl-l>', 'spawn --userscript password_fill')
 
