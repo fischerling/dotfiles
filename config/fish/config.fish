@@ -3,6 +3,12 @@ umask 027
 
 # PATH Stuff
 
+if not functions -q fish_add_path
+	function fish_add_path
+		fish_add_path_fallback
+	end
+end
+
 for dir in /bin /sbin ~/.local/bin
 	fish_add_path $dir
 end
