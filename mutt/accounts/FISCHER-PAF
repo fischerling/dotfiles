@@ -1,0 +1,6 @@
+set from = "florian@fischer-paf.de"
+
+set my_account = "FISCHER-PAF"
+source $my_cfgdir/accounts/change_account
+
+color status green default
