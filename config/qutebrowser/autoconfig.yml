@@ -8,6 +8,8 @@ config_version: 2
 settings:
   content.desktop_capture:
     https://meet.jit.si: true
+  content.javascript.can_access_clipboard:
+    github.com: true
   content.javascript.enabled:
     '*://*.bandcamp.com/*': true
     '*://*.dashboard.uberspace.de/*': true
@@ -36,6 +38,7 @@ settings:
     '*://fau.zoom.us/*': true
     '*://github.com/*': true
     '*://gitlab.com/*': true
+    '*://i4pad.cs.fau.de/*': true
     '*://idp.sparda-n.de/*': true
     '*://jellyfin-paftown.ddns.net/*': true
     '*://lab.uberspace.de/*': true
@@ -54,11 +57,14 @@ settings:
     '*://www.cubetutor.com/*': true
     '*://www.jinteki.net/*': true
     '*://www.mtggoldfish.com/*': true
+    '*://www.noip.com/*': true
     '*://www.openstreetmap.org/*': true
     '*://www.twitch.tv/*': true
   content.media.audio_capture:
     https://bbb-5b2.cs.fau.de: true
     https://bbb-6a4.cs.fau.de: true
+    https://bbb-server8.cs.fau.de: true
+    https://meet.jit.si: true
   content.media.video_capture:
     https://bbb-5b2.cs.fau.de: true
     https://bbb-6a4.cs.fau.de: true
