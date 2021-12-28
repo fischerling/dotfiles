@@ -14,7 +14,8 @@ require('plugins/vis-modelines/vis-modelines')
 local lspc = require('plugins/vis-lspc')
 if next(lspc) then
 	lspc.logging = true
-	lspc.ls_map.lua = {name = 'lua', cmd = 'lua-language-server'}
+	lspc.ls_map.latex = {name = 'latex', cmd = 'texlab'}
+	lspc.ls_map.go = {name = 'go', cmd = 'gopls'}
 end
 
 require('plugins/vis-fzf-open/fzf-open')
