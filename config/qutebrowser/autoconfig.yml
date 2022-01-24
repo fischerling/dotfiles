@@ -28,6 +28,7 @@ settings:
     '*://*.social.tchncs.de/*': true
     '*://*.uberspace.de/*': true
     '*://*.uni-erlangen.de/*': true
+    '*://*.vocosma.it/*': true
     '*://192.168.178.1/*': true
     '*://b12-tuebingen.de/*': true
     '*://banking.sparda-n.de/*': true
@@ -73,4 +74,5 @@ settings:
     https://gitlab.cs.fau.de: true
     https://i4corona.cs.fau.de: true
     https://jellyfin-paftown.ddns.net: true
+    https://nextcloud.vocosma.it: true
     https://www.netflix.com: false
