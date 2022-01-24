@@ -105,3 +105,27 @@ Far :FISCHER-PAF-remote:
 Near :FISCHER-PAF-local:
 # Or include everything
 Patterns *
+
+### VOCOSMA ###
+
+IMAPAccount VOCOSMA
+Host vulpecula.uberspace.de
+User flo@vocosma.it
+PassCmd "pass email/VOCOSMA"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore VOCOSMA-remote
+Account VOCOSMA
+
+MaildirStore VOCOSMA-local
+Subfolders Verbatim
+# The trailing "/" is important
+Path ~/.local/share/maildir/VOCOSMA/
+Inbox ~/.local/share/maildir/VOCOSMA/INBOX
+
+Channel VOCOSMA
+Far :VOCOSMA-remote:
+Near :VOCOSMA-local:
+# Or include everything
+Patterns *

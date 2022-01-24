@@ -1,0 +1,7 @@
+set from = "florian.fischer@vocosma.it"
+alternates ^[:graph:]*@vocosma.it$
+
+set my_account = "VOCOSMA"
+source $my_cfgdir/accounts/change_account
+
+color status blue default
