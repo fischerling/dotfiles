@@ -46,6 +46,9 @@ set sort_aux=last-date-received
 set collapse_all
 unset collapse_unread
 
+# forward all parts of a message
+set mime_forward
+
 # use khard as external adressbook
 set query_command= "khard email --parsable %s"
 bind editor <Tab> complete-query
