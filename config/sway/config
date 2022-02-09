@@ -314,8 +314,8 @@ exec bash -c "echo | gpg -s > /dev/null"
 # Start notification service
 exec mako
 
-# Start notification service
-# exec nextcloud
+# Start nextcloud sync service
+exec nextcloud
 
 # Start touchpad daemon
 exec syndaemon -i 1 -d
