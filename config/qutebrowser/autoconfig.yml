@@ -6,14 +6,18 @@
 
 config_version: 2
 settings:
+  colors.webpage.preferred_color_scheme:
+    global: dark
   content.desktop_capture:
     https://meet.jit.si: true
   content.javascript.can_access_clipboard:
     github.com: true
   content.javascript.enabled:
+    '*://*.app.lexoffice.de/*': true
     '*://*.bandcamp.com/*': true
     '*://*.dashboard.uberspace.de/*': true
     '*://*.duckduckgo.com/*': true
+    '*://*.elster.de/*': true
     '*://*.fau.de/*': true
     '*://*.funkwhale-paftown.ddns.net/*': true
     '*://*.git.hopfenspace.org/*': true
@@ -26,6 +30,7 @@ settings:
     '*://*.mesonbuild.com/*': true
     '*://*.noip.com/*': true
     '*://*.social.tchncs.de/*': true
+    '*://*.tk.de/*': true
     '*://*.uberspace.de/*': true
     '*://*.uni-erlangen.de/*': true
     '*://*.vocosma.it/*': true
@@ -75,4 +80,5 @@ settings:
     https://i4corona.cs.fau.de: true
     https://jellyfin-paftown.ddns.net: true
     https://nextcloud.vocosma.it: true
+    https://paftown.ddns.net: true
     https://www.netflix.com: false
