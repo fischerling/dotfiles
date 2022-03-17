@@ -40,7 +40,7 @@ Patterns *
 
 IMAPAccount MUHQ
 Host euporie.uberspace.de
-User muhq
+User muhq@muhq.space
 PassCmd "pass email/MUHQ"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
@@ -129,3 +129,4 @@ Far :VOCOSMA-remote:
 Near :VOCOSMA-local:
 # Or include everything
 Patterns *
+Patterns !mail2cardbot
