@@ -12,3 +12,6 @@ set trash = "+$my_account/Trash"
 
 # resource account dependent macros
 source $my_cfgdir/accounts/macros
+
+# set the account specific signature
+set signature = "$my_cfgdir/signatures/$my_account"
