@@ -10,11 +10,12 @@ function print_unmute {
 
 if type pamixer &>/dev/null
 then
-    if pamixer --get-mute &> /dev/null
+    muted="$(pamixer --get-mute)"
+    if test ! $? || test "$muted" == "true"
     then
         print_mute
     else
-       print_unmute
+        print_unmute
    fi
 
    if type pacmd &>/dev/null
