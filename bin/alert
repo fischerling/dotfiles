@@ -11,7 +11,7 @@ then
 	exit 1
 fi
 
-CMD="xkbbell ^/dev/null; echo -n -e \a"
+CMD="notify-send 'alert'; echo -n -e \a"
 
 eval $CMD
 
