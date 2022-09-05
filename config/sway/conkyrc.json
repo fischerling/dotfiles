@@ -16,6 +16,10 @@ conky.text = [[
     {"name": "cpuTemperature1", "full_text": "${exec sensors | grep 'temp1' | cut -d" " -f9}",
      "separator": false},
     {"name": "cpuTemperature2", "full_text": "${exec sensors | grep 'temp2' | cut -d" " -f9}"},
+    ${else}
+      ${if_match "${nodename_short}"=="pasture"}
+      {"name": "cpuTemperature", "full_text": "${exec sensors | grep Tctl | grep -o '[0-9][0-9].[0-9]°C'}"},
+      ${endif}
     ${endif}
 
     {"name": "cpuStart", "color" : "\#ffffff", "full_text": "CPU:", "separator": false},
