@@ -308,14 +308,11 @@ bar {
 # Session
 #
 
-# Unlock GPG key
-exec bash -c "echo | gpg -s > /dev/null"
-
 # Start notification service
 exec mako
 
 # Start nextcloud sync service
-exec nextcloud
+#exec nextcloud
 
 # Start touchpad daemon
 exec syndaemon -i 1 -d
