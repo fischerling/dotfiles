@@ -6,8 +6,6 @@
 
 config_version: 2
 settings:
-  colors.webpage.preferred_color_scheme:
-    global: dark
   content.desktop_capture:
     https://meet.jit.si: true
   content.javascript.can_access_clipboard:
