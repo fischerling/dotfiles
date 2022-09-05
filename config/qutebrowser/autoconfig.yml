@@ -34,10 +34,12 @@ settings:
     '*://*.uberspace.de/*': true
     '*://*.uni-erlangen.de/*': true
     '*://*.vocosma.it/*': true
+    '*://*.www.inwx.de/*': true
     '*://192.168.178.1/*': true
     '*://b12-tuebingen.de/*': true
     '*://banking.sparda-n.de/*': true
     '*://blockhelden.de/*': true
+    '*://community.chocolatey.org/*': true
     '*://cubecobra.com/*': true
     '*://dict.leo.org/*': true
     '*://docs.python.org/*': true
@@ -61,6 +63,7 @@ settings:
     '*://www.abgeordnetenwatch.de/*': true
     '*://www.cardmarket.com/*': true
     '*://www.cubetutor.com/*': true
+    '*://www.ifsc-climbing.org/*': true
     '*://www.jinteki.net/*': true
     '*://www.mtggoldfish.com/*': true
     '*://www.noip.com/*': true
