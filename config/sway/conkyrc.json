@@ -12,9 +12,11 @@ conky.text = [[
 [
     ################## cpu #################
 
+    ${if_match "${nodename_short}"=="fishtank"}
     {"name": "cpuTemperature1", "full_text": "${exec sensors | grep 'temp1' | cut -d" " -f9}",
-    "separator": false},
+     "separator": false},
     {"name": "cpuTemperature2", "full_text": "${exec sensors | grep 'temp2' | cut -d" " -f9}"},
+    ${endif}
 
     {"name": "cpuStart", "color" : "\#ffffff", "full_text": "CPU:", "separator": false},
 
