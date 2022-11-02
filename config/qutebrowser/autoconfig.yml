@@ -61,6 +61,7 @@ settings:
     '*://www.abgeordnetenwatch.de/*': true
     '*://www.cardmarket.com/*': true
     '*://www.cubetutor.com/*': true
+    '*://*.dr-plano.com/*': true
     '*://www.ifsc-climbing.org/*': true
     '*://www.jinteki.net/*': true
     '*://www.mtggoldfish.com/*': true
