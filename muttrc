@@ -16,14 +16,11 @@ set my_account = "MUHQ"
 source $my_cfgdir/accounts/$my_account
 
 # when changing into other mailboxes, use different adresses etc.
-folder-hook FAU/* source $my_cfgdir/accounts/FAU
 folder-hook MUHQ/* source $my_cfgdir/accounts/MUHQ
 folder-hook SNFMT/* source $my_cfgdir/accounts/SNFMT
 folder-hook FISCHER-PAF/* source $my_cfgdir/accounts/FISCHER-PAF
 folder-hook VOCOSMA/* source $my_cfgdir/accounts/VOCOSMA
 
-# find all maildirs
-mailboxes `find ~/.local/share/maildir/FAU -type d '(' -name 'cur' -o -name 'new' ')' -prune -printf '%h '`
 mailboxes `find ~/.local/share/maildir/MUHQ -type d '(' -name 'cur' -o -name 'new' ')' -prune -printf '%h '`
 mailboxes `find ~/.local/share/maildir/SNFMT -type d '(' -name 'cur' -o -name 'new' ')' -prune -printf '%h '`
 mailboxes `find ~/.local/share/maildir/FISCHER-PAF -type d '(' -name 'cur' -o -name 'new' ')' -prune -printf '%h '`

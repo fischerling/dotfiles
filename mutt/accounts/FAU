@@ -1,6 +1,0 @@
-set from = "florian.fl.fischer@fau.de"
-
-set my_account = "FAU"
-source $my_cfgdir/accounts/change_account
-
-color status cyan default
