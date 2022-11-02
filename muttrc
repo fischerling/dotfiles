@@ -42,6 +42,7 @@ set sort=threads
 set sort_aux=last-date-received
 set collapse_all
 unset collapse_unread
+set edit_headers=yes
 
 # forward all parts of a message
 set mime_forward
