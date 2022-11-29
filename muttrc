@@ -21,6 +21,10 @@ folder-hook SNFMT/* source $my_cfgdir/accounts/SNFMT
 folder-hook FISCHER-PAF/* source $my_cfgdir/accounts/FISCHER-PAF
 folder-hook VOCOSMA/* source $my_cfgdir/accounts/VOCOSMA
 
+# Set Reply-To header after change_account hook cleared it
+folder-hook VOCOSMA/Schmidt my_hdr Reply-To: ras@vocosma.it
+folder-hook VOCOSMA/FFErlangen my_hdr Reply-To: ff-erlangen@vocosma.it
+
 mailboxes `find ~/.local/share/maildir/MUHQ -type d '(' -name 'cur' -o -name 'new' ')' -prune -printf '%h '`
 mailboxes `find ~/.local/share/maildir/SNFMT -type d '(' -name 'cur' -o -name 'new' ')' -prune -printf '%h '`
 mailboxes `find ~/.local/share/maildir/FISCHER-PAF -type d '(' -name 'cur' -o -name 'new' ')' -prune -printf '%h '`
