@@ -20,7 +20,7 @@ end
 
 fzf_open = require('plugins/vis-fzf-open')
 
-fzf_open.fzf_path = "FZF_DEFAULT_COMMAND='rg --hidden --ignore .git -l' fzf"
+fzf_open.fzf_path = "FZF_DEFAULT_COMMAND='rg --hidden -g !.git -l \"\"' fzf"
 
 vis:map(vis.modes.NORMAL, ";o", function()
 	vis:command('fzf')
