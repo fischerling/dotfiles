@@ -18,7 +18,14 @@ if next(lspc) then
 	lspc.ls_map.go = {name = 'go', cmd = 'gopls'}
 end
 
-require('plugins/vis-fzf-open/fzf-open')
+fzf_open = require('plugins/vis-fzf-open')
+
+fzf_open.fzf_path = "FZF_DEFAULT_COMMAND='rg --hidden --ignore .git -l' fzf"
+
+vis:map(vis.modes.NORMAL, ";o", function()
+	vis:command('fzf')
+end)
+
 require('plugins/suw')
 
 vis.events.subscribe(vis.events.INIT, function()
@@ -71,10 +78,6 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 			end)
 		end
 	end
-end)
-
-vis:map(vis.modes.NORMAL, ";o", function()
-	vis:command('fzf')
 end)
 
 vis:map(vis.modes.NORMAL, ";;", "<vis-window-next>")
