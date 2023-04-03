@@ -20,6 +20,7 @@ folder-hook MUHQ/* source $my_cfgdir/accounts/MUHQ
 folder-hook SNFMT/* source $my_cfgdir/accounts/SNFMT
 folder-hook FISCHER-PAF/* source $my_cfgdir/accounts/FISCHER-PAF
 folder-hook VOCOSMA/* source $my_cfgdir/accounts/VOCOSMA
+folder-hook HSG/* source $my_cfgdir/accounts/HSG
 
 # Set Reply-To header after change_account hook cleared it
 folder-hook VOCOSMA/Schmidt my_hdr Reply-To: ras@vocosma.it
@@ -29,6 +30,7 @@ mailboxes `find ~/.local/share/maildir/MUHQ -type d '(' -name 'cur' -o -name 'ne
 mailboxes `find ~/.local/share/maildir/SNFMT -type d '(' -name 'cur' -o -name 'new' ')' -prune -printf '%h '`
 mailboxes `find ~/.local/share/maildir/FISCHER-PAF -type d '(' -name 'cur' -o -name 'new' ')' -prune -printf '%h '`
 mailboxes `find ~/.local/share/maildir/VOCOSMA -type d '(' -name 'cur' -o -name 'new' ')' -prune -printf '%h '`
+mailboxes `find ~/.local/share/maildir/HSG -type d '(' -name 'cur' -o -name 'new' ')' -prune -printf '"%h" '`
 
 ############### GPG ########################
 
@@ -36,6 +38,8 @@ source ~/.mutt/gpg
 
 set pgp_use_gpg_agent = yes
 
+set crypt_autosign = yes
+set crypt_replysign = yes
 set crypt_replyencrypt = yes
 set crypt_replysignencrypted=yes
 set crypt_verify_sig=yes
