@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-
-"""Interactively install fischerlings dotfiles"""
+"""Interactively install fischerling's dotfiles"""
 
 import argparse
 import os
@@ -13,6 +12,7 @@ home_dir = os.getenv("HOME")
 config_dir = os.getenv("XDG_CONFIG_HOME") or home_dir + "/.config"
 cwd = os.getcwd()
 
+
 def fish_config(quiet):
     """install and run fisher"""
     # download fisher
@@ -23,13 +23,13 @@ def fish_config(quiet):
     with urllib.request.urlopen("https://git.io/fisher") as f:
         fisher = f.read().decode("utf-8")
 
-    dir_path = home_dir+"/.config/fish/functions/"
+    dir_path = home_dir + "/.config/fish/functions/"
     # install fisherman at $fish_config/functions/
     if not os.path.exists(dir_path):
         os.mkdir(dir_path)
     else:
-        if not os.path.exists(dir_path+"fisher.fish"):
-            file = open(dir_path+"fisher.fish", 'w')
+        if not os.path.exists(dir_path + "fisher.fish"):
+            file = open(dir_path + "fisher.fish", 'w')
             file.write(fisher)
         else:
             if not quiet:
@@ -39,7 +39,8 @@ def fish_config(quiet):
     if not quiet:
         print("Installed fisher -> execute fisher to pull plugins")
 
-    subprocess.run(["fish", dir_path+"fisher.fish"])
+    subprocess.run(["fish", dir_path + "fisher.fish"])
+
 
 def vdirsyncer_init(quiet):
     """discover and sync"""
@@ -52,24 +53,27 @@ def vdirsyncer_init(quiet):
         print("Running vdirscyner sync")
     subprocess.run("vdirsyncer sync", shell=True, check=True)
 
+
 def dotfile_loc_helper(quiet):
     """Create a symlink to get_dotfiles_location.sh into PATH"""
 
-    if not os.path.exists(home_dir+"/.local/bin"):
-        os.mkdir(home_dir+"/.local/bin")
+    if not os.path.exists(home_dir + "/.local/bin"):
+        os.mkdir(home_dir + "/.local/bin")
 
     try:
         os.symlink(cwd + "/get_dotfiles_location.sh",
-                home_dir + "/.local/bin/get_dotfiles_location")
+                   home_dir + "/.local/bin/get_dotfiles_location")
     except Exception as e:
         if isinstance(e, FileExistsError):
             pass
         else:
             return e
 
+
 mutt_target = [("muttrc", home_dir + "/.muttrc"),
                ("mutt", home_dir + "/.mutt")]
 
+# yapf: disable
 # targets are a list of tuples<file name, link destination> and/or functions
 targets = {
         "lumail":
@@ -152,6 +156,8 @@ targets = {
         "gpg":
             [("gnupg/gpg-agent.conf", home_dir + "/.gnupg/gpg-agent.conf")]
         }
+# yapf: enable
+
 
 def gen_simple_config_target(target_name: str) -> tuple[str, str]:
     """Generate the target definition for linking the config/<target> to <config_dir>/<target>"""
@@ -171,6 +177,7 @@ for simple_config_target in simple_config_target:
 
 git_submodules_for = ["vim", "vis"]
 
+
 def install_target(target, quiet):
     """Install a target"""
 
@@ -180,9 +187,10 @@ def install_target(target, quiet):
     for instruction in targets[target]:
         if isinstance(instruction, tuple):
             if not os.path.exists(instruction[0]):
-                print("Can't find", instruction[0],
-                        ". Please make sure you are in the right directory.",
-                        file=sys.stderr)
+                print("Can't find",
+                      instruction[0],
+                      ". Please make sure you are in the right directory.",
+                      file=sys.stderr)
             else:
                 # check if file is encrypted
                 if instruction[0][-4:] == ".gpg":
@@ -191,21 +199,20 @@ def install_target(target, quiet):
                     start_filename = instruction[0].rfind("/") + 1
                     filename = f'{target}-{instruction[0][start_filename:-4]}'
                     if subprocess.run([
-                            "gpg",
-                            "--output",
-                            "decrypted/" + filename,
-                            "-d",
-                            instruction[0]]):
+                            "gpg", "--output", "decrypted/" + filename, "-d",
+                            instruction[0]
+                    ]):
                         # adjust instruction[0]
-                        instruction = (
-                                "decrypted/" + filename,
-                                instruction[1])
+                        instruction = ("decrypted/" + filename, instruction[1])
 
-                        # set privacy friendly file permissions 
-                        if not subprocess.run(["chmod", "600", instruction[0]]):
+                        # set privacy friendly file permissions
+                        if not subprocess.run(["chmod", "600", instruction[0]
+                                               ]):
                             print("Skipping because changing permissions of",
-                                    instruction[1], "failed. This could be a",
-                                    "privacy risk!", file=sys.stderr)
+                                  instruction[1],
+                                  "failed. This could be a",
+                                  "privacy risk!",
+                                  file=sys.stderr)
                             continue
                     else:
                         print("Decrypting failed", file=sys.stderr)
@@ -225,8 +232,10 @@ def install_target(target, quiet):
                     os.symlink(cwd + "/" + instruction[0], instruction[1])
                 except Exception as e:
                     if isinstance(e, PermissionError):
-                        subprocess.run(["sudo", "ln", "-s",
-                                cwd + '/' + instruction[0], instruction[1]])
+                        subprocess.run([
+                            "sudo", "ln", "-s", cwd + '/' + instruction[0],
+                            instruction[1]
+                        ])
                     elif isinstance(e, FileExistsError):
                         print("File already exists", file=sys.stderr)
                     else:
@@ -237,17 +246,25 @@ def install_target(target, quiet):
                 print("Running function", instruction)
             res = instruction(quiet)
             if res:
-                print("The instruction", instruction, "of", target,
-                        "failed with", str(res) + ".", file=sys.stderr)
+                print("The instruction",
+                      instruction,
+                      "of",
+                      target,
+                      "failed with",
+                      str(res) + ".",
+                      file=sys.stderr)
                 print("This can leaf your installation in a broken state",
-                        file=sys.stderr)
+                      file=sys.stderr)
         else:
-            print("I don't understand", instruction,
-                    "\nThe instruction musst be a tuple or a function.",
-                    "\nSKIPPING IT", file=sys.stderr)
+            print("I don't understand",
+                  instruction,
+                  "\nThe instruction musst be a tuple or a function.",
+                  "\nSKIPPING IT",
+                  file=sys.stderr)
 
     if target in git_submodules_for:
-        choice = input(target + " uses git submodules want to pull them ? (Y/n) ")
+        choice = input(target +
+                       " uses git submodules want to pull them ? (Y/n) ")
         if choice in ["Y", "y", ""]:
             subprocess.run(["git", "submodule", "update", "--init"])
 
@@ -264,16 +281,17 @@ def main():
             install_target(t, args.quiet)
     else:
         if not args.quiet:
-            print("Welcome to the installation script of fischerlings dotfiles.")
+            print(
+                "Welcome to the installation script of fischerlings dotfiles.")
             print("Located at: https://github.com/fischerling/dotfiles")
             print()
 
         targets_ord = [x for x in targets]
         for i, target in zip(range(len(targets_ord)), targets_ord):
-            print(str(i)+":", target)
+            print(str(i) + ":", target)
         print("Enter n° of configurations to be installed or all")
         choice = input("==> ")
-        
+
         if choice == "":
             pass
         elif "all" in choice:
