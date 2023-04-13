@@ -132,7 +132,7 @@ targets = {
              ("mbsync/mbsync.service", config_dir + "/systemd/user/mbsync.service"),
              ("mbsync/mbsync.timer", config_dir + "/systemd/user/mbsync.timer")],
         "msmtp":
-            [("msmtprc", home_dir + "/.msmtprc")],
+            [("msmtprc.gpg", home_dir + "/.msmtprc")],
         "dunst":
             [("config/dunst/dunstrc", config_dir + "/dunst/dunstrc")],
         "mako":
