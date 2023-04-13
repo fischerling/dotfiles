@@ -2,16 +2,17 @@
 umask 027
 
 # PATH Stuff
-
 if not functions -q fish_add_path
 	function fish_add_path
 		fish_add_path_fallback $argv
 	end
 end
 
-for dir in /bin /sbin ~/.local/bin
-	fish_add_path $dir
+for dir in /bin /sbin /usr/local/bin ~/.local/bin
+	fish_add_path --prepend $dir
 end
+
+fish_add_path /bin/core_perl
 
 # export the path to our dotfiles
 if not set -q DOTFILES_LOCATION
@@ -20,20 +21,22 @@ end
 
 # include cargo binaries
 if type -q rustup
-    for p in $HOME/.rustup/toolchains/*/bin $HOME/.cargo/bin
-        fish_add_path $p
-    end
+	for p in $HOME/.rustup/toolchains/*/bin $HOME/.cargo/bin
+		fish_add_path --prepend $p
+	end
 end
 
 #include go binaries
 if type -q go
 	if not set -q GOPATH; and test -d ~/code/go
 		set -x GOPATH ~/code/go
-
-		if not contains $GOPATH/bin $PATH
-			set PATH $GOPATH/bin $PATH
-		end
 	end
+	fish_add_path --prepend $GOPATH/bin
+end
+
+# include luarocks binaries
+if type -q luarocks
+	fish_add_path --prepend (string split ':' (luarocks path --lr-bin))[1]
 end
 
 # TODO find a  better way to check if we are on guixsd
@@ -43,9 +46,6 @@ if type -q guix
 	set fish_function_path $fish_function_path /run/current-system/profile/share/fish/functions
 	set fish_complete_path $fish_complete_path /run/current-system/profile/share/fish/completions
 end
-
-fish_add_path /bin/core_perl
-fish_add_path /usr/local/bin
 
 # autoload functions and completions in .dotfiles 
 set fish_function_path $DOTFILES_LOCATION/config/fish/functions $fish_function_path
