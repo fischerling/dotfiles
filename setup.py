@@ -128,7 +128,7 @@ targets = {
              ("config/termite/dark", config_dir + "/termite/dark"),
              ("config/termite/light", config_dir + "/termite/light")],
         "mbsync":
-            [("mbsync/mbsyncrc", home_dir + "/.mbsyncrc"),
+            [("mbsync/mbsyncrc.gpg", home_dir + "/.mbsyncrc"),
              ("mbsync/mbsync.service", config_dir + "/systemd/user/mbsync.service"),
              ("mbsync/mbsync.timer", config_dir + "/systemd/user/mbsync.timer")],
         "msmtp":
