@@ -83,8 +83,7 @@ targets = {
         "vis":
             [("config/vis", config_dir + "/vis")],
         "gdb":
-            [("gdbinit", home_dir + "/.gdbinit"),
-            ("config/gdb", config_dir + "/gdb")],
+            [("gdbinit", home_dir + "/.gdbinit")],
         "ssh":
             [("ssh/config.gpg", home_dir + "/.ssh/config"),
              ("ssh/ssh-agent.service", config_dir + "/systemd/user/ssh-agent.service")],
@@ -101,17 +100,9 @@ targets = {
         "zshrc":
             [("zshrc", home_dir + "/.zshrc")],
         "i3":
-            [("config/i3", config_dir + "/i3"),
-            dotfile_loc_helper],
+            [dotfile_loc_helper],
         "sway":
-            [("config/sway", config_dir + "/sway"),
-            dotfile_loc_helper],
-        "wofi":
-            [("config/wofi", config_dir + "/wofi")],
-        "firejail":
-            [("config/firejail", config_dir + "/firejail")],
-        "alacritty":
-            [("config/alacritty", config_dir + "/alacritty")],
+            [dotfile_loc_helper],
         "vdirsyncer":
             [("config/vdirsyncer/config.gpg", config_dir + "/vdirsyncer/config"),
              vdirsyncer_init],
@@ -132,18 +123,12 @@ targets = {
             [("config/termite/dark", config_dir + "/termite/config"), # default colors
              ("config/termite/dark", config_dir + "/termite/dark"),
              ("config/termite/light", config_dir + "/termite/light")],
-        "offlineimap":
-            [("config/offlineimap", config_dir + "/offlineimap")],
         "mbsync":
             [("mbsync/mbsyncrc", home_dir + "/.mbsyncrc"),
              ("mbsync/mbsync.service", config_dir + "/systemd/user/mbsync.service"),
              ("mbsync/mbsync.timer", config_dir + "/systemd/user/mbsync.timer")],
         "msmtp":
             [("msmtprc", home_dir + "/.msmtprc")],
-        "khard":
-            [("config/khard", config_dir + "/khard")],
-        "khal":
-            [("config/khal", config_dir + "/khal")],
         "dunst":
             [("config/dunst/dunstrc", config_dir + "/dunst/dunstrc")],
         "mako":
@@ -167,6 +152,22 @@ targets = {
         "gpg":
             [("gnupg/gpg-agent.conf", home_dir + "/.gnupg/gpg-agent.conf")]
         }
+
+def gen_simple_config_target(target_name: str) -> tuple[str, str]:
+    """Generate the target definition for linking the config/<target> to <config_dir>/<target>"""
+    return (f'config/{target_name}', f'{config_dir}/{target_name}')
+
+
+# All simple targets to generate
+simple_config_targets = [
+    "sway", "i3", "vis", "gdb", "khard", "khal", "offlineimap", "wofi",
+    "firejail", "alacritty"
+]
+
+# Generate all simple targets
+for simple_config_target in simple_config_target:
+    present_targets = targets.get(simple_config_targets, [])
+    present_targets.append(gen_simple_config_target(simple_config_target))
 
 git_submodules_for = ["vim", "vis"]
 
