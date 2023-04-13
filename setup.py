@@ -108,6 +108,8 @@ targets = {
             dotfile_loc_helper],
         "wofi":
             [("config/wofi", config_dir + "/wofi")],
+        "firejail":
+            [("config/firejail", config_dir + "/firejail")],
         "alacritty":
             [("config/alacritty", config_dir + "/alacritty")],
         "vdirsyncer":
