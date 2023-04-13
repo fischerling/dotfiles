@@ -93,9 +93,8 @@ input "5426:512:Razer_Reclusa_Keyboard" {
 }
 
 input "1:1:AT_Translated_Set_2_keyboard" {
-    xkb_layout de
-    xkb_variant nodeadkeys
-    xkb_options "grp:alt_shift_toggle, caps:escape"
+    xkb_layout us
+    xkb_options "grp:alt_shift_toggle, caps:escape, eurosign:5"
 }
 
 ### Key bindings
