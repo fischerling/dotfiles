@@ -171,8 +171,8 @@ simple_config_targets = [
 ]
 
 # Generate all simple targets
-for simple_config_target in simple_config_target:
-    present_targets = targets.get(simple_config_targets, [])
+for simple_config_target in simple_config_targets:
+    present_targets = targets.get(simple_config_target, [])
     present_targets.append(gen_simple_config_target(simple_config_target))
 
 git_submodules_for = ["vim", "vis"]
