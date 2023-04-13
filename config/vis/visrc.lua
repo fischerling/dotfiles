@@ -18,7 +18,8 @@ if next(lspc) then
 	lspc.ls_map.go = {name = 'go', cmd = 'gopls'}
 end
 
-fzf_open = require('plugins/vis-fzf-open')
+
+local fzf_open = require('plugins/vis-fzf-open')
 
 fzf_open.fzf_path = "FZF_DEFAULT_COMMAND='rg --hidden -g !.git -l \"\"' fzf"
 
@@ -37,8 +38,8 @@ end)
 -- seperate default settings into per file and per window to not override settings from
 -- vis-editorconf which are set on FILE_OPEN
 -- default file settings
-vis.events.subscribe(vis.events.FILE_OPEN, function(file)
-	tabwidth = 4
+local tabwidth = 4
+vis.events.subscribe(vis.events.FILE_OPEN, function()
 	vis:command('set tabwidth '..tabwidth)
 	vis:command('set autoindent')
 end)
