@@ -114,7 +114,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+Shift+b exec rofi-bibbrowser
 
     # start wofi-pass
-    bindsym $mod+p exec wofi-pass
+    bindsym $mod+$alt+p exec wofi-pass
 
     # start vocosma-wofi-pass
     bindsym $mod+$alt+v exec vocosma-wofi-pass -1
@@ -135,6 +135,9 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 
     # open primary selection in browser
     bindsym $mod+Shift+o exec $DOTFILES_LOCATION/scripts/open_primary_in_browser.sh
+
+    # presentation related commands
+    bindsym $mod+Shift+m exec $DOTFILES_LOCATION/scripts/present.sh mirror
 
 #
 # Moving around:
@@ -174,6 +177,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+8 workspace 8:mail
     bindsym $mod+9 workspace 9:music
     bindsym $mod+0 workspace 10
+    bindsym $mod+p workspace P
     # move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace 1
     bindsym $mod+Shift+2 move container to workspace 2:www
@@ -202,6 +206,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     workspace "7" output eDP-1
     workspace "8:mail" output eDP-1
     workspace "9:music" output eDP-1
+    workspace P output HDMI-A-1
 
 #
 # Layout stuff:
