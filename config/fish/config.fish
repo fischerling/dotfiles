@@ -95,3 +95,7 @@ else
 	set -g theme_display_user yes
 end
 
+if type -q firejail
+	source "$DOTFILES_LOCATION/config/fish/firejail-alias"
+end
+

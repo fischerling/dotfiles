@@ -1,0 +1,19 @@
+whitelist ${HOME}/.local/share/maildir
+noblacklist ${HOME}/.cache/mutt
+whitelist ${HOME}/.cache/mutt
+
+# allow mbsync to read its config
+whitelist-ro ${HOME}/.mbsyncrc
+
+# Allow khard to query my contacts
+include allow-python3.inc
+noblacklist ${HOME}/.local/share/contacts
+whitelist-ro ${HOME}/.local/share/contacts
+whitelist-ro ${HOME}/.config/khard
+
+# Allow vis to read its config
+whitelist-ro ${HOME}/.config/vis
+
+# Allow access to my password-store
+noblacklist ${HOME}/.password-store
+whitelist-ro ${HOME}/.password-store

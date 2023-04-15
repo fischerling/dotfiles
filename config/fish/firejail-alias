@@ -1,0 +1,6 @@
+set jailed gimp imv
+for prog in $jailed
+	alias $prog "firejail $prog"
+end
+
+alias -- neomutt "firejail --profile=/etc/firejail/neomutt.profile bash -c 'neomutt; gpgconf --kill gpg-agent'"
