@@ -16,6 +16,9 @@ source $my_cfgdir/accounts/macros
 # set the account specific signature
 set signature = "$my_cfgdir/signatures/$my_account"
 
+# Reset the editor
+set editor = "${EDITOR}"
+
 # Reset non-universal headers
 # If one account sets some headers but not all accounts use that header
 # changing may leave old header values around.

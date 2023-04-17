@@ -3,4 +3,6 @@ set from = "florian.fischer@hans-sachs-gymnasium.de"
 set my_account = "HSG"
 source $my_cfgdir/accounts/change_account
 
+set editor = "VIS_SPELLLANG=de_DE ${EDITOR}"
+
 color status green default
