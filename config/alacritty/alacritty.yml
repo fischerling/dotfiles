@@ -1,5 +1,7 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
+live_config_reload: true
+
 # import the current color theme
 import:
   - ~/.config/alacritty/theme.yml
