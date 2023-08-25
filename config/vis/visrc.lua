@@ -40,8 +40,8 @@ end)
 -- default file settings
 local tabwidth = 4
 vis.events.subscribe(vis.events.FILE_OPEN, function()
-	vis:command('set tabwidth '..tabwidth)
-	vis:command('set autoindent')
+	vis.options.tabwidth = tabwidth
+	vis.options.autoindent = true
 end)
 
 -- load plugins that hook FILE_OPEN to change settings after hook with default settings
@@ -53,19 +53,19 @@ end
 
 -- default window settings
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
-	vis:command('set number')
-	vis:command('set colorcolumn 80')
-	vis:command('set show-tabs')
+	win.options.number = true
+	win.options.showtabs = true
+	win.options.colorcolumn = 80
 	if win.file.name then
 		if win.file.name:find("COMMIT_EDITMSG") then
-			vis:command('set colorcolumn 72')
+			win.options.colorcolumn = 72
 			win:set_syntax("diff")
 		elseif win.file.name:find('meson.build') and win.syntax ~= 'meson' then
 			win:set_syntax('python')
 		end
 
 		if win.syntax == "python" or win.syntax == "rust" then
-			vis:command('set expandtab')
+			vis.options.expandtab = true
 			vis:map(vis.modes.INSERT, '<Backspace>', function()
 				local found_tab = true
 				for selection in vis.win:selections_iterator() do
