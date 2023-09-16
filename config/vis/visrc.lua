@@ -53,7 +53,7 @@ end
 
 -- default window settings
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
-	win.options.number = true
+	win.options.numbers = true
 	win.options.showtabs = true
 	win.options.colorcolumn = 80
 	if win.file.name then
