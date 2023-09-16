@@ -82,3 +82,11 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 end)
 
 vis:map(vis.modes.NORMAL, ";;", "<vis-window-next>")
+
+vis:command_register('lmk', function(argv)
+	local cmd = '!lesson-make'
+	for _, a in ipairs(argv) do
+		cmd = cmd .. ' ' .. a
+	end
+	vis:command(cmd)
+end)
