@@ -289,6 +289,11 @@ bindsym --locked XF86AudioPrev exec $DOTFILES_LOCATION/scripts/media_control.sh 
 bindsym --locked XF86AudioPlay exec $DOTFILES_LOCATION/scripts/media_control.sh toggle
 bindsym --locked XF86AudioNext exec $DOTFILES_LOCATION/scripts/media_control.sh next
 
+#
+# Screenshot shortcut
+#
+bindsym $mod+Shift+s exec sh -c 'grim -g "$(slurp)"'
+
 # Suspend
 bindsym $mod+F7 exec systemctl suspend
 
