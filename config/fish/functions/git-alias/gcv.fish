@@ -1,3 +1,3 @@
-function gca --description "Alias for git commit -v -a"
+function gcv --description "Alias for git commit -v"
 	git commit -v $argv;
 end
