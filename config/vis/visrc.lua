@@ -38,21 +38,14 @@ end)
 -- seperate default settings into per file and per window to not override settings from
 -- vis-editorconf which are set on FILE_OPEN
 -- default file settings
-local tabwidth = 4
 vis.events.subscribe(vis.events.FILE_OPEN, function()
-	vis.options.tabwidth = tabwidth
 	vis.options.autoindent = true
 end)
 
--- load plugins that hook FILE_OPEN to change settings after hook with default settings
-if vis:module_exist('editorconfig') then
-	require('plugins/vis-editorconfig')
-else
-	vis:info('skip vis-editorconfig: editorconfig not available from lua')
-end
-
 -- default window settings
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
+	local tabwidth = 4
+	win.options.tabwidth = tabwidth
 	win.options.numbers = true
 	win.options.showtabs = true
 	win.options.colorcolumn = 80
@@ -65,7 +58,7 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 		end
 
 		if win.syntax == "python" or win.syntax == "rust" then
-			vis.options.expandtab = true
+			win.options.expandtab = true
 			vis:map(vis.modes.INSERT, '<Backspace>', function()
 				local found_tab = true
 				for selection in vis.win:selections_iterator() do
@@ -80,6 +73,15 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 		end
 	end
 end)
+
+-- load plugins that hook FILE_OPEN or WIN_OPEN to change settings after hooks
+-- with default settings
+if vis:module_exist('editorconfig') then
+	require('plugins/vis-editorconfig')
+else
+	vis:info('skip vis-editorconfig: editorconfig not available from lua')
+end
+
 
 vis:map(vis.modes.NORMAL, ";;", "<vis-window-next>")
 
