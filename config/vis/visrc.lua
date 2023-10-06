@@ -13,6 +13,8 @@ require('plugins/vis-ctags')
 require('plugins/vis-modelines/vis-modelines')
 local lspc = require('plugins/vis-lspc')
 if next(lspc) then
+	lspc.highlight_diagnostics = 'line'
+	-- lspc.diagnostic_style = 'fore:red'
 	lspc.logging = true
 	lspc.ls_map.latex = {name = 'latex', cmd = 'texlab'}
 	lspc.ls_map.go = {name = 'go', cmd = 'gopls'}
