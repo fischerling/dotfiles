@@ -3,13 +3,18 @@ umask 027
 
 # PATH Stuff
 if not functions -q fish_add_path
+	source (dirname (readlink $__fish_config_dir/config.fish))/fish_add_path_fallback.fish
 	function fish_add_path
 		fish_add_path_fallback $argv
 	end
 end
 
-for dir in /bin /sbin /usr/local/bin ~/.local/bin
+for dir in /usr/local/bin ~/.local/bin
 	fish_add_path --prepend $dir
+end
+
+for dir in /bin /sbin
+	fish_add_path --append $dir
 end
 
 fish_add_path /bin/core_perl
