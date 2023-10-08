@@ -24,7 +24,7 @@ def fish_config(quiet):
         fisher = f.read().decode("utf-8")
 
     dir_path = home_dir + "/.config/fish/functions/"
-    # install fisherman at $fish_config/functions/
+    # install fisher at $fish_config/functions/
     if not os.path.exists(dir_path):
         os.mkdir(dir_path)
     else:
@@ -33,7 +33,7 @@ def fish_config(quiet):
             file.write(fisher)
         else:
             if not quiet:
-                print("fisheralready installed")
+                print("fisher already installed")
                 return
 
     if not quiet:
