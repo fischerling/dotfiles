@@ -1,0 +1,7 @@
+live_config_reload = true
+
+import = ["/home/muhq/.config/alacritty/theme.toml"]
+
+[font.normal]
+family = "Fira Code"
+style = "Regular"
