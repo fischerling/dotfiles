@@ -6,3 +6,6 @@ default-timeout=5000
 
 [app-name="Element"]
 default-timeout=5000
+
+[app-name="ByCS-Drive"]
+default-timeout=5000
