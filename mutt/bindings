@@ -38,3 +38,6 @@ macro index,pager O "<shell-escape>mbsync -a<enter>" "run mbsync to sync all mai
 # Drafts
 bind compose P postpone-message
 bind index p recall-message
+
+# Apply the current message to a git repo
+macro index L '| git am -s'\n
