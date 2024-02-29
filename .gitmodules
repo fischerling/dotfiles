@@ -41,3 +41,6 @@
 [submodule "config/vis/plugins/vis-fzf-open"]
 	path = config/vis/plugins/vis-fzf-open
 	url = https://git.sr.ht/~mcepl/vis-fzf-open
+[submodule "config/vis/plugins/vis-snippets"]
+	path = config/vis/plugins/vis-snippets
+	url = git@gitlab.com:muhq/vis-snippets.git

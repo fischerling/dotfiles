@@ -20,6 +20,10 @@ if next(lspc) then
 	lspc.ls_map.go = {name = 'go', cmd = 'gopls'}
 end
 
+local snippets = require('plugins/vis-snippets')
+vis:map(vis.modes.NORMAL, "<C-s>", function()
+	vis:command(':snippet')
+end)
 
 local build = require('plugins/vis-build')
 build.get_default_build_cmd = function()
