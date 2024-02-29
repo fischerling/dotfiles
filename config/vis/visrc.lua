@@ -21,12 +21,19 @@ if next(lspc) then
 end
 
 
-local fzf_open = require('plugins/vis-fzf-open')
+local build = require('plugins/vis-build')
+build.get_default_build_cmd = function()
+  if os.getenv('PWD'):match('Unterricht') then
+    return "lesson-make"
+  end
+  return "make"
+end
 
+local fzf_open = require('plugins/vis-fzf-open')
 fzf_open.fzf_path = "FZF_DEFAULT_COMMAND='rg --hidden -g !.git -l \"\"' fzf"
 
 vis:map(vis.modes.NORMAL, ";o", function()
-	vis:command('fzf')
+  vis:command('fzf')
 end)
 
 require('plugins/suw')
