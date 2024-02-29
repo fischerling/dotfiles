@@ -14,11 +14,23 @@ require('plugins/vis-ctags')
 require('plugins/vis-modelines/vis-modelines')
 local lspc = require('plugins/vis-lspc')
 if next(lspc) then
-	lspc.highlight_diagnostics = 'line'
-	-- lspc.diagnostic_style = 'fore:red'
-	lspc.logging = true
-	lspc.ls_map.latex = {name = 'latex', cmd = 'texlab'}
-	lspc.ls_map.go = {name = 'go', cmd = 'gopls'}
+  lspc.highlight_diagnostics = 'line'
+  -- lspc.diagnostic_style = 'fore:red'
+  lspc.logging = true
+  lspc.message_level = 2
+  lspc.ls_map.latex = { name = 'latex', cmd = 'texlab' }
+  lspc.ls_map.go = { name = 'go', cmd = 'gopls' }
+  lspc.ls_map.html = { name = 'html', cmd = 'vscode-html-languageserver --stdio' }
+  lspc.ls_map.typescript = { name = 'typescript', cmd = 'typescript-language-server --stdio' }
+  lspc.ls_map.ltex = {
+    name = 'ltex',
+    cmd = 'ltex-ls --no-endless',
+    file_open_hook = function(ls, file)
+      if not ls.settings then ls.settings = {} end
+      if not ls.settings.ltex then ls.settings.ltex = {} end
+      ls.settings.ltex.language = file.spelling_language:gsub('_', '-') or 'en-US'
+    end
+  }
 end
 
 local snippets = require('plugins/vis-snippets')
