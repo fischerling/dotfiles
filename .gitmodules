@@ -44,3 +44,6 @@
 [submodule "config/vis/plugins/vis-snippets"]
 	path = config/vis/plugins/vis-snippets
 	url = git@gitlab.com:muhq/vis-snippets.git
+[submodule "config/vis/plugins/vis-build"]
+	path = config/vis/plugins/vis-build
+	url = git@gitlab.com:muhq/vis-build.git
