@@ -4,8 +4,9 @@ require('plugins/filetype')
 require('plugins/textobject-lexer')
 local cursors = require('plugins/vis-cursors')
 cursors.cursors_path = string.format('%s/vis/cursors',
-                                     os.getenv('XDG_DATA_HOME') or
-                                     os.getenv('HOME').."/.local/share")
+  os.getenv('XDG_DATA_HOME') or
+  os.getenv('HOME') .. "/.local/share")
+
 require('plugins/vis-spellcheck')
 require('plugins/vis-commentary')
 require('plugins/vis-ctags')
@@ -57,47 +58,47 @@ end, '-P')
 -- vis-editorconf which are set on FILE_OPEN
 -- default file settings
 vis.events.subscribe(vis.events.FILE_OPEN, function()
-	vis.options.autoindent = true
+  vis.options.autoindent = true
 end)
 
 -- default window settings
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
-	local tabwidth = 4
-	win.options.tabwidth = tabwidth
-	win.options.numbers = true
-	win.options.showtabs = true
-	win.options.colorcolumn = 80
-	if win.file.name then
-		if win.file.name:find("COMMIT_EDITMSG") then
-			win.options.colorcolumn = 72
-			win:set_syntax("diff")
-		elseif win.file.name:find('meson.build') and win.syntax ~= 'meson' then
-			win:set_syntax('python')
-		end
+  local tabwidth = 4
+  win.options.tabwidth = tabwidth
+  win.options.numbers = true
+  win.options.showtabs = true
+  win.options.colorcolumn = 80
+  if win.file.name then
+    if win.file.name:find("COMMIT_EDITMSG") then
+      win.options.colorcolumn = 72
+      win:set_syntax("diff")
+    elseif win.file.name:find('meson.build') and win.syntax ~= 'meson' then
+      win:set_syntax('python')
+    end
 
-		if win.syntax == "python" or win.syntax == "rust" then
-			win.options.expandtab = true
-			vis:map(vis.modes.INSERT, '<Backspace>', function()
-				local found_tab = true
-				for selection in vis.win:selections_iterator() do
-					local pos = selection.pos
-					if not pos or pos < tabwidth or vis.win.file:content(pos - tabwidth, tabwidth) ~= string.rep(' ', tabwidth) then
-						found_tab = false
-						break
-					end
-				end
-				vis:feedkeys(string.rep('<vis-delete-char-prev>', found_tab and tabwidth or 1))
-			end)
-		end
-	end
+    if win.syntax == "python" or win.syntax == "rust" then
+      win.options.expandtab = true
+      vis:map(vis.modes.INSERT, '<Backspace>', function()
+        local found_tab = true
+        for selection in vis.win:selections_iterator() do
+          local pos = selection.pos
+          if not pos or pos < tabwidth or vis.win.file:content(pos - tabwidth, tabwidth) ~= string.rep(' ', tabwidth) then
+            found_tab = false
+            break
+          end
+        end
+        vis:feedkeys(string.rep('<vis-delete-char-prev>', found_tab and tabwidth or 1))
+      end)
+    end
+  end
 end)
 
 -- load plugins that hook FILE_OPEN or WIN_OPEN to change settings after hooks
 -- with default settings
 if vis:module_exist('editorconfig') then
-	require('plugins/vis-editorconfig')
+  require('plugins/vis-editorconfig')
 else
-	vis:info('skip vis-editorconfig: editorconfig not available from lua')
+  vis:info('skip vis-editorconfig: editorconfig not available from lua')
 end
 
 
