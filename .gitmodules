@@ -47,3 +47,6 @@
 [submodule "config/vis/plugins/vis-build"]
 	path = config/vis/plugins/vis-build
 	url = git@gitlab.com:muhq/vis-build.git
+[submodule "config/vis/plugins/vis-inotify"]
+	path = config/vis/plugins/vis-inotify
+	url = git@gitlab.com:muhq/vis-inotify.git
