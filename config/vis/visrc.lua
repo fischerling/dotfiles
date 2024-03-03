@@ -7,7 +7,10 @@ cursors.cursors_path = string.format('%s/vis/cursors',
   os.getenv('XDG_DATA_HOME') or
   os.getenv('HOME') .. "/.local/share")
 
-require('plugins/vis-spellcheck')
+local spellcheck = require('plugins/vis-spellcheck')
+spellcheck.list_cmd = 'hunspell -l -d %s'
+spellcheck.cmd = 'hunspell -d %s'
+
 require('plugins/vis-commentary')
 require('plugins/vis-ctags')
 -- This hooks vis.events.START so its fine to load it before the default settings
