@@ -25,6 +25,7 @@ if next(lspc) then
   lspc.ls_map.go = { name = 'go', cmd = 'gopls' }
   lspc.ls_map.html = { name = 'html', cmd = 'vscode-html-languageserver --stdio' }
   lspc.ls_map.typescript = { name = 'typescript', cmd = 'typescript-language-server --stdio' }
+  lspc.ls_map.java = { name = 'java', cmd = 'jdtls' }
   lspc.ls_map.ltex = {
     name = 'ltex',
     cmd = 'ltex-ls --no-endless',
