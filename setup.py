@@ -76,42 +76,14 @@ mutt_target = [("muttrc", home_dir + "/.muttrc"),
 # yapf: disable
 # targets are a list of tuples<file name, link destination> and/or functions
 targets = {
-        "lumail":
-            [("config/lumail/lumail.lua", config_dir + "/lumail/lumail.lua")],
-        "guixsd":
-            [("guix/system.scm", "/etc/guix/system.scm"),
-            ("guix/bashrc", home_dir + "/.bashrc")],
-        "vim":
-            [("vimrc", home_dir + "/.vimrc"),
-            ("vim", home_dir + "/.vim")],
-        "vis":
-            [("config/vis", config_dir + "/vis")],
-        "gdb":
-            [("gdbinit", home_dir + "/.gdbinit")],
-        "ssh":
-            [("ssh/config.gpg", home_dir + "/.ssh/config"),
-             ("ssh/ssh-agent.service", config_dir + "/systemd/user/ssh-agent.service")],
-        "X":
-            [("xinitrc", home_dir + "/.xinitrc"),
-            ("xinitrc", home_dir + "/.xsession"),
-            ("xprofile", home_dir + "/.xprofile"),
-            dotfile_loc_helper,
-            ("Xresources", home_dir + "/.Xresources")],
-        "mutt": mutt_target,
-        "neomutt": mutt_target,
-        "notmuch":
-            [("notmuch-config", home_dir + "/.notmuch-config")],
-        "zshrc":
-            [("zshrc", home_dir + "/.zshrc")],
-        "i3":
-            [dotfile_loc_helper],
-        "sway":
-            [dotfile_loc_helper],
-        "vdirsyncer":
-            [("config/vdirsyncer/config.gpg", config_dir + "/vdirsyncer/config"),
-             vdirsyncer_init],
         "dir_colors":
             [("dir_colors", home_dir + "/.dir_colors")],
+        "dunst":
+            [("config/dunst/dunstrc", config_dir + "/dunst/dunstrc")],
+        "FAU":
+            [("FAU/wl-FAU-STUD.gpg", "/etc/netctl/wl-FAU-STUD"),
+            ("FAU/fau_stud.conf.gpg", ""),
+            ("FAU/start_fau_wlan.sh", home_dir + "/.local/bin/start_fau_wlan")],
         "fish":
             [("config/fish/config.fish", config_dir + "/fish/config.fish"),
             ("config/fish/fish_add_path_fallback.fish",
@@ -119,42 +91,70 @@ targets = {
             ("config/fish/fish_plugins", config_dir + "/fish/fish_plugins"),
             dotfile_loc_helper,
             fish_config],
-        "xonsh":
-            [("config/xonsh/rc.xsh", config_dir + "/xonsh/rc.xsh")],
-        "terminator":
-            [("config/terminator/config", config_dir + "/terminator/config")],
-        "termite":
-            [("config/termite/dark", config_dir + "/termite/config"), # default colors
-             ("config/termite/dark", config_dir + "/termite/dark"),
-             ("config/termite/light", config_dir + "/termite/light")],
+        "gdb":
+            [("gdbinit", home_dir + "/.gdbinit")],
+        "gpg":
+            [("gnupg/gpg-agent.conf", home_dir + "/.gnupg/gpg-agent.conf")],
+        "guixsd":
+            [("guix/system.scm", "/etc/guix/system.scm"),
+            ("guix/bashrc", home_dir + "/.bashrc")],
+        "i3":
+            [dotfile_loc_helper],
+        "lumail":
+            [("config/lumail/lumail.lua", config_dir + "/lumail/lumail.lua")],
+        "mako":
+            [("config/mako/config", config_dir + "/mako/config")],
         "mbsync":
             [("mbsync/mbsyncrc.gpg", home_dir + "/.mbsyncrc"),
              ("mbsync/mbsync.service", config_dir + "/systemd/user/mbsync.service"),
              ("mbsync/mbsync.timer", config_dir + "/systemd/user/mbsync.timer")],
+        "mpd":
+            [("mpdconf", home_dir + "/.mpdconf")],
+        "mpv":
+            [("config/mpv/config", config_dir + "/mpv/config")],
         "msmtp":
             [("msmtprc.gpg", home_dir + "/.msmtprc")],
-        "dunst":
-            [("config/dunst/dunstrc", config_dir + "/dunst/dunstrc")],
-        "mako":
-            [("config/mako/config", config_dir + "/mako/config")],
+        "mutt": mutt_target,
+        "neomutt": mutt_target,
+        "notmuch":
+            [("notmuch-config", home_dir + "/.notmuch-config")],
         "qutebrowser":
             [("config/qutebrowser/config.py", config_dir + "/qutebrowser/config.py"),
              ("config/qutebrowser/dark.py", config_dir + "/qutebrowser/theme.py"), # default theme
              ("config/qutebrowser/dark.py", config_dir + "/qutebrowser/dark.py"),
              ("config/qutebrowser/light.py", config_dir + "/qutebrowser/light.py"),
              ("config/qutebrowser/autoconfig.yml", config_dir + "/qutebrowser/autoconfig.yml")],
-        "FAU":
-            [("FAU/wl-FAU-STUD.gpg", "/etc/netctl/wl-FAU-STUD"),
-            ("FAU/fau_stud.conf.gpg", ""),
-            ("FAU/start_fau_wlan.sh", home_dir + "/.local/bin/start_fau_wlan")],
-        "mpd":
-            [("mpdconf", home_dir + "/.mpdconf")],
-        "mpv":
-            [("config/mpv/config", config_dir + "/mpv/config")],
+        "ssh":
+            [("ssh/config.gpg", home_dir + "/.ssh/config"),
+             ("ssh/ssh-agent.service", config_dir + "/systemd/user/ssh-agent.service")],
+        "sway":
+            [dotfile_loc_helper],
+        "terminator":
+            [("config/terminator/config", config_dir + "/terminator/config")],
+        "termite":
+            [("config/termite/dark", config_dir + "/termite/config"), # default colors
+             ("config/termite/dark", config_dir + "/termite/dark"),
+             ("config/termite/light", config_dir + "/termite/light")],
+        "vdirsyncer":
+            [("config/vdirsyncer/config.gpg", config_dir + "/vdirsyncer/config"),
+             vdirsyncer_init],
+        "vim":
+            [("vimrc", home_dir + "/.vimrc"),
+            ("vim", home_dir + "/.vim")],
+        "vis":
+            [("config/vis", config_dir + "/vis")],
+        "X":
+            [("xinitrc", home_dir + "/.xinitrc"),
+            ("xinitrc", home_dir + "/.xsession"),
+            ("xprofile", home_dir + "/.xprofile"),
+            dotfile_loc_helper,
+            ("Xresources", home_dir + "/.Xresources")],
         "xdg":
             [("mimeapps.list", config_dir + "/mimeapps.list")],
-        "gpg":
-            [("gnupg/gpg-agent.conf", home_dir + "/.gnupg/gpg-agent.conf")]
+        "xonsh":
+            [("config/xonsh/rc.xsh", config_dir + "/xonsh/rc.xsh")],
+        "zshrc":
+            [("zshrc", home_dir + "/.zshrc")],
         }
 # yapf: enable
 
