@@ -10,6 +10,7 @@ import subprocess
 user = pwd.getpwuid(os.getuid())[0]
 home_dir = os.getenv("HOME")
 config_dir = os.getenv("XDG_CONFIG_HOME") or home_dir + "/.config"
+local_bin_dir = home_dir + "/.local/bin"
 cwd = os.getcwd()
 
 
@@ -57,12 +58,12 @@ def vdirsyncer_init(quiet):
 def dotfile_loc_helper(quiet):
     """Create a symlink to get_dotfiles_location.sh into PATH"""
 
-    if not os.path.exists(home_dir + "/.local/bin"):
-        os.mkdir(home_dir + "/.local/bin")
+    if not os.path.exists(local_bin_dir):
+        os.mkdir(local_bin_dir)
 
     try:
         os.symlink(cwd + "/get_dotfiles_location.sh",
-                   home_dir + "/.local/bin/get_dotfiles_location")
+                   local_bin_dir + "/get_dotfiles_location")
     except Exception as e:
         if isinstance(e, FileExistsError):
             pass
@@ -83,7 +84,7 @@ targets = {
         "FAU":
             [("FAU/wl-FAU-STUD.gpg", "/etc/netctl/wl-FAU-STUD"),
             ("FAU/fau_stud.conf.gpg", ""),
-            ("FAU/start_fau_wlan.sh", home_dir + "/.local/bin/start_fau_wlan")],
+            ("FAU/start_fau_wlan.sh", local_bin_dir + "/start_fau_wlan")],
         "fish":
             [("config/fish/config.fish", config_dir + "/fish/config.fish"),
             ("config/fish/fish_add_path_fallback.fish",
