@@ -9,3 +9,6 @@ default-timeout=5000
 
 [app-name="ByCS-Drive"]
 default-timeout=5000
+
+[desktop-entry="com.nextcloud.desktopclient.nextcloud"]
+default-timeout=5000
