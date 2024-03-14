@@ -125,6 +125,9 @@ targets = {
              ("config/qutebrowser/dark.py", config_dir + "/qutebrowser/dark.py"),
              ("config/qutebrowser/light.py", config_dir + "/qutebrowser/light.py"),
              ("config/qutebrowser/autoconfig.yml", config_dir + "/qutebrowser/autoconfig.yml")],
+        "scripts":
+            [("bin/alert", local_bin_dir + "/alert"),
+             ("bin/set_theme", local_bin_dir + "/set_theme")],
         "ssh":
             [("ssh/config.gpg", home_dir + "/.ssh/config"),
              ("ssh/ssh-agent.service", config_dir + "/systemd/user/ssh-agent.service")],

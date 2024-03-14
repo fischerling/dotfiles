@@ -1,0 +1,13 @@
+#!/bin/bash
+
+theme=$1
+if [[ "$theme" !=  "dark" ]] && [[ "$theme" != "light" ]]; then
+	echo "Usage: $0 <light|dark>"; exit 1
+fi
+
+VIS_THEME_PATH=${XDG_CONFIG_HOME:-~/.config}/vis/themes
+ln -sf solarized-"$theme".lua "${VIS_THEME_PATH}"/theme.lua
+
+ALACRITTY_THEME_PATH=${XDG_CONFIG_HOME:-~/.config}/alacritty
+ln -sf "$theme".toml "${ALACRITTY_THEME_PATH}"/theme.toml
+touch "${ALACRITTY_THEME_PATH}"/alacritty.toml
