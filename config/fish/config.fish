@@ -104,3 +104,5 @@ if type -q firejail
 	source "$DOTFILES_LOCATION/config/fish/firejail-alias"
 end
 
+abbr -a -- lmk lesson-make
+abbr -a -- lcp lesson-cp
