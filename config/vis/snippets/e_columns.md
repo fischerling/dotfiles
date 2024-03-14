@@ -1,4 +1,4 @@
-::: columns
+::: {.columns}
 :::: {.column width=50%}
 ::::
 
