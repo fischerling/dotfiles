@@ -17,12 +17,9 @@ require('plugins/vis-ctags')
 require('plugins/vis-modelines/vis-modelines')
 local lspc = require('plugins/vis-lspc')
 if next(lspc) then
-  lspc.highlight_diagnostics = 'line'
-  -- lspc.diagnostic_style = 'fore:red'
   lspc.logging = true
   lspc.message_level = 2
   lspc.ls_map.latex = { name = 'latex', cmd = 'texlab' }
-  lspc.ls_map.go = { name = 'go', cmd = 'gopls' }
   lspc.ls_map.html = { name = 'html', cmd = 'vscode-html-languageserver --stdio' }
   lspc.ls_map.typescript = { name = 'typescript', cmd = 'typescript-language-server --stdio' }
   lspc.ls_map.java = { name = 'java', cmd = 'jdtls' }
