@@ -50,3 +50,6 @@
 [submodule "config/vis/plugins/vis-inotify"]
 	path = config/vis/plugins/vis-inotify
 	url = git@gitlab.com:muhq/vis-inotify.git
+[submodule "config/vis/plugins/vis-lockfiles"]
+	path = config/vis/plugins/vis-lockfiles
+	url = https://gitlab.com/muhq/vis-lockfiles.git
