@@ -63,6 +63,7 @@ settings:
     '*://muhq.space/*': true
     '*://paftown.ddns.net/*': true
     '*://riot.muhq.space/*': true
+    '*://seaworld.fritz.box/*': true
     '*://stackoverflow.com/*': true
     '*://uberspace.de/*': true
     '*://ubuntu.com/*': true
