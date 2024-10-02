@@ -12,6 +12,7 @@
 #
 [database]
 path=/home/muhq/.local/share/maildir/
+hook_dir=/home/muhq/.config/notmuch/hooks/
 
 # User configuration
 #
@@ -31,7 +32,7 @@ path=/home/muhq/.local/share/maildir/
 [user]
 name=Florian Fischer
 primary_email=florian.fischer@muhq.space
-other_email=florian.fl.fischer@fau.de;f.fischer@cs.fau.de;
+other_email=florian.fl.fischer@fau.de;f.fischer@cs.fau.de;florian.fischer@hans-sachs-gymnasium.de;jesus@supernovafickmichtot.de;florian.fischer@vocosma.it;
 
 # Configuration for "notmuch new"
 #
@@ -48,6 +49,8 @@ other_email=florian.fl.fischer@fau.de;f.fischer@cs.fau.de;
 #		in the mail store.
 #
 [new]
+tags=new
+ignore=Spam
 
 # Search configuration
 #
@@ -59,6 +62,7 @@ other_email=florian.fl.fischer@fau.de;f.fischer@cs.fau.de;
 #		query will override that exclusion.
 #
 [search]
+exclude_tags=spam
 
 # Maildir compatibility configuration
 #
@@ -82,3 +86,4 @@ other_email=florian.fl.fischer@fau.de;f.fischer@cs.fau.de;
 #	commands will notice tag changes and update flags in filenames
 #
 [maildir]
+synchronize_flags = true

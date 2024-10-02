@@ -118,7 +118,7 @@ targets = {
         "mutt": mutt_target,
         "neomutt": mutt_target,
         "notmuch":
-            [("notmuch-config", home_dir + "/.notmuch-config")],
+            [("config/notmuch", config_dir + "/notmuch")],
         "qutebrowser":
             [("config/qutebrowser/config.py", config_dir + "/qutebrowser/config.py"),
              ("config/qutebrowser/dark.py", config_dir + "/qutebrowser/theme.py"), # default theme
