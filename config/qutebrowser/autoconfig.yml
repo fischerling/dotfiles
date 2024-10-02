@@ -68,10 +68,11 @@ settings:
     '*://uberspace.de/*': true
     '*://ubuntu.com/*': true
     '*://vimeo.com/*': true
+    '*://wiki.archlinux.org/*': true
     '*://www.abgeordnetenwatch.de/*': true
     '*://www.cardmarket.com/*': true
     '*://www.cubetutor.com/*': true
-    '*://www.gls-online-filiale.de/*': false
+    '*://www.gls-online-filiale.de/*': true
     '*://www.gls.de/*': true
     '*://www.ifsc-climbing.org/*': true
     '*://www.jinteki.net/*': true
