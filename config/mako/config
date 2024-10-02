@@ -12,3 +12,6 @@ default-timeout=5000
 
 [desktop-entry="com.nextcloud.desktopclient.nextcloud"]
 default-timeout=5000
+
+[app-name="notify-send" summary="notmuch"]
+default-timeout=5000
