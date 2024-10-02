@@ -106,3 +106,6 @@ end
 
 abbr -a -- lmk lesson-make
 abbr -a -- lcp lesson-cp
+
+# notmuch does not folow XDG-spec but reads a config location from $NOTMUCH_CONFIG
+set -x NOTMUCH_CONFIG $HOME/.config/notmuch/config
