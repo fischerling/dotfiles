@@ -1,5 +1,6 @@
 -- load standard vis module, providing parts of the Lua API
 require('vis')
+
 require('plugins/filetype')
 require('plugins/textobject-lexer')
 local cursors = require('plugins/vis-cursors')
@@ -19,6 +20,7 @@ local lspc = require('plugins/vis-lspc')
 if next(lspc) then
   lspc.logging = true
   lspc.message_level = 2
+
   lspc.ls_map.latex = { name = 'latex', cmd = 'texlab' }
   lspc.ls_map.html = { name = 'html', cmd = 'vscode-html-languageserver --stdio' }
   lspc.ls_map.typescript = { name = 'typescript', cmd = 'typescript-language-server --stdio' }
@@ -26,12 +28,40 @@ if next(lspc) then
   lspc.ls_map.ltex = {
     name = 'ltex',
     cmd = 'ltex-ls --no-endless',
-    file_open_hook = function(ls, file)
+  }
+  lspc.ls_map.python = {
+          name = 'python-lsp-server',
+          cmd = 'pylsp',
+          settings = {
+            pylsp = {
+              plugins = {
+                rope_completion = { "eager" },
+                rope_rename = { enabled = true },
+                pylsp_rope = { enabled = true },
+              },
+            },
+          },
+      }
+
+  vis.events.subscribe(lspc.events.LS_DID_OPEN, function(ls, file)
+    if ls.name == 'ltex' then
       if not ls.settings then ls.settings = {} end
       if not ls.settings.ltex then ls.settings.ltex = {} end
       ls.settings.ltex.language = file.spelling_language:gsub('_', '-') or 'en-US'
     end
-  }
+  end)
+
+  vis:map(vis.modes.VISUAL, ' rn', function()
+    vis:feedkeys(":lspc-rename ")
+  end, 'lspc: rename current symbol')
+
+  vis:map(vis.modes.NORMAL, '< -n>', function()
+    vis:command('lspc-next-diagnostic')
+    end, 'lspc: jump to next diagnostic')
+
+  vis:map(vis.modes.NORMAL, '< -N>', function()
+    vis:command('lspc-prev-diagnostic')
+    end, 'lspc: jump to prev diagnostic')
 end
 
 local snippets = require('plugins/vis-snippets')
