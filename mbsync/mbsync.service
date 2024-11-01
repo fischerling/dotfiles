@@ -2,6 +2,7 @@
 Description=Mailbox synchronization service
 
 [Service]
+Environment="NOTMUCH_CONFIG=/home/muhq/.config/notmuch/config"
 Type=oneshot
 ExecStart=/usr/bin/mbsync -Va
 ExecStartPost=/usr/bin/notmuch new
