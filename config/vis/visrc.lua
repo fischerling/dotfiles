@@ -69,7 +69,7 @@ lockfiles.change_file_on_abort = true
 
 require('plugins/vis-snippets')
 vis:map(vis.modes.NORMAL, "<C-s>", function()
-	vis:command(':snippet')
+	vis:command('snippet')
 end)
 
 local build = require('plugins/vis-build')
