@@ -1,0 +1,1 @@
+\draw pic["", draw, fill=green!30, angle radius=1cm] {angle=b--S--a};

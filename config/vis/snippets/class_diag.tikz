@@ -1,0 +1,16 @@
+\begin{tikzpicture}
+ \begin{class}[text width=5cm]{SPIELAUTOMAT}{0,0}
+  \attribute{walze1 : SPIELWALZE}
+  \attribute{walze2 : SPIELWALZE}
+  \attribute{walze3 : SPIELWALZE}
+  \operation{AlleDrehen()}
+ \end{class}
+
+ \begin{class}[text width=5cm]{SPIELWALZE}{6,0}
+  \attribute{hintergrund : KASTEN}
+  \attribute{farbsymbol : FARBKREIS}
+  \operation{Drehen()}
+ \end{class}
+
+  \association{SPIELAUTOMAT}{}{1}{SPIELWALZE}{3}{}
+\end{tikzpicture}
