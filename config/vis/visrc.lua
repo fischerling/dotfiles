@@ -63,7 +63,7 @@ vis.events.subscribe(vis.events.INIT, function()
 end)
 
 local inotify = require('plugins/vis-inotify')
-inotify.add_recreate_watch('/home/muhq/.config/vis/themes/theme.lua', function(msg)
+inotify.add_recreate_watch('/home/muhq/.config/vis/themes/theme.lua', function(_)
   vis:command("set theme " .. theme) -- reload vis theme
 end, '-P')
 
