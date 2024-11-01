@@ -64,7 +64,10 @@ if next(lspc) then
     end, 'lspc: jump to prev diagnostic')
 end
 
-local snippets = require('plugins/vis-snippets')
+local lockfiles = require('plugins/vis-lockfiles')
+lockfiles.change_file_on_abort = true
+
+require('plugins/vis-snippets')
 vis:map(vis.modes.NORMAL, "<C-s>", function()
 	vis:command(':snippet')
 end)
