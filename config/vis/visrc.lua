@@ -87,6 +87,8 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
       win:set_syntax("diff")
     elseif win.file.name:find('meson.build') and win.syntax ~= 'meson' then
       win:set_syntax('python')
+    elseif win.file.name:find('slides.md') then
+      win:set_syntax('slides')
     end
 
     if win.syntax == "python" or win.syntax == "rust" then
