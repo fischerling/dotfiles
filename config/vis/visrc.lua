@@ -149,13 +149,8 @@ else
   vis:info('skip vis-editorconfig: editorconfig not available from lua')
 end
 
-
 vis:map(vis.modes.NORMAL, ";;", "<vis-window-next>")
 
-vis:command_register('lmk', function(argv)
-	local cmd = '!lesson-make'
-	for _, a in ipairs(argv) do
-		cmd = cmd .. ' ' .. a
-	end
-	vis:command(cmd)
+vis:command_register('ltex', function()
+  vis:command('lspc-start-server ltex')
 end)
