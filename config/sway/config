@@ -280,6 +280,8 @@ bindsym $mod+r mode "resize"
 bindsym --locked XF86MonBrightnessUp exec light -T 1.4
 bindsym --locked XF86MonBrightnessDown exec light -T 0.72
 
+bindsym --locked $mod+F5 exec $DOTFILES_LOCATION/scripts/toggle_keyboard_light.sh
+
 #
 # Audio shortcuts
 #
