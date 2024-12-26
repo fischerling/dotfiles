@@ -86,9 +86,9 @@ set -x GPG_TTY (tty)
 #start xsession if we are not in ssh
 if not set -q SSH_CLIENT; or not set -q SSH_TTY
 	if not set -q DISPLAY; and not set -q WAYLAND_DISPLAY; and test "$XDG_VTNR" = "1"
+		set -x TERMINAL alacritty
+		set -x BROWSER qutebrowser
 		if type -q sway
-			set -x TERMINAL alacritty
-			set -x BROWSER qutebrowser
 			mkdir -p ~/.local/share/sway
 			sway -d 2> ~/.local/share/sway/log
 		else
