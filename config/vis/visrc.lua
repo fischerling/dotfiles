@@ -47,7 +47,9 @@ if next(lspc) then
     if ls.name == 'ltex' then
       if not ls.settings then ls.settings = {} end
       if not ls.settings.ltex then ls.settings.ltex = {} end
-      ls.settings.ltex.language = file.spelling_language:gsub('_', '-') or 'en-US'
+      if file.spelling_language then
+        ls.settings.ltex.language = file.spelling_language:gsub('_', '-') or 'en-US'
+      end
     end
   end)
 
