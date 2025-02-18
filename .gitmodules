@@ -43,13 +43,13 @@
 	url = https://git.sr.ht/~mcepl/vis-fzf-open
 [submodule "config/vis/plugins/vis-snippets"]
 	path = config/vis/plugins/vis-snippets
-	url = git@gitlab.com:muhq/vis-snippets.git
+	url = https://gitlab.com/muhq/vis-snippets.git
 [submodule "config/vis/plugins/vis-build"]
 	path = config/vis/plugins/vis-build
-	url = git@gitlab.com:muhq/vis-build.git
+	url = https://gitlab.com/muhq/vis-build.git
 [submodule "config/vis/plugins/vis-inotify"]
 	path = config/vis/plugins/vis-inotify
-	url = git@gitlab.com:muhq/vis-inotify.git
+	url = https://gitlab.com/muhq/vis-inotify.git
 [submodule "config/vis/plugins/vis-lockfiles"]
 	path = config/vis/plugins/vis-lockfiles
 	url = https://gitlab.com/muhq/vis-lockfiles.git
