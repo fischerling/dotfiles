@@ -96,9 +96,11 @@ vis.events.subscribe(vis.events.INIT, function()
 end)
 
 local inotify = require('plugins/vis-inotify')
-inotify.add_recreate_watch('/home/muhq/.config/vis/themes/theme.lua', function(_)
-  vis:command("set theme " .. theme) -- reload vis theme
-end, '-P')
+if inotify.add_recreate_watch then
+  inotify.add_recreate_watch('/home/muhq/.config/vis/themes/theme.lua', function(_)
+    vis:command("set theme " .. theme) -- reload vis theme
+  end, '-P')
+end
 
 -- seperate default settings into per file and per window to not override settings from
 -- vis-editorconf which are set on FILE_OPEN
