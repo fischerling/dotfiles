@@ -57,11 +57,11 @@ if next(lspc) then
     vis:feedkeys(":lspc-rename ")
   end, 'lspc: rename current symbol')
 
-  vis:map(vis.modes.NORMAL, '< -n>', function()
+  vis:map(vis.modes.NORMAL, ' n', function()
     vis:command('lspc-next-diagnostic')
     end, 'lspc: jump to next diagnostic')
 
-  vis:map(vis.modes.NORMAL, '< -N>', function()
+  vis:map(vis.modes.NORMAL, ' N', function()
     vis:command('lspc-prev-diagnostic')
     end, 'lspc: jump to prev diagnostic')
 end
