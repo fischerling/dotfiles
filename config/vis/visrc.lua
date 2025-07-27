@@ -158,3 +158,8 @@ vis:map(vis.modes.NORMAL, ";;", "<vis-window-next>")
 vis:command_register('ltex', function()
   vis:command('lspc-start-server ltex')
 end)
+
+vis:map(vis.modes.NORMAL, ' x', function()
+  vis:message('')
+  vis:command(':q')
+end)
